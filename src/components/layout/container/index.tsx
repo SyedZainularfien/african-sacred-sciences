@@ -6,7 +6,7 @@ interface ContainerProps extends HTMLAttributes<HTMLDivElement> {
 
 export function Container({ children, className = "", ...props }: ContainerProps) {
   return (
-    <div className={`mx-auto w-full max-w-6xl px-6 ${className}`} {...props}>
+    <div className={`mx-auto w-full max-w-[2880px] px-5 sm:px-8 lg:px-[4.86vw] ${className}`} {...props}>
       {children}
     </div>
   );
