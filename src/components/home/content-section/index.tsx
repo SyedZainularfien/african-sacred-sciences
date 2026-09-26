@@ -14,7 +14,7 @@ export function ContentSection() {
             <span className="font-sans [font-size:clamp(2.5rem,4vw,3rem)]! font-medium leading-[57px]">
               Africa&apos;s Wisdom Is
             </span>
-            <span className="bg-plum-gradient bg-clip-text font-serif [font-size:clamp(3rem,4.5vw,3.625rem)]! font-bold italic leading-[58px] text-transparent">
+            <span className="bg-plum-gradient bg-clip-text font-serif [font-size:clamp(3rem,4.5vw,3.625rem)]! font-bold italic leading-[1.2] text-transparent">
               Vast, Diverse and Living.
             </span>
           </Typography>

@@ -92,7 +92,7 @@ export function CommunitySection() {
           </div>
           <div className="flex w-full flex-col items-center gap-10">
             <Typography variant="mdMedium" className="w-full max-w-[500px] border-y border-gold/10 py-8 text-center font-serif [font-size:28px]! italic leading-[42px] text-gold xl:whitespace-nowrap">Alignment is not a destination. It is a way of living.</Typography>
-            <Button className="h-[53px] w-full max-w-[297px] uppercase tracking-[1.68px] [&>span]:text-sm [&>span]:leading-[21px]" showArrow>Explore the Doctrine</Button>
+            <Button className="h-[53px] w-full max-w-[297px]! bg-[linear-gradient(124.26deg,#c69b34_4.765%,#eec97c_50.434%,#c69b34_95.235%)]! uppercase tracking-[1.68px] [&>span]:text-sm [&>span]:leading-[21px]">Explore the Doctrine →</Button>
           </div>
         </div>
       </Container>
