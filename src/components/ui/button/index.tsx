@@ -3,7 +3,7 @@ import type { ButtonHTMLAttributes, ReactNode } from "react";
 import { Typography } from "@/components/ui/typography";
 
 export const buttonVariants = cva(
-  "inline-flex w-fit items-center justify-center gap-3 rounded-full border text-center",
+  "inline-flex max-w-full min-w-0 items-center justify-center gap-3 rounded-full border text-center",
   {
     variants: {
       variant: {
@@ -11,8 +11,8 @@ export const buttonVariants = cva(
         outline: "border-plum bg-full-black text-white",
       },
       size: {
-        default: "px-6 py-4",
-        compact: "px-[22px] py-[9px]",
+        default: "px-4 py-3.5 sm:px-6 sm:py-4",
+        compact: "px-4 py-2.5 sm:px-[22px] sm:py-[9px]",
       },
       width: {
         auto: "w-fit",
@@ -46,7 +46,7 @@ export function Button({
 }: ButtonProps) {
   return (
     <button className={buttonVariants({ variant, size, width, className })} type={type} {...props}>
-      <Typography as="span" variant="cta">
+      <Typography as="span" variant="cta" className="max-sm:text-sm">
         {children}
       </Typography>
       {showArrow ? (

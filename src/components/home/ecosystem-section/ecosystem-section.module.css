@@ -1,0 +1,61 @@
+@media (min-width: 64rem) {
+  .section {
+    height: 100svh;
+    padding-block: 4svh;
+  }
+
+  .section > div {
+    height: 100%;
+    gap: 3svh;
+  }
+
+  .section header {
+    flex-shrink: 0;
+    gap: 1.5svh;
+  }
+
+  .section header > p,
+  .section li p:first-child {
+    font-size: min(0.9vw, 1.8svh);
+  }
+
+  .section h2 {
+    font-size: min(3.4vw, 6.3svh);
+  }
+
+  .section ul {
+    flex: 1;
+    min-height: 0;
+    gap: 2.4svh 1.3vw;
+  }
+
+  .section li {
+    height: calc((100% - 2.4svh) / 2);
+    min-height: 0;
+    padding-block: 2svh;
+  }
+
+  .section li > div:first-child {
+    gap: 2.5svh;
+  }
+
+  .section li > div:first-child > div {
+    gap: 1.2svh;
+  }
+
+  .section h3 {
+    font-size: min(1.7vw, 3.2svh);
+  }
+
+  .section li h3 + p {
+    font-size: min(1.15vw, 2.2svh);
+  }
+
+  .section button {
+    font-size: min(1vw, 2svh);
+  }
+
+  .section li > div:last-child {
+    width: min(9vw, 16svh);
+  }
+}
