@@ -1,0 +1,78 @@
+@import "tailwindcss";
+
+:root {
+  --plum: #6b1b5c;
+  --gold: #c69b34;
+  --background-yellow: #f0ead8;
+  --plum-gradient-start: #e9b4df;
+  --plum-gradient-end: #7f1669;
+  --gradient-plum: linear-gradient(90.78deg, #e9b4df -7.18%, #7f1669 99.89%);
+  --gold-gradient-start: #c69b34;
+  --gold-gradient-middle: #eec97c;
+  --gold-gradient-end: #c69b34;
+  --gradient-gold: linear-gradient(270deg, #c69b34 0%, #eec97c 50.48%, #c69b34 100%);
+  --border-gradient-start: #282828;
+  --border-gradient-end: #c69b34;
+  --white: #ffffff;
+  --light-grey: #e3e3e3;
+  --grey: #d2d2d2;
+  --dark-grey: #8c8c8c;
+  --black: #1a1a1a;
+  --full-black: #121212;
+  --footer-gradient-start: #070708;
+  --footer-gradient-end: #1e1e21;
+  --font-size-h1: 3.5rem;
+  --font-size-h2: 2.75rem;
+  --font-size-h3: 2.375rem;
+  --font-size-h4: 2rem;
+  --font-size-h5: 1.625rem;
+  --font-size-h6: 1.25rem;
+  --font-size-xl: 1.25rem;
+  --font-size-lg: 1.125rem;
+  --font-size-md: 1rem;
+  --font-size-sm: 0.875rem;
+  --font-size-xs: 0.75rem;
+}
+
+@theme inline {
+  --color-plum: var(--plum);
+  --color-gold: var(--gold);
+  --color-background-yellow: var(--background-yellow);
+  --color-light-grey: var(--light-grey);
+  --color-grey: var(--grey);
+  --color-dark-grey: var(--dark-grey);
+  --color-full-black: var(--full-black);
+  --background-image-plum-gradient: var(--gradient-plum);
+  --background-image-gold-gradient: var(--gradient-gold);
+  --font-sans: var(--font-inter);
+  --font-serif: var(--font-cormorant-garamond);
+  --text-h1: var(--font-size-h1);
+  --text-h2: var(--font-size-h2);
+  --text-h3: var(--font-size-h3);
+  --text-h4: var(--font-size-h4);
+  --text-h5: var(--font-size-h5);
+  --text-h6: var(--font-size-h6);
+  --text-xl: var(--font-size-xl);
+  --text-lg: var(--font-size-lg);
+  --text-md: var(--font-size-md);
+  --text-sm: var(--font-size-sm);
+  --text-xs: var(--font-size-xs);
+  --breakpoint-xs: 30rem;
+  --breakpoint-sm: 40rem;
+  --breakpoint-md: 48rem;
+  --breakpoint-lg: 64rem;
+  --breakpoint-xl: 80rem;
+  --breakpoint-2xl: 96rem;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  background: var(--white);
+  color: var(--full-black);
+  font-family: var(--font-inter), Arial, Helvetica, sans-serif;
+}
