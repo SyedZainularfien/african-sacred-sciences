@@ -133,9 +133,9 @@ export function Header({ homePage = false }: { homePage?: boolean }) {
         onClick={(event) => {
           if (event.target === event.currentTarget) closeMenu();
         }}
-        className="fixed inset-0 m-0 h-dvh max-h-none w-full max-w-none flex-col items-center bg-transparent px-5 py-[15px] text-white outline-none backdrop:bg-black/80 open:flex sm:items-end sm:px-8 lg:px-[4.861111%]"
+        className="fixed inset-0 m-0 h-dvh max-h-none w-full max-w-none flex-col items-center overflow-y-auto overscroll-contain bg-transparent px-5 py-[15px] text-white outline-none backdrop:bg-black/80 open:flex sm:items-end sm:px-8 lg:px-[4.861111%]"
       >
-        <div className="flex max-h-full w-full max-w-[420px] flex-col gap-5 overflow-y-auto overscroll-contain rounded-[20px] border border-[#56304d] bg-[#140e16] p-4 sm:gap-6 sm:p-5">
+        <div className="flex w-full max-w-[420px] shrink-0 flex-col gap-5 rounded-[20px] border border-[#56304d] bg-[#140e16] p-4 sm:gap-6 sm:p-5">
           <div className="flex shrink-0 items-center justify-between gap-3">
             <Brand onClick={closeMenu} />
             <button
