@@ -1,19 +1,8 @@
 import { Typography } from "@/components/ui/typography";
 import { Container } from "@/components/layout/container";
 
-const researchSources = [
-  ["African scholars", "Historical sources", "African-language terminology"],
-  ["Philosophical traditions", "Documented indigenous knowledge"],
-  ["Contemporary African researchers", "Contemporary scholarship"],
-];
 
-const knowledgeCategories = [
-  "Documented Knowledge",
-  "Living Traditions",
-  "Scholarly Interpretation",
-  "Areas of Debate",
-  "Contemporary Application",
-];
+import { researchSources, knowledgeCategories } from "@/constants/home";
 
 export function ResearchSection() {
   return (

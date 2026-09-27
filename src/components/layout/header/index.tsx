@@ -7,16 +7,7 @@ import { Container } from "@/components/layout/container";
 import { Button } from "@/components/ui/button";
 import { Typography } from "@/components/ui/typography";
 
-const navigationItems = [
-  { label: "Home", href: "/" },
-  { label: "African Sacred Science", href: "/#african-sacred-science" },
-  { label: "The Doctrine", href: "/doctrine" },
-  { label: "Research", href: "/#research" },
-  { label: "ORIINU", href: "/#oriinu" },
-  { label: "Books" },
-  { label: "Academy" },
-  { label: "About", href: "/#founders" },
-];
+import { navigationItems } from "@/constants/navigation";
 
 function Brand({ onClick }: { onClick?: () => void }) {
   return (
@@ -87,22 +78,23 @@ export function Header({ homePage = false }: { homePage?: boolean }) {
 
           <nav aria-label="Main navigation" className="hidden min-w-0 flex-1 min-[90rem]:block">
             <ul className="flex items-center justify-start gap-[25px] whitespace-nowrap text-sm leading-6">
-              {navigationItems.map(({ label }) => (
+              {navigationItems.map(({ label, href }) => (
                 <li key={label}>
-                  {label === "Home" ? (
-                    <Link href="/" className="hover:text-gold focus-visible:outline-gold">
-                      <Typography as="span" variant="sm">{label}</Typography>
-                    </Link>
-                  ) : (
+                  <Link href={href} className="hover:text-gold focus-visible:outline-2 focus-visible:outline-gold">
                     <Typography as="span" variant="sm">{label}</Typography>
-                  )}
+                  </Link>
                 </li>
               ))}
             </ul>
           </nav>
 
           <div className="hidden shrink-0 min-[90rem]:block">
-            <Button size="compact" className="h-[46px] w-[214px]" showArrow>
+            <Button
+              size="compact"
+              className="h-[46px] w-[214px]"
+              showArrow
+              onClick={() => window.open("https://oriinu.ai/", "_blank", "noopener,noreferrer")}
+            >
               Experience ORIINU
             </Button>
           </div>

@@ -4,38 +4,8 @@ import Image from "next/image";
 import { Container } from "@/components/layout/container";
 import { Button } from "@/components/ui/button";
 
-const topics = [
-  "Personal Direction",
-  "Business & Strategy",
-  "Finances & Wealth",
-  "Productivity & Focus",
-  "Relationships",
-  "Purpose",
-  "Life Decisions",
-  "Personal Growth",
-];
 
-const stages = [
-  {
-    title: "Ask",
-    description:
-      "Bring a real question about direction, a decision, a relationship, purpose, or what matters most.",
-  },
-  {
-    title: "Reflect",
-    description:
-      "Explore what lies beneath the question through a deeper framework of understanding.",
-  },
-  {
-    title: "Align",
-    description:
-      "Consider what is consistent with your values, character and direction.",
-  },
-  {
-    title: "Act",
-    description: "Move forward with greater clarity, intention and purpose.",
-  },
-];
+import { topics, stages } from "@/constants/home";
 
 export function OriinuSection() {
   return (

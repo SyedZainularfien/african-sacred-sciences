@@ -2,17 +2,7 @@ import Image from "next/image";
 import { Container } from "@/components/layout/container";
 import { Typography } from "@/components/ui/typography";
 
-const features = [
-  { title: "Identity", question: "Who am I?", icon: "1.png" },
-  { title: "Destiny", question: "What am I becoming?", icon: "2.png" },
-  { title: "Character", question: "Who must I become?", icon: "3.png" },
-  { title: "Consciousness", question: "What am I aware of?", icon: "4.png" },
-  { title: "Community", question: "Who am I responsible to?", icon: "5.png" },
-  { title: "Prosperity", question: "What does flourishing mean?", icon: "6.png" },
-  { title: "Nature", question: "How are we connected?", icon: "7.png" },
-  { title: "Leadership", question: "How should power be used?", icon: "8.png" },
-  { title: "The Divine", question: "What is my relationship with the sacred?", icon: "9.png" },
-] as const;
+import { features } from "@/constants/home";
 
 export function FeatureSection() {
   return (

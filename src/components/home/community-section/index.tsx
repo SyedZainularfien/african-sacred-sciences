@@ -3,38 +3,7 @@ import Image from "next/image";
 import { Container } from "@/components/layout/container";
 import { Button } from "@/components/ui/button";
 
-const principles = [
-  {
-    name: "Orí Inú",
-    alignment: "Inner Alignment",
-    description: "The inner self, consciousness and sense of direction.",
-    icon: "1.png",
-  },
-  {
-    name: "Ìwà Pẹ̀lẹ́",
-    alignment: "Character Alignment",
-    description: "The cultivation of sacred character, integrity and responsible conduct.",
-    icon: "2.png",
-  },
-  {
-    name: "Àyànmọ̀",
-    alignment: "Purpose Alignment",
-    description: "Living consciously in relationship with destiny, calling and meaningful purpose.",
-    icon: "3.png",
-  },
-  {
-    name: "Àṣẹ",
-    alignment: "Creative Alignment",
-    description: "Bringing speech, intention and action into responsible creative expression.",
-    icon: "4.png",
-  },
-  {
-    name: "Community",
-    alignment: "Relational Alignment",
-    description: "Individual flourishing is inseparable from responsibility, relationship and community.",
-    icon: "5.png",
-  },
-] as const;
+import { principles } from "@/constants/home";
 
 function AlignmentDiagram() {
   return (

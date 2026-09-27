@@ -1,20 +1,7 @@
 import { Container } from "@/components/layout/container";
 import { Typography } from "@/components/ui/typography";
 
-const milestones = [
-  {
-    title: "Built businesses, advised leaders, and raised a family.",
-    description: "A foundation of practical experience, family, and leadership.",
-  },
-  {
-    title: "Navigated profound seasons of change.",
-    description: "Resilience, adaptation, and spiritual grounding through transition.",
-  },
-  {
-    title: "Taught spiritual principles and authored transformational works.",
-    description: "Guiding others toward possibility, purpose, and renewed direction.",
-  },
-] as const;
+import { milestones } from "@/constants/home";
 
 export function FoundersJourneySection() {
   return (

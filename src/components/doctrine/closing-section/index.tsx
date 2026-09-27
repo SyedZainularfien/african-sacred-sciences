@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { buttonVariants } from "@/components/ui/button";
 import { Typography } from "@/components/ui/typography";
+import { DOCTRINE_CLOSING_RING_RADII } from "@/constants/doctrine";
 
 function ClosingRings() {
   return (
@@ -12,7 +13,7 @@ function ClosingRings() {
       fill="none"
     >
       <g stroke="#C69B34" strokeOpacity="0.045" strokeWidth="0.7">
-        {[110, 220, 330, 440].map((radius) => (
+        {DOCTRINE_CLOSING_RING_RADII.map((radius) => (
           <circle key={radius} cx="720" cy="385" r={radius} />
         ))}
       </g>

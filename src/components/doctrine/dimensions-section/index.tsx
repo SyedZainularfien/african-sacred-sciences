@@ -1,56 +1,7 @@
 import { Container } from "@/components/layout/container";
-import { DimensionIcon, type DimensionIconKind } from "@/components/doctrine/dimension-icon";
+import { DimensionIcon } from "@/components/doctrine/dimension-icon";
 import { Typography } from "@/components/ui/typography";
-
-const dimensions = [
-  {
-    name: "Orí Inú",
-    alignment: "Inner Alignment",
-    description: "The inner self, consciousness and sense of direction.",
-    icon: "circle",
-    point: "left-[53.2%] top-[15%]",
-    label: "left-[53.2%] top-[3%]",
-  },
-  {
-    name: "Ìwà Pẹ̀lẹ́",
-    alignment: "Character Alignment",
-    description: "The cultivation of sacred character, integrity and responsible conduct.",
-    icon: "diamond",
-    point: "left-[83.9%] top-[38%]",
-    label: "left-[83.9%] top-[46%]",
-  },
-  {
-    name: "Àyànmọ̀",
-    alignment: "Purpose Alignment",
-    description: "Living consciously in relationship with destiny, calling and meaningful purpose.",
-    icon: "triangle",
-    point: "left-[71.8%] top-[75%]",
-    label: "left-[71.8%] top-[79%]",
-  },
-  {
-    name: "Àṣẹ",
-    alignment: "Creative Alignment",
-    description: "Bringing speech, intention and action into responsible creative expression.",
-    icon: "star",
-    point: "left-[34.7%] top-[75%]",
-    label: "left-[34.7%] top-[79%]",
-  },
-  {
-    name: "Community",
-    alignment: "Relational Alignment",
-    description: "Understanding that individual flourishing is inseparable from responsibility, relationship and community.",
-    icon: "rings",
-    point: "left-[22.6%] top-[38%]",
-    label: "left-[22.6%] top-[46%]",
-  },
-] as const satisfies ReadonlyArray<{
-  name: string;
-  alignment: string;
-  description: string;
-  icon: DimensionIconKind;
-  point: string;
-  label: string;
-}>;
+import { DOCTRINE_DIAGRAM_DIMENSIONS } from "@/constants/doctrine";
 
 function DimensionsDiagram() {
   return (
@@ -68,7 +19,7 @@ function DimensionsDiagram() {
       <Typography as="span" variant="sm" className="absolute left-[53.2%] top-[48.3%] -translate-x-1/2 -translate-y-1/2 text-center font-serif! text-[clamp(11px,1vw,14px)]! italic leading-[1.3] text-white/85">
         Divine<br />Alignment
       </Typography>
-      {dimensions.map(({ name, alignment, icon, point, label }) => (
+      {DOCTRINE_DIAGRAM_DIMENSIONS.map(({ name, alignment, icon, point, label }) => (
         <div key={name}>
           <span className={`absolute ${point} flex h-[clamp(24px,2.5vw,36px)] w-[clamp(24px,2.5vw,36px)] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-gold/30 bg-[#291126]/80`}>
             <DimensionIcon icon={icon} className="h-4 w-4" />
@@ -102,7 +53,7 @@ export function DoctrineDimensionsSection() {
           </div>
 
           <ul className="flex flex-col gap-6">
-            {dimensions.map(({ name, alignment, description, icon }) => (
+            {DOCTRINE_DIAGRAM_DIMENSIONS.map(({ name, alignment, description, icon }) => (
               <li key={name} className="flex items-start gap-4">
                 <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-gold/25 bg-gold/[0.06]">
                   <DimensionIcon icon={icon} className="h-4 w-4" />

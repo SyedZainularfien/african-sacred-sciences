@@ -1,15 +1,7 @@
 import { Container } from "@/components/layout/container";
 import { Typography } from "@/components/ui/typography";
 
-const visionSteps = [
-  { label: "Preserve", position: "left-1/2 top-0" },
-  { label: "Apply", position: "left-[87%] top-[18%]" },
-  { label: "Pass Forward", position: "left-[96.5%] top-[54%]" },
-  { label: "Interpret", position: "left-[71%] top-[84%]" },
-  { label: "Research", position: "left-[29%] top-[84%]" },
-  { label: "Recover", position: "left-[3.5%] top-[54%]" },
-  { label: "Remember", position: "left-[13%] top-[18%]" },
-] as const;
+import { visionSteps } from "@/constants/home";
 
 function VisionDiagram() {
   return (

@@ -3,15 +3,7 @@ import Link from "next/link";
 import { Container } from "@/components/layout/container";
 import { Typography } from "@/components/ui/typography";
 
-const navigation = [
-  { label: "Home", href: "/" },
-  { label: "African Sacred Science", href: "#african-sacred-science" },
-  { label: "Research", href: "#research" },
-  { label: "ORIINU", href: "#oriinu" },
-  { label: "Books" },
-  { label: "Academy" },
-  { label: "About", href: "#founders" },
-] as const;
+import { navigation, socialIcons } from "@/constants/navigation";
 
 function ArrowFlourish({ reversed = false }: { reversed?: boolean }) {
   return (
@@ -26,12 +18,6 @@ function ArrowFlourish({ reversed = false }: { reversed?: boolean }) {
   );
 }
 
-const socialIcons = [
-  { label: "LinkedIn", file: "linkedin.svg", width: 13, height: 13 },
-  { label: "X", file: "x.svg", width: 16, height: 14 },
-  { label: "Discord", file: "discord.svg", width: 17, height: 12 },
-  { label: "Telegram", file: "telegram.svg", width: 16, height: 15 },
-] as const;
 
 function SocialMarks() {
   return (

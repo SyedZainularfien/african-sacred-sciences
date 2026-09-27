@@ -2,13 +2,7 @@ import { Typography } from "@/components/ui/typography";
 import Image from "next/image";
 import { Container } from "@/components/layout/container";
 
-const reflectionQuestions = [
-  "What should I do?",
-  "What am I not seeing?",
-  "What is truly important here?",
-  "What aligns with my values?",
-  "How should I move forward?",
-];
+import { reflectionQuestions } from "@/constants/home";
 
 export function LivedExperienceSection() {
   return (

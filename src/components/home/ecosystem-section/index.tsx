@@ -4,53 +4,7 @@ import Image from "next/image";
 import { Container } from "@/components/layout/container";
 import styles from "./ecosystem-section.module.css";
 
-const ecosystem = [
-  {
-    category: "Personal Intelligence",
-    title: "ORIINU",
-    trademark: true,
-    description: "Interactive AI-powered guidance and reflection.",
-    action: "Launch ORIINU",
-    image: "oriinu.png",
-    width: 195,
-    height: 231,
-    imageClassName: "w-[76%]",
-  },
-  {
-    category: "Research & Preservation",
-    title: "African Sacred Science Research Institute",
-    trademark: true,
-    description:
-      "Scholarly research, source development and knowledge preservation.",
-    action: "Explore the Institute",
-    image: "africa-sacred-sciences.png",
-    width: 243,
-    height: 230,
-    imageClassName: "w-[95%]",
-  },
-  {
-    category: "Learning & Formation",
-    title: "The Enlightenment Academy",
-    trademark: true,
-    description: "Courses, formation journeys and deeper study.",
-    action: "Explore the Academy",
-    image: "enlighten.png",
-    width: 258,
-    height: 258,
-    imageClassName: "w-full",
-  },
-  {
-    category: "Read & Study",
-    title: "Books & Publications",
-    trademark: false,
-    description: "Books, journals, formation texts and other resources.",
-    action: "Explore Publications",
-    image: "book&publications.png",
-    width: 254,
-    height: 182,
-    imageClassName: "w-full",
-  },
-] as const;
+import { ecosystem } from "@/constants/home";
 
 export function EcosystemSection() {
   return (
@@ -90,6 +44,7 @@ export function EcosystemSection() {
           {ecosystem.map((item) => (
             <li
               key={item.title}
+              id={"id" in item ? item.id : undefined}
               className={`${styles.card} flex w-full items-center justify-between gap-4 rounded-[20px] border border-plum bg-black px-5 py-8 sm:px-8 lg:w-[calc((100%_-_20px)/2)] lg:gap-10`}
             >
               <div

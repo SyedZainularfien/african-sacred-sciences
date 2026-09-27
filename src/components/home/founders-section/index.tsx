@@ -2,16 +2,7 @@ import Image from "next/image";
 import { Container } from "@/components/layout/container";
 import { Typography } from "@/components/ui/typography";
 
-const founders = [
-  {
-    name: "Dr. Enyinna Erengwa",
-    image: "/images/founders/dr-enyinna-erengwa.png",
-  },
-  {
-    name: 'Dr. Adedunmola "Dee" Adio-Moses Erengwa',
-    image: "/images/founders/dr-dee.png",
-  },
-];
+import { founders } from "@/constants/home";
 
 export function FoundersSection() {
   return (

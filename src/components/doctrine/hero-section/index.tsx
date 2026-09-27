@@ -4,13 +4,7 @@ import { Container } from "@/components/layout/container";
 import { buttonVariants } from "@/components/ui/button";
 import { Typography } from "@/components/ui/typography";
 
-const dimensions = [
-  { icon: "circle", label: "Inner Alignment" },
-  { icon: "diamond", label: "Character Alignment" },
-  { icon: "triangle", label: "Purpose Alignment" },
-  { icon: "star", label: "Creative Alignment" },
-  { icon: "rings", label: "Relational Alignment" },
-] as const;
+import { DOCTRINE_HERO_DIMENSIONS, DOCTRINE_HERO_RING_RADII } from "@/constants/doctrine";
 
 function AlignmentRings() {
   return (
@@ -22,7 +16,7 @@ function AlignmentRings() {
       fill="none"
     >
       <g stroke="#C69B34" strokeOpacity="0.045" strokeWidth="0.6">
-        {[80, 160, 240, 320, 400, 480].map((radius) => (
+        {DOCTRINE_HERO_RING_RADII.map((radius) => (
           <circle key={radius} cx="720" cy="415" r={radius} />
         ))}
         <path d="M720 415V0M720 415 0 175M720 415 0 655M720 415 280 825M720 415 1160 825M720 415 1440 655M720 415 1440 175" />
@@ -33,7 +27,7 @@ function AlignmentRings() {
 
 export function DoctrineHeroSection() {
   return (
-    <section className="relative isolate flex min-h-screen overflow-hidden bg-[#050308] bg-[radial-gradient(ellipse_55%_65%_at_50%_65%,rgba(91,18,74,0.6)_0%,rgba(47,9,58,0.5)_43%,transparent_90%),radial-gradient(ellipse_45%_60%_at_18%_50%,rgba(58,13,44,0.45),transparent_85%)] text-white lg:min-h-[825px]">
+    <section className="relative isolate flex min-h-screen overflow-hidden bg-[#050308] bg-[radial-gradient(ellipse_55%_65%_at_50%_65%,rgba(91,18,74,0.6)_0%,rgba(47,9,58,0.5)_43%,transparent_90%),radial-gradient(ellipse_45%_60%_at_18%_50%,rgba(58,13,44,0.45),transparent_85%)] text-white">
       <AlignmentRings />
       <Container className="relative z-10 flex flex-col pb-20 pt-40 sm:pt-44 lg:pb-[128px] lg:pl-[9.722222%] lg:pt-[177px]">
         <div className="flex max-w-[1120px] flex-col gap-10 lg:gap-0">
@@ -73,7 +67,7 @@ export function DoctrineHeroSection() {
           </Typography>
 
           <ul className="flex flex-wrap gap-3 lg:pt-14">
-            {dimensions.map(({ icon, label }) => (
+            {DOCTRINE_HERO_DIMENSIONS.map(({ icon, label }) => (
               <li
                 key={label}
                 className="flex min-h-[43px] items-center gap-3 rounded-full border border-gold/20 bg-white/[0.025] px-[19px] py-2"
