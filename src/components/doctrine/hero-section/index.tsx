@@ -3,6 +3,7 @@ import { DimensionIcon } from "@/components/doctrine/dimension-icon";
 import { Container } from "@/components/layout/container";
 import { buttonVariants } from "@/components/ui/button";
 import { Typography } from "@/components/ui/typography";
+import { ScrollReveal } from "@/components/ui/scroll-reveal";
 
 import { DOCTRINE_HERO_DIMENSIONS, DOCTRINE_HERO_RING_RADII } from "@/constants/doctrine";
 
@@ -32,41 +33,46 @@ export function DoctrineHeroSection() {
       <Container className="relative z-10 flex flex-col pb-20 pt-40 sm:pt-44 lg:pb-[128px] lg:pl-[9.722222%] lg:pt-[177px]">
         <div className="flex max-w-[1120px] flex-col gap-10 lg:gap-0">
           <div className="flex flex-col gap-6">
-            <Typography
-              as="span"
-              variant="xs"
-              className="font-semibold uppercase tracking-[0.25em] text-gold lg:[font-size:12px]!"
-            >
-              The Foundational Philosophy
-            </Typography>
+            <ScrollReveal>
+              <Typography
+                as="span"
+                variant="xs"
+                className="font-semibold uppercase tracking-[0.25em] text-gold lg:[font-size:12px]!"
+              >
+                The Foundational Philosophy
+              </Typography>
+            </ScrollReveal>
             <Typography
               as="h1"
               variant="mdMedium"
               className="flex flex-col font-normal!"
             >
-              <span className="text-[clamp(3.25rem,5vw,4rem)]! leading-[1.1]">
+              <ScrollReveal as="span" delay={0.12} className="text-[clamp(3.25rem,5vw,4rem)]! leading-[1.1]">
                 The Doctrine of
-              </span>
-              <span className="w-fit bg-[linear-gradient(100deg,#e8b1dd_0%,#d090bd_48%,#8c2879_100%)] bg-clip-text font-serif text-[clamp(4rem,6.5vw,5.25rem)]! italic leading-[1.20] text-transparent">
+              </ScrollReveal>
+              <ScrollReveal as="span" delay={0.26} className="w-fit bg-[linear-gradient(100deg,#e8b1dd_0%,#d090bd_48%,#8c2879_100%)] bg-clip-text font-serif text-[clamp(4rem,6.5vw,5.25rem)]! italic leading-[1.20] text-transparent">
                 Divine Alignment
                 <sup className="relative -top-[0.15em] ml-1 align-super text-[0.43em]! not-italic">
                   TM
                 </sup>
-              </span>
+              </ScrollReveal>
             </Typography>
           </div>
 
-          <Typography
-            variant="md"
-            className="max-w-[700px] leading-8 text-white/75 lg:pt-7"
-          >
-            At the heart of African Sacred Science™ is the principle of Divine
-            Alignment: that human flourishing is strengthened when our inner
-            life, character, purpose, choices and actions come into greater
-            alignment with Divine order.
-          </Typography>
+          <ScrollReveal delay={0.38}>
+            <Typography
+              variant="md"
+              className="max-w-[700px] leading-8 text-white/75 lg:pt-7"
+            >
+              At the heart of African Sacred Science™ is the principle of Divine
+              Alignment: that human flourishing is strengthened when our inner
+              life, character, purpose, choices and actions come into greater
+              alignment with Divine order.
+            </Typography>
+          </ScrollReveal>
 
-          <ul className="flex flex-wrap gap-3 lg:pt-14">
+          <ScrollReveal delay={0.48}>
+            <ul className="flex flex-wrap gap-3 lg:pt-14">
             {DOCTRINE_HERO_DIMENSIONS.map(({ icon, label }) => (
               <li
                 key={label}
@@ -82,9 +88,10 @@ export function DoctrineHeroSection() {
                 </Typography>
               </li>
             ))}
-          </ul>
+            </ul>
+          </ScrollReveal>
 
-          <div className="flex flex-wrap items-center gap-x-4 gap-y-5 lg:pt-14">
+          <ScrollReveal delay={0.58} className="flex flex-wrap items-center gap-x-4 gap-y-5 lg:pt-14">
             <Link
               href="#dimensions"
               className={buttonVariants({
@@ -111,7 +118,7 @@ export function DoctrineHeroSection() {
             >
               Experience Through ORIINU <span aria-hidden="true">→</span>
             </Link>
-          </div>
+          </ScrollReveal>
         </div>
       </Container>
     </section>

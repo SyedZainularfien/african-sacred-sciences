@@ -1,6 +1,7 @@
 import { Container } from "@/components/layout/container";
 import { DimensionIcon } from "@/components/doctrine/dimension-icon";
 import { Typography } from "@/components/ui/typography";
+import { ScrollReveal } from "@/components/ui/scroll-reveal";
 import { DOCTRINE_DIMENSION_DETAILS } from "@/constants/doctrine";
 
 export function DoctrineDimensionDetailsSection() {
@@ -11,7 +12,7 @@ export function DoctrineDimensionDetailsSection() {
       className="bg-background-yellow py-16 text-full-black lg:pb-[100px] lg:pt-20"
     >
       <Container className="flex flex-col items-center gap-14">
-        <div className="flex flex-col items-center gap-3 text-center">
+        <ScrollReveal className="flex flex-col items-center gap-3 text-center">
           <Typography
             as="span"
             variant="xs"
@@ -32,7 +33,7 @@ export function DoctrineDimensionDetailsSection() {
               Alignment
             </span>
           </Typography>
-        </div>
+        </ScrollReveal>
 
         <div className="flex w-full max-w-[1200px] flex-col gap-7">
           {DOCTRINE_DIMENSION_DETAILS.map(
@@ -40,8 +41,10 @@ export function DoctrineDimensionDetailsSection() {
               { name, alignment, summary, icon, paragraphs, reflection },
               index,
             ) => (
-              <article
+              <ScrollReveal
+                as="article"
                 key={name}
+                distance={18}
                 className="flex flex-col overflow-hidden rounded-[20px] border border-[#e6d9cf] bg-[#faf8f4] lg:flex-row"
               >
                 <div
@@ -103,7 +106,7 @@ export function DoctrineDimensionDetailsSection() {
                     </Typography>
                   </div>
                 </div>
-              </article>
+              </ScrollReveal>
             ),
           )}
         </div>

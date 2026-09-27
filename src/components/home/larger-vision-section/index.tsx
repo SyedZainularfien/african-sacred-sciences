@@ -1,5 +1,6 @@
 import { Container } from "@/components/layout/container";
 import { Typography } from "@/components/ui/typography";
+import { ScrollReveal } from "@/components/ui/scroll-reveal";
 
 import { visionSteps } from "@/constants/home";
 
@@ -49,31 +50,33 @@ export function LargerVisionSection() {
         <div className="flex w-full min-w-0 flex-col gap-8 lg:max-w-[575px] lg:self-start lg:pt-[66px]">
           <div className="flex flex-col gap-4 lg:gap-1">
             <div className="flex flex-col gap-2">
-              <Typography variant="xs" className="font-semibold uppercase leading-[17px] tracking-[2.42px] text-gold">
-                The Larger Vision
-              </Typography>
-              <Typography as="h2" id="larger-vision-title" variant="mdMedium" className="text-[clamp(2.5rem,3.4vw,3rem)]! font-medium! leading-[1.34]">
-                Africa&apos;s Wisdom<br />
-                Belongs in <span className="bg-plum-gradient bg-clip-text font-serif text-[1.12em]! italic text-transparent">Humanity&apos;s</span><br />
-                <span className="bg-plum-gradient bg-clip-text font-serif text-[1.12em]! italic text-transparent">Future.</span>
-              </Typography>
+              <ScrollReveal>
+                <Typography variant="xs" className="font-semibold uppercase leading-[17px] tracking-[2.42px] text-gold">The Larger Vision</Typography>
+              </ScrollReveal>
+              <ScrollReveal delay={0.12}>
+                <Typography as="h2" id="larger-vision-title" variant="mdMedium" className="text-[clamp(2.5rem,3.4vw,3rem)]! font-medium! leading-[1.34]">
+                  Africa&apos;s Wisdom<br />
+                  Belongs in <span className="bg-plum-gradient bg-clip-text font-serif text-[1.12em]! italic text-transparent">Humanity&apos;s</span><br />
+                  <span className="bg-plum-gradient bg-clip-text font-serif text-[1.12em]! italic text-transparent">Future.</span>
+                </Typography>
+              </ScrollReveal>
             </div>
 
-            <Typography variant="md" className="max-w-[555px] leading-[31px] text-[#c9c2ce]">
-              African Sacred Science is not simply about returning to the past. It is about recovering what remains valuable, understanding it responsibly and asking what it can contribute to human flourishing now and in generations to come.
-            </Typography>
+            <ScrollReveal delay={0.24}>
+              <Typography variant="md" className="max-w-[555px] leading-[31px] text-[#c9c2ce]">African Sacred Science is not simply about returning to the past. It is about recovering what remains valuable, understanding it responsibly and asking what it can contribute to human flourishing now and in generations to come.</Typography>
+            </ScrollReveal>
           </div>
 
-          <div className="flex min-h-[50px] items-center border-l-4 border-plum bg-[linear-gradient(90deg,#3a0a39_0%,#23072e_55%,transparent_100%)] px-7 py-3">
+          <ScrollReveal delay={0.32} className="flex min-h-[50px] items-center border-l-4 border-plum bg-[linear-gradient(90deg,#3a0a39_0%,#23072e_55%,transparent_100%)] px-7 py-3">
             <Typography variant="mdMedium" className="text-lg font-semibold! leading-6 text-white">
               The Wisdom Continues
             </Typography>
-          </div>
+          </ScrollReveal>
         </div>
 
-        <div className="flex w-full min-w-0 justify-center lg:w-[600px] lg:shrink-0">
+        <ScrollReveal distance={0} scale={0.97} duration={0.8} className="flex w-full min-w-0 justify-center lg:w-[600px] lg:shrink-0">
           <VisionDiagram />
-        </div>
+        </ScrollReveal>
       </Container>
     </section>
   );

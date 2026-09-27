@@ -77,6 +77,11 @@ html {
   html {
     scroll-behavior: auto;
   }
+
+  [data-motion-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
 }
 
 body {

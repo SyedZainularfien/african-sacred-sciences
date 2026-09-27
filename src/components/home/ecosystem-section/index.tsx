@@ -2,6 +2,7 @@
 import { Typography } from "@/components/ui/typography";
 import Image from "next/image";
 import { Container } from "@/components/layout/container";
+import { ScrollReveal } from "@/components/ui/scroll-reveal";
 import styles from "./ecosystem-section.module.css";
 
 import { ecosystem } from "@/constants/home";
@@ -14,7 +15,8 @@ export function EcosystemSection() {
       className={`${styles.section} bg-[#0d0319] py-16 text-white sm:py-20`}
     >
       <Container className={`${styles.content} flex flex-col gap-10 sm:gap-12`}>
-        <header
+        <ScrollReveal
+          as="header"
           className={`${styles.heading} flex flex-col items-center gap-5 text-center`}
         >
           <Typography
@@ -38,13 +40,17 @@ export function EcosystemSection() {
               </span>
             </span>
           </Typography>
-        </header>
+        </ScrollReveal>
 
         <ul className={`${styles.cards} flex flex-wrap gap-5`}>
-          {ecosystem.map((item) => (
-            <li
+          {ecosystem.map((item, index) => (
+            <ScrollReveal
+              as="li"
               key={item.title}
               id={"id" in item ? item.id : undefined}
+              delay={(index % 2) * 0.1}
+              distance={14}
+              scale={0.98}
               className={`${styles.card} flex w-full items-center justify-between gap-4 rounded-[20px] border border-plum bg-black px-5 py-8 sm:px-8 lg:w-[calc((100%_-_20px)/2)] lg:gap-10`}
             >
               <div
@@ -119,7 +125,7 @@ export function EcosystemSection() {
                   className={`h-auto object-contain ${item.imageClassName}`}
                 />
               </div>
-            </li>
+            </ScrollReveal>
           ))}
         </ul>
       </Container>
