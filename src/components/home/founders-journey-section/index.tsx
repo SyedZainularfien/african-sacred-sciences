@@ -1,5 +1,6 @@
 import { Container } from "@/components/layout/container";
 import { Typography } from "@/components/ui/typography";
+import { ScrollReveal } from "@/components/ui/scroll-reveal";
 
 import { milestones } from "@/constants/home";
 
@@ -9,16 +10,18 @@ export function FoundersJourneySection() {
       <Container className="flex flex-col items-start gap-8 xl:flex-row xl:gap-12">
         <div className="flex w-full min-w-0 flex-col gap-5 xl:max-w-[803px] xl:flex-1">
           <div className="flex flex-col gap-8">
-            <Typography
+            <ScrollReveal>
+              <Typography
               as="h2"
               variant="mdMedium"
               id="founders-journey-title"
               className="[font-size:clamp(1.625rem,2.1vw,1.875rem)]! font-bold! leading-[1.5] text-white xl:max-w-[750px]"
             >
               A shared journey rooted in spiritual wisdom, practical intelligence, and generational purpose.
-            </Typography>
+              </Typography>
+            </ScrollReveal>
 
-            <div className="flex flex-col gap-6 text-[#bdbdbd]">
+            <ScrollReveal delay={0.12} className="flex flex-col gap-6 text-[#bdbdbd]">
               <Typography variant="xl" className="leading-[36px]">
                 Their combined experience spans banking and finance, international consulting,
                 entrepreneurship, organizational leadership, spiritual formation, publishing,
@@ -35,11 +38,11 @@ export function FoundersJourneySection() {
                 financial intelligence, entrepreneurial experience, and practical knowledge of human
                 transformation.
               </Typography>
-            </div>
+            </ScrollReveal>
           </div>
 
           <div className="flex flex-col gap-12">
-            <div className="flex flex-col gap-[18px] rounded-[20px] border border-plum bg-[linear-gradient(135deg,#17031d,#3c1037)] px-[30px] py-[34px]">
+            <ScrollReveal className="flex flex-col gap-[18px] rounded-[20px] border border-plum bg-[linear-gradient(135deg,#17031d,#3c1037)] px-[30px] py-[34px]">
               <Typography as="h3" variant="sm" className="font-semibold! uppercase leading-5 tracking-[1.2px] text-gold">
                 Core Principles
               </Typography>
@@ -50,9 +53,9 @@ export function FoundersJourneySection() {
                 personal recognition; and true success should leave a blessing for generations yet to
                 come.
               </Typography>
-            </div>
+            </ScrollReveal>
 
-            <div className="flex flex-col gap-[30px]">
+            <ScrollReveal className="flex flex-col gap-[30px]">
               <div className="flex flex-col gap-4">
                 <Typography variant="xl" className="leading-[36px] text-[#bdbdbd]">
                   Their leadership is grounded in one shared conviction:
@@ -72,12 +75,12 @@ export function FoundersJourneySection() {
                   Remember . Align . Flourish.
                 </Typography>
               </div>
-            </div>
+            </ScrollReveal>
           </div>
         </div>
 
         <div className="flex w-full min-w-0 flex-col gap-6 xl:w-[433px] xl:shrink-0">
-          <div className="flex flex-col gap-4 rounded-[23px] border border-gold px-[25px] py-[23px]">
+          <ScrollReveal delay={0.1} className="flex flex-col gap-4 rounded-[23px] border border-gold px-[25px] py-[23px]">
             <Typography as="h3" variant="sm" className="font-semibold! uppercase leading-5 tracking-[1.2px] text-gold">
               Three Decades of Shared Service
             </Typography>
@@ -99,9 +102,9 @@ export function FoundersJourneySection() {
                 </li>
               ))}
             </ol>
-          </div>
+          </ScrollReveal>
 
-          <div className="flex flex-col gap-5 rounded-[23px] border border-gold bg-[#0b0b0b] px-[25px] pb-[14px] pt-6">
+          <ScrollReveal delay={0.18} className="flex flex-col gap-5 rounded-[23px] border border-gold bg-[#0b0b0b] px-[25px] pb-[14px] pt-6">
             <Typography as="h3" variant="sm" className="font-semibold! uppercase leading-5 tracking-[1.2px] text-gold">
               The Doctrine of Divine Alignment™
             </Typography>
@@ -111,7 +114,7 @@ export function FoundersJourneySection() {
               recovering, researching, preserving, interpreting, teaching, and applying African
               wisdom for contemporary life.
             </Typography>
-          </div>
+          </ScrollReveal>
         </div>
       </Container>
     </section>

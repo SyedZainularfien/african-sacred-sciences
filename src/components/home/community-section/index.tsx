@@ -1,9 +1,52 @@
+"use client";
+
+import { useEffect, useRef } from "react";
+import { motion, useReducedMotion, type Variants } from "motion/react";
+import Link from "next/link";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Typography } from "@/components/ui/typography";
 import Image from "next/image";
 import { Container } from "@/components/layout/container";
-import { Button } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 
 import { principles } from "@/constants/home";
+import { motionTiming } from "@/lib/motion";
+
+const textReveal: Variants = {
+  hidden: { opacity: 0, y: 14 },
+  visible: (delay: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.62, delay, ease: motionTiming.ease },
+  }),
+};
+
+const gradientReveal: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { duration: 0.76, delay: 0.24, ease: motionTiming.ease },
+  },
+};
+
+const quoteReveal: Variants = {
+  hidden: { opacity: 0, y: 12 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.68, ease: motionTiming.ease },
+  },
+};
+
+const ctaReveal: Variants = {
+  hidden: { opacity: 0, y: 10 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.58, delay: 0.58, ease: motionTiming.ease },
+  },
+};
 
 function AlignmentDiagram() {
   return (
@@ -25,25 +68,81 @@ function AlignmentDiagram() {
 }
 
 export function CommunitySection() {
+  const reduceMotion = useReducedMotion();
+  const sectionRef = useRef<HTMLElement>(null);
+  const cardsRef = useRef<HTMLUListElement>(null);
+
+  useEffect(() => {
+    if (reduceMotion || !sectionRef.current || !cardsRef.current) return;
+
+    gsap.registerPlugin(ScrollTrigger);
+    const cards = Array.from(cardsRef.current.children) as HTMLLIElement[];
+    const icons = cards.map((card) => card.querySelector("img") as HTMLImageElement);
+    const context = gsap.context(() => {
+      const media = gsap.matchMedia();
+
+      media.add("(min-width: 1280px)", () => {
+        gsap.set(cards, { opacity: 0, y: 16 });
+        gsap.set(icons, { opacity: 0.65, scale: 0.95 });
+        const reveal = gsap.timeline({
+          scrollTrigger: { trigger: cardsRef.current, start: "top 82%", once: true },
+        });
+        cards.forEach((card, index) => {
+          const at = index * 0.12;
+          reveal.to(card, { opacity: 1, y: 0, duration: 0.62, ease: "power2.out" }, at);
+          reveal.to(icons[index], { opacity: 1, scale: 1, duration: 0.48, ease: "power2.out" }, at + 0.12);
+        });
+      });
+
+      media.add("(max-width: 1279px)", () => {
+        cards.forEach((card, index) => {
+          gsap.set(card, { opacity: 0, y: 16 });
+          gsap.set(icons[index], { opacity: 0.65, scale: 0.95 });
+          const reveal = gsap.timeline({
+            scrollTrigger: { trigger: card, start: "top 88%", once: true },
+          });
+          reveal.to(card, { opacity: 1, y: 0, duration: 0.62, ease: "power2.out" });
+          reveal.to(icons[index], { opacity: 1, scale: 1, duration: 0.48, ease: "power2.out" }, "<0.12");
+        });
+      });
+
+      return () => media.revert();
+    }, sectionRef);
+
+    return () => context.revert();
+  }, [reduceMotion]);
+
   return (
-    <section id="doctrine" aria-labelledby="divine-alignment-title" className="relative isolate overflow-hidden py-16 text-white sm:py-20 xl:pb-[82px] xl:pt-[130px]" style={{ background: "radial-gradient(80% 65% at 50% 50%, rgba(107, 27, 92, 0.22) 0%, rgba(85, 22, 98, 0.15) 27.5%, rgba(25, 7, 115, 0.08) 55%, rgba(25, 7, 115, 0) 75%), linear-gradient(180deg, #020104 0%, #180619 40%, #320a2d 100%)" }}>
+    <section ref={sectionRef} id="doctrine" aria-labelledby="divine-alignment-title" className="relative isolate overflow-hidden py-16 text-white sm:py-20 xl:pb-[82px] xl:pt-[130px]" style={{ background: "radial-gradient(80% 65% at 50% 50%, rgba(107, 27, 92, 0.22) 0%, rgba(85, 22, 98, 0.15) 27.5%, rgba(25, 7, 115, 0.08) 55%, rgba(25, 7, 115, 0) 75%), linear-gradient(180deg, #020104 0%, #180619 40%, #320a2d 100%)" }}>
       <AlignmentDiagram />
       <Container className="relative z-10 flex flex-col items-center">
         <div className="flex w-full max-w-[1200px] flex-col items-center gap-12 xl:gap-[72px]">
           <div className="flex w-full flex-col items-center gap-12 xl:gap-16">
-            <header className="flex w-full flex-col items-center gap-10 text-center">
+            <motion.header
+              initial={reduceMotion ? false : "hidden"}
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.4 }}
+              className="flex w-full flex-col items-center gap-10 text-center"
+            >
               <div className="flex w-full flex-col items-center gap-7">
                 <div className="flex flex-col items-center gap-5">
-                  <Typography variant="xs" className="font-semibold uppercase leading-[17px] tracking-[2.42px] text-gold">The Foundational Philosophy</Typography>
+                  <motion.div data-motion-reveal custom={0} variants={textReveal}>
+                    <Typography variant="xs" className="font-semibold uppercase leading-[17px] tracking-[2.42px] text-gold">The Foundational Philosophy</Typography>
+                  </motion.div>
                   <Typography as="h2" variant="mdMedium" id="divine-alignment-title" className="[font-size:clamp(2rem,3.45vw,3rem)]! leading-[62px]">
-                    The Doctrine of <span className="bg-plum-gradient bg-clip-text font-serif [font-size:clamp(2.75rem,3.9vw,3.5rem)]! font-semibold italic text-transparent">Divine Alignment<sup className="align-super [font-size:0.45em]! not-italic">™</sup></span>
+                    <motion.span data-motion-reveal custom={0.12} variants={textReveal} className="inline-block">The Doctrine of</motion.span>{" "}
+                    <motion.span data-motion-reveal variants={gradientReveal} className="bg-plum-gradient bg-clip-text font-serif [font-size:clamp(2.75rem,3.9vw,3.5rem)]! font-semibold italic text-transparent">Divine Alignment<sup className="align-super [font-size:0.45em]! not-italic">™</sup></motion.span>
                   </Typography>
                 </div>
-                <Typography variant="md" className="max-w-[680px] leading-[31px] text-grey">At the heart of African Sacred Science™ is the principle of Divine Alignment: that human flourishing is strengthened when our inner life, character, purpose, choices and actions come into greater alignment with Divine order.</Typography>
+                <motion.div data-motion-reveal custom={0.4} variants={textReveal} className="w-full max-w-[680px]">
+                  <Typography variant="md" className="max-w-[680px] leading-[31px] text-grey">At the heart of African Sacred Science™ is the principle of Divine Alignment: that human flourishing is strengthened when our inner life, character, purpose, choices and actions come into greater alignment with Divine order.</Typography>
+                </motion.div>
               </div>
-              <Typography variant="md" className="max-w-[780px] leading-[29.666667px] text-grey">The Doctrine of Divine Alignment™ provides a unifying philosophical foundation for African Sacred Science while respecting the diversity of Africa&apos;s spiritual, philosophical and knowledge traditions. It invites us to examine the relationship between:</Typography>
-            </header>
-            <ul className="flex w-full flex-wrap justify-center gap-[10px]">
+              <motion.div data-motion-reveal custom={0.54} variants={textReveal} className="w-full max-w-[780px]">
+                <Typography variant="md" className="max-w-[780px] leading-[29.666667px] text-grey">The Doctrine of Divine Alignment™ provides a unifying philosophical foundation for African Sacred Science while respecting the diversity of Africa&apos;s spiritual, philosophical and knowledge traditions. It invites us to examine the relationship between:</Typography>
+              </motion.div>
+            </motion.header>
+            <ul ref={cardsRef} className="flex w-full flex-wrap justify-center gap-[10px]">
               {principles.map(({ name, alignment, description, icon }) => (
                 <li key={name} className="flex w-full flex-col items-center gap-[14px] rounded-[18px] border border-gold/18 bg-white/[0.035] px-[22px] pb-[19px] pt-8 text-center sm:w-[calc((100%_-_10px)/2)] lg:w-[calc((100%_-_20px)/3)] xl:min-h-[270px] xl:w-[calc((100%_-_40px)/5)]">
                   <div className="flex flex-col items-center gap-4">
@@ -59,10 +158,36 @@ export function CommunitySection() {
               ))}
             </ul>
           </div>
-          <div className="flex w-full flex-col items-center gap-10">
-            <Typography variant="mdMedium" className="w-full max-w-[500px] border-y border-gold/10 py-8 text-center font-serif [font-size:28px]! italic leading-[42px] text-gold xl:whitespace-nowrap">Alignment is not a destination. It is a way of living.</Typography>
-            <Button className="h-[53px] w-full max-w-[297px]! bg-[linear-gradient(124.26deg,#c69b34_4.765%,#eec97c_50.434%,#c69b34_95.235%)]! uppercase tracking-[1.68px] [&>span]:text-sm [&>span]:leading-[21px]">Explore the Doctrine →</Button>
-          </div>
+          <motion.div
+            initial={reduceMotion ? false : "hidden"}
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.35 }}
+            className="flex w-full flex-col items-center gap-10"
+          >
+            <motion.div data-motion-reveal variants={quoteReveal} className="w-full max-w-[500px]">
+              <Typography variant="mdMedium" className="w-full max-w-[500px] border-y border-gold/10 py-8 text-center font-serif [font-size:28px]! italic leading-[42px] text-gold xl:whitespace-nowrap">Alignment is not a destination. It is a way of living.</Typography>
+            </motion.div>
+            <motion.div
+              data-motion-reveal
+              variants={ctaReveal}
+              className="w-full max-w-[297px]"
+            >
+              <motion.div
+                whileHover={reduceMotion ? undefined : { y: -2, scale: 1.01 }}
+                whileTap={reduceMotion ? undefined : { scale: 0.985 }}
+                transition={{ duration: motionTiming.hover, ease: motionTiming.ease }}
+              >
+                <Link
+                  href="/doctrine"
+                  className={buttonVariants({
+                    className: "h-[53px] w-full max-w-[297px]! bg-[linear-gradient(124.26deg,#c69b34_4.765%,#eec97c_50.434%,#c69b34_95.235%)]! uppercase tracking-[1.68px] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold [&>span]:text-sm [&>span]:leading-[21px]",
+                  })}
+                >
+                  <Typography as="span" variant="cta">Explore the Doctrine →</Typography>
+                </Link>
+              </motion.div>
+            </motion.div>
+          </motion.div>
         </div>
       </Container>
     </section>

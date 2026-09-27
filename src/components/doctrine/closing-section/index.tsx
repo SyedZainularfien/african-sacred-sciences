@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { buttonVariants } from "@/components/ui/button";
 import { Typography } from "@/components/ui/typography";
+import { ScrollReveal } from "@/components/ui/scroll-reveal";
 import { DOCTRINE_CLOSING_RING_RADII } from "@/constants/doctrine";
 
 function ClosingRings() {
@@ -37,22 +38,24 @@ export function DoctrineClosingSection() {
             variant="h2"
             className="flex flex-col font-normal! italic leading-[1.08]! max-sm:text-[clamp(2.5rem,9vw,3.25rem)]! sm:text-[3.25rem]!"
           >
-            <span>Alignment is not a destination.</span>
-            <span className="text-[#d5a846]">It is a way of living.</span>
+            <ScrollReveal as="span">Alignment is not a destination.</ScrollReveal>
+            <ScrollReveal as="span" delay={0.15} className="text-[#d5a846]">It is a way of living.</ScrollReveal>
           </Typography>
 
-          <Typography
-            variant="md"
-            className="max-w-[680px] text-center leading-[1.9] text-white/70"
-          >
-            The Doctrine of Divine Alignment is not a set of rules or a fixed
-            programme. It is a philosophical orientation, an invitation to examine
-            the degree to which the various dimensions of our life are moving in
-            the same direction.
-          </Typography>
+          <ScrollReveal delay={0.26}>
+            <Typography
+              variant="md"
+              className="max-w-[680px] text-center leading-[1.9] text-white/70"
+            >
+              The Doctrine of Divine Alignment is not a set of rules or a fixed
+              programme. It is a philosophical orientation, an invitation to examine
+              the degree to which the various dimensions of our life are moving in
+              the same direction.
+            </Typography>
+          </ScrollReveal>
         </div>
 
-        <div className="flex w-full flex-col items-center justify-center gap-4 sm:flex-row sm:gap-[14px]">
+        <ScrollReveal delay={0.38} className="flex w-full flex-col items-center justify-center gap-4 sm:flex-row sm:gap-[14px]">
           <Link
             href="https://oriinu.ai/"
             target="_blank"
@@ -88,7 +91,7 @@ export function DoctrineClosingSection() {
               Return to African Sacred Science
             </Typography>
           </Link>
-        </div>
+        </ScrollReveal>
       </div>
     </section>
   );

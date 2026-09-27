@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { Container } from "@/components/layout/container";
 import { Typography } from "@/components/ui/typography";
+import { ScrollReveal } from "@/components/ui/scroll-reveal";
 
 import { founders } from "@/constants/home";
 
@@ -12,7 +13,7 @@ export function FoundersSection() {
       className="bg-black py-16 text-white sm:py-20 lg:pb-[60px] lg:pt-20"
     >
       <Container className="flex flex-col items-center gap-10 sm:gap-12 lg:gap-[60px]">
-        <header className="flex flex-col items-center gap-5 text-center lg:gap-[25px] lg:pl-[78px]">
+        <ScrollReveal as="header" className="flex flex-col items-center gap-5 text-center lg:gap-[25px] lg:pl-[78px]">
           <Typography variant="xs" className="font-semibold uppercase leading-[17px] tracking-[0.2em] text-gold xl:[font-size:12px]! xl:tracking-[2.42px]">
             The People Behind the Work
           </Typography>
@@ -32,12 +33,12 @@ export function FoundersSection() {
             A Shared Life of Leadership, Enterprise, Wisdom, and Service
           </Typography>
           </div>
-        </header>
+        </ScrollReveal>
 
         <div className="flex w-full flex-col gap-8 sm:gap-10 lg:max-w-[1080px] lg:gap-[60px]">
           <ul className="flex flex-col items-stretch gap-5 md:flex-row lg:gap-5">
-            {founders.map(({ name, image }) => (
-              <li key={name} className="flex min-w-0 flex-1 flex-col overflow-hidden rounded-[24px] border border-plum lg:rounded-[22px]">
+            {founders.map(({ name, image }, index) => (
+              <ScrollReveal as="li" key={name} delay={index * 0.12} scale={0.985} className="flex min-w-0 flex-1 flex-col overflow-hidden rounded-[24px] border border-plum lg:rounded-[22px]">
                 <Image
                   src={image}
                   alt={name}
@@ -51,18 +52,20 @@ export function FoundersSection() {
                     {name}
                   </Typography>
                 </div>
-              </li>
+              </ScrollReveal>
             ))}
           </ul>
 
-          <Typography variant="md" className="text-center leading-[1.7] text-white/75 sm:text-lg lg:[font-size:clamp(1.125rem,1.65vw,3rem)]! xl:[font-size:24px]! xl:leading-[40px] xl:text-grey">
-            Dr. Enyinna Erengwa and Dr. Adedunmola “Dee” Adio-Moses Erengwa are global
-            consultants, established entrepreneurs, authors, spiritual teachers, and
-            co-founders of African Sacred Science™ and its expanding knowledge
-            ecosystem. Their combined experience spans banking and finance,
-            international consulting, entrepreneurship, organizational leadership,
-            education, publishing, spiritual formation, and humanitarian service.
-          </Typography>
+          <ScrollReveal>
+            <Typography variant="md" className="text-center leading-[1.7] text-white/75 sm:text-lg lg:[font-size:clamp(1.125rem,1.65vw,3rem)]! xl:[font-size:24px]! xl:leading-[40px] xl:text-grey">
+              Dr. Enyinna Erengwa and Dr. Adedunmola “Dee” Adio-Moses Erengwa are global
+              consultants, established entrepreneurs, authors, spiritual teachers, and
+              co-founders of African Sacred Science™ and its expanding knowledge
+              ecosystem. Their combined experience spans banking and finance,
+              international consulting, entrepreneurship, organizational leadership,
+              education, publishing, spiritual formation, and humanitarian service.
+            </Typography>
+          </ScrollReveal>
         </div>
       </Container>
     </section>

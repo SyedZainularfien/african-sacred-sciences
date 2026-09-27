@@ -3,11 +3,13 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { motion, useReducedMotion } from "motion/react";
 import { Container } from "@/components/layout/container";
 import { Button } from "@/components/ui/button";
 import { Typography } from "@/components/ui/typography";
 
 import { navigationItems } from "@/constants/navigation";
+import { motionTiming } from "@/lib/motion";
 
 function Brand({ onClick }: { onClick?: () => void }) {
   return (
@@ -49,6 +51,7 @@ function NavigationArrow({ active = false }: { active?: boolean }) {
 export function Header({ homePage = false }: { homePage?: boolean }) {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const [menuOpen, setMenuOpen] = useState(false);
+  const reduceMotion = useReducedMotion();
   const activeItem = homePage ? "Home" : "The Doctrine";
 
   useEffect(() => {
@@ -67,13 +70,23 @@ export function Header({ homePage = false }: { homePage?: boolean }) {
   }, [menuOpen]);
 
   function closeMenu() {
-    dialogRef.current?.close();
+    if (reduceMotion) {
+      dialogRef.current?.close();
+    } else {
+      setMenuOpen(false);
+    }
   }
 
   return (
     <header className="absolute inset-x-0 top-0 z-20 pt-[15px] text-white">
       <Container>
-        <div className="flex items-center justify-between gap-4 rounded-[18px] border border-white/5 bg-[#100e12] p-3 pl-4 sm:px-5 sm:py-4 min-[90rem]:min-h-[68px] min-[90rem]:gap-10 min-[90rem]:rounded-[20px] min-[90rem]:border-white/25 min-[90rem]:bg-[#d9d9d9]/20 min-[90rem]:py-2 min-[90rem]:pl-[19px] min-[90rem]:pr-[10px] min-[90rem]:backdrop-blur-sm">
+        <motion.div
+          data-motion-reveal
+          initial={reduceMotion ? false : { opacity: 0, y: -12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: motionTiming.entrance, ease: motionTiming.ease }}
+          className="flex items-center justify-between gap-4 rounded-[18px] border border-white/5 bg-[#100e12] p-3 pl-4 sm:px-5 sm:py-4 min-[90rem]:min-h-[68px] min-[90rem]:gap-10 min-[90rem]:rounded-[20px] min-[90rem]:border-white/25 min-[90rem]:bg-[#d9d9d9]/20 min-[90rem]:py-2 min-[90rem]:pl-[19px] min-[90rem]:pr-[10px] min-[90rem]:backdrop-blur-sm"
+        >
           <Brand />
 
           <nav aria-label="Main navigation" className="hidden min-w-0 flex-1 min-[90rem]:block">
@@ -114,7 +127,7 @@ export function Header({ homePage = false }: { homePage?: boolean }) {
               <path d="M4 8h16M4 16h11" />
             </svg>
           </button>
-        </div>
+        </motion.div>
       </Container>
 
       <dialog
@@ -122,12 +135,32 @@ export function Header({ homePage = false }: { homePage?: boolean }) {
         id="mobile-navigation"
         aria-label="Mobile navigation"
         onClose={() => setMenuOpen(false)}
+        onCancel={(event) => {
+          event.preventDefault();
+          closeMenu();
+        }}
         onClick={(event) => {
           if (event.target === event.currentTarget) closeMenu();
         }}
-        className="fixed inset-0 m-0 h-dvh max-h-none w-full max-w-none flex-col items-center overflow-y-auto overscroll-contain bg-transparent px-5 py-[15px] text-white outline-none backdrop:bg-black/80 open:flex sm:items-end sm:px-8 lg:px-[4.861111%]"
+        className="fixed inset-0 m-0 h-dvh max-h-none w-full max-w-none flex-col items-center overflow-y-auto overscroll-contain bg-transparent px-5 py-[15px] text-white outline-none backdrop:bg-transparent open:flex sm:items-end sm:px-8 lg:px-[4.861111%]"
       >
-        <div className="flex w-full max-w-[420px] shrink-0 flex-col gap-5 rounded-[20px] border border-[#56304d] bg-[#140e16] p-4 sm:gap-6 sm:p-5">
+        <motion.div
+          aria-hidden="true"
+          className="pointer-events-none fixed inset-0 bg-black/80"
+          initial={false}
+          animate={{ opacity: menuOpen ? 1 : 0 }}
+          transition={{ duration: reduceMotion ? 0 : 0.28 }}
+        />
+        <motion.div
+          data-motion-reveal
+          initial={false}
+          animate={{ opacity: menuOpen ? 1 : 0, y: menuOpen ? 0 : 14 }}
+          transition={{ duration: reduceMotion ? 0 : 0.34, ease: motionTiming.ease }}
+          onAnimationComplete={() => {
+            if (!menuOpen && dialogRef.current?.open) dialogRef.current.close();
+          }}
+          className="relative flex w-full max-w-[420px] shrink-0 flex-col gap-5 rounded-[20px] border border-[#56304d] bg-[#140e16] p-4 sm:gap-6 sm:p-5"
+        >
           <div className="flex shrink-0 items-center justify-between gap-3">
             <Brand onClick={closeMenu} />
             <button
@@ -137,14 +170,24 @@ export function Header({ homePage = false }: { homePage?: boolean }) {
               className="flex h-10 w-12 shrink-0 cursor-pointer items-center justify-center rounded-full border border-white/20 text-white/75 hover:border-white/40 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold"
             >
               <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" className="size-5">
-                <path d="m6 6 12 12M18 6 6 18" />
+                <motion.line
+                  x1="4" x2="20"
+                  initial={false}
+                  animate={{ y1: menuOpen ? 5 : 8, y2: menuOpen ? 19 : 8 }}
+                  transition={{ duration: reduceMotion ? 0 : 0.24, ease: motionTiming.ease }}
+                />
+                <motion.line
+                  initial={false}
+                  animate={{ x1: menuOpen ? 19 : 4, x2: menuOpen ? 5 : 15, y1: menuOpen ? 5 : 16, y2: menuOpen ? 19 : 16 }}
+                  transition={{ duration: reduceMotion ? 0 : 0.24, ease: motionTiming.ease }}
+                />
               </svg>
             </button>
           </div>
 
           <nav aria-label="Mobile navigation links">
             <ul className="flex flex-col">
-              {navigationItems.map(({ label, href }) => {
+              {navigationItems.map(({ label, href }, index) => {
                 const active = label === activeItem;
                 const content = (
                   <>
@@ -157,7 +200,14 @@ export function Header({ homePage = false }: { homePage?: boolean }) {
                 const rowClassName = `flex min-h-14 items-center justify-between gap-3 rounded-lg px-3 py-3 outline-offset-2 focus-visible:outline-2 focus-visible:outline-gold ${active ? "bg-[#3b1d35] text-[#e3b94e]" : "text-[#e6e0e6] hover:bg-white/[0.035] [&>svg]:text-[#a79aa7]"}`;
 
                 return (
-                  <li key={label} className="border-b border-[#382a36] py-1 first:pt-0 last:border-0 last:pb-0">
+                  <motion.li
+                    key={label}
+                    data-motion-reveal
+                    initial={false}
+                    animate={{ opacity: menuOpen ? 1 : 0, y: menuOpen ? 0 : 8 }}
+                    transition={{ duration: reduceMotion ? 0 : 0.26, delay: reduceMotion || !menuOpen ? 0 : 0.07 + index * 0.045, ease: motionTiming.ease }}
+                    className="border-b border-[#382a36] py-1 first:pt-0 last:border-0 last:pb-0"
+                  >
                     {href ? (
                       <Link href={href} onClick={closeMenu} aria-current={active ? "page" : undefined} className={rowClassName}>
                         {content}
@@ -165,7 +215,7 @@ export function Header({ homePage = false }: { homePage?: boolean }) {
                     ) : (
                       <div className={rowClassName}>{content}</div>
                     )}
-                  </li>
+                  </motion.li>
                 );
               })}
             </ul>
@@ -184,7 +234,7 @@ export function Header({ homePage = false }: { homePage?: boolean }) {
               Remember · Align · Flourish.
             </Typography>
           </div>
-        </div>
+        </motion.div>
       </dialog>
     </header>
   );

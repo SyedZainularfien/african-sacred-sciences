@@ -1,7 +1,9 @@
 "use client";
 import { Typography } from "@/components/ui/typography";
 import Image from "next/image";
+import Link from "next/link";
 import { Container } from "@/components/layout/container";
+import { ScrollReveal } from "@/components/ui/scroll-reveal";
 import styles from "./ecosystem-section.module.css";
 
 import { ecosystem } from "@/constants/home";
@@ -14,7 +16,8 @@ export function EcosystemSection() {
       className={`${styles.section} bg-[#0d0319] py-16 text-white sm:py-20`}
     >
       <Container className={`${styles.content} flex flex-col gap-10 sm:gap-12`}>
-        <header
+        <ScrollReveal
+          as="header"
           className={`${styles.heading} flex flex-col items-center gap-5 text-center`}
         >
           <Typography
@@ -38,13 +41,17 @@ export function EcosystemSection() {
               </span>
             </span>
           </Typography>
-        </header>
+        </ScrollReveal>
 
         <ul className={`${styles.cards} flex flex-wrap gap-5`}>
-          {ecosystem.map((item) => (
-            <li
+          {ecosystem.map((item, index) => (
+            <ScrollReveal
+              as="li"
               key={item.title}
               id={"id" in item ? item.id : undefined}
+              delay={(index % 2) * 0.1}
+              distance={14}
+              scale={0.98}
               className={`${styles.card} flex w-full items-center justify-between gap-4 rounded-[20px] border border-plum bg-black px-5 py-8 sm:px-8 lg:w-[calc((100%_-_20px)/2)] lg:gap-10`}
             >
               <div
@@ -77,34 +84,17 @@ export function EcosystemSection() {
                   </Typography>
                 </div>
 
-                <button
-                  type="button"
-                  onClick={
-                    item.title === "ORIINU"
-                      ? () =>
-                          window.open(
-                            "https://oriinu.ai/",
-                            "_blank",
-                            "noopener,noreferrer",
-                          )
-                      : undefined
-                  }
+                <Link
+                  href={item.href}
+                  target={item.title === "ORIINU" ? "_blank" : undefined}
+                  rel={item.title === "ORIINU" ? "noopener noreferrer" : undefined}
                   className="flex w-fit items-center gap-2 rounded-sm text-left text-sm font-semibold tracking-[1.04px] text-[#e5be68] transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold"
                 >
                   {item.action}
-                  <svg
-                    aria-hidden="true"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="h-[1em] w-[1em] shrink-0"
-                  >
+                  <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-[1em] w-[1em] shrink-0">
                     <path d="M4 12h16m-7-7 7 7-7 7" />
                   </svg>
-                </button>
+                </Link>
               </div>
 
               <div
@@ -119,7 +109,7 @@ export function EcosystemSection() {
                   className={`h-auto object-contain ${item.imageClassName}`}
                 />
               </div>
-            </li>
+            </ScrollReveal>
           ))}
         </ul>
       </Container>

@@ -3,6 +3,7 @@ import { Typography } from "@/components/ui/typography";
 import Image from "next/image";
 import { Container } from "@/components/layout/container";
 import { Button } from "@/components/ui/button";
+import { ScrollReveal } from "@/components/ui/scroll-reveal";
 
 
 import { topics, stages } from "@/constants/home";
@@ -17,7 +18,7 @@ export function OriinuSection() {
       <Container className="flex flex-col gap-5">
         <div className="relative isolate flex flex-col overflow-hidden rounded-[28px] border border-gold bg-[#0b0b0b] lg:min-h-[640px] lg:flex-row lg:rounded-[34px]">
           <div className="relative z-10 flex min-w-0 flex-col gap-[30px] px-6 pt-10 sm:px-10 sm:pt-12 lg:w-[670px] lg:max-w-[54%] lg:pb-[55px] lg:pl-[59px] lg:pr-0 lg:pt-[59px]">
-            <div className="flex flex-col gap-5">
+            <ScrollReveal className="flex flex-col gap-5">
               <div className="flex flex-col gap-[18px]">
                 <div className="flex flex-col gap-[17px]">
                   <Typography
@@ -54,8 +55,8 @@ export function OriinuSection() {
                 Science into conversation with the questions, decisions and
                 opportunities of everyday life.
               </Typography>
-            </div>
-            <div className="flex flex-col gap-5">
+            </ScrollReveal>
+            <ScrollReveal delay={0.18} className="flex flex-col gap-5">
               <Typography variant="md" className="leading-8 text-white/85">
                 Use ORIINU to explore questions involving:
               </Typography>
@@ -79,9 +80,9 @@ export function OriinuSection() {
                   </li>
                 ))}
               </ul>
-            </div>
+            </ScrollReveal>
           </div>
-          <div className="relative aspect-[1126/1276] w-full max-w-[480px] self-center lg:absolute lg:inset-y-0 lg:right-0 lg:aspect-auto lg:h-full lg:w-[43.3%] lg:max-w-none lg:self-auto">
+          <ScrollReveal distance={0} scale={0.98} duration={0.8} delay={0.12} className="relative aspect-[1126/1276] w-full max-w-[480px] self-center lg:absolute lg:inset-y-0 lg:right-0 lg:aspect-auto lg:h-full lg:w-[43.3%] lg:max-w-none lg:self-auto">
             <Image
               src="/images/meet-oriunu.png"
               alt="A luminous blue profile traced with golden lines and points of light"
@@ -89,14 +90,14 @@ export function OriinuSection() {
               sizes="(min-width: 1024px) 39vw, (min-width: 640px) 480px, 90vw"
               className="object-contain object-right"
             />
-          </div>
+          </ScrollReveal>
         </div>
         <section
           aria-labelledby="oriinu-stages-title"
           className="relative isolate flex flex-col gap-[30px] overflow-hidden rounded-[28px] border border-gold bg-black bg-[url('/images/how-orinnu-works-bg.png')] bg-cover bg-center px-6 py-10 sm:px-10 sm:py-12 lg:rounded-[34px] lg:px-[39px] lg:pb-[58px] lg:pt-[59px]"
         >
           <div className="flex flex-col gap-10">
-            <header className="flex flex-col gap-5">
+            <ScrollReveal as="header" className="flex flex-col gap-5">
               <Typography
                 variant="xs"
                 className="font-semibold uppercase leading-[17px] tracking-[2.42px] text-gold"
@@ -114,11 +115,13 @@ export function OriinuSection() {
                   Clarity
                 </span>
               </Typography>
-            </header>
+            </ScrollReveal>
             <ol className="flex flex-wrap gap-[18.769px]">
               {stages.map(({ title, description }, index) => (
-                <li
+                <ScrollReveal
+                  as="li"
                   key={title}
+                  delay={(index % 2) * 0.1}
                   className="flex w-full flex-col gap-5 rounded-[20px] border border-gold/20 bg-black px-7 py-9 sm:w-[calc((100%_-_18.769px)/2)] lg:first:pr-2 lg:min-h-[271px] lg:w-[calc((100%_-_56.307px)/4)]"
                 >
                   <Typography
@@ -143,11 +146,11 @@ export function OriinuSection() {
                       {description}
                     </Typography>
                   </div>
-                </li>
+                </ScrollReveal>
               ))}
             </ol>
           </div>
-          <div className="flex flex-col items-center justify-center gap-5 sm:flex-row">
+          <ScrollReveal className="flex flex-col items-center justify-center gap-5 sm:flex-row">
             <Button
               onClick={() =>
                 window.open(
@@ -174,7 +177,7 @@ export function OriinuSection() {
             >
               Learn How ORIINU Works
             </Button>
-          </div>
+          </ScrollReveal>
         </section>
       </Container>
     </section>
