@@ -1,5 +1,6 @@
 import { cva, type VariantProps } from "class-variance-authority";
-import type { ButtonHTMLAttributes, ReactNode } from "react";
+import Link from "next/link";
+import type { AnchorHTMLAttributes, ButtonHTMLAttributes, ReactNode } from "react";
 import { Typography } from "@/components/ui/typography";
 
 export const buttonVariants = cva(
@@ -35,6 +36,31 @@ interface ButtonProps
   showArrow?: boolean;
 }
 
+interface ButtonLinkProps
+  extends AnchorHTMLAttributes<HTMLAnchorElement>,
+    VariantProps<typeof buttonVariants> {
+  href: string;
+  children: ReactNode;
+  showArrow?: boolean;
+}
+
+function ButtonArrow() {
+  return (
+    <svg
+      aria-hidden="true"
+      className="h-5 w-5 shrink-0"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M4 12h16m-7-7 7 7-7 7" />
+    </svg>
+  );
+}
+
 export function Button({
   children,
   className,
@@ -54,20 +80,27 @@ export function Button({
       <Typography as="span" variant="cta" className="max-sm:text-sm">
         {children}
       </Typography>
-      {showArrow ? (
-        <svg
-          aria-hidden="true"
-          className="h-5 w-5 shrink-0"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <path d="M4 12h16m-7-7 7 7-7 7" />
-        </svg>
-      ) : null}
+      {showArrow ? <ButtonArrow /> : null}
     </button>
+  );
+}
+
+export function ButtonLink({
+  children,
+  className,
+  href,
+  showArrow = false,
+  variant,
+  size,
+  width,
+  ...props
+}: ButtonLinkProps) {
+  return (
+    <Link href={href} className={buttonVariants({ variant, size, width, className })} {...props}>
+      <Typography as="span" variant="cta" className="max-sm:text-sm">
+        {children}
+      </Typography>
+      {showArrow ? <ButtonArrow /> : null}
+    </Link>
   );
 }

@@ -8,6 +8,14 @@ import styles from "./ecosystem-section.module.css";
 
 import { ecosystem } from "@/constants/home";
 
+function ActionArrow() {
+  return (
+    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-[1em] w-[1em] shrink-0">
+      <path d="M4 12h16m-7-7 7 7-7 7" />
+    </svg>
+  );
+}
+
 export function EcosystemSection() {
   return (
     <section
@@ -86,14 +94,12 @@ export function EcosystemSection() {
 
                 <Link
                   href={item.href}
-                  target={item.title === "ORIINU" ? "_blank" : undefined}
-                  rel={item.title === "ORIINU" ? "noopener noreferrer" : undefined}
+                  target={item.href.startsWith("https://") ? "_blank" : undefined}
+                  rel={item.href.startsWith("https://") ? "noopener noreferrer" : undefined}
                   className="flex w-fit items-center gap-2 rounded-sm text-left text-sm font-semibold tracking-[1.04px] text-[#e5be68] transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold"
                 >
                   {item.action}
-                  <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-[1em] w-[1em] shrink-0">
-                    <path d="M4 12h16m-7-7 7 7-7 7" />
-                  </svg>
+                  <ActionArrow />
                 </Link>
               </div>
 
@@ -105,7 +111,7 @@ export function EcosystemSection() {
                   alt=""
                   width={item.width}
                   height={item.height}
-                  sizes="(min-width: 1024px) 9vw, (min-width: 640px) 112px, 64px"
+                  sizes="(min-width: 1024px) 129px, (min-width: 640px) 112px, 64px"
                   className={`h-auto object-contain ${item.imageClassName}`}
                 />
               </div>

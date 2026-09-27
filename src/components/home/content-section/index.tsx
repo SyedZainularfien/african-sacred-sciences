@@ -133,7 +133,7 @@ export function ContentSection() {
 
       <div ref={artworkRef} className="relative hidden flex-1 overflow-hidden bg-black lg:block">
         <Image
-          src="/images/what-is-african-sceince-rightside-image.png"
+          src="/images/what-is-african-sceince-rightside-image.webp"
           alt=""
           fill
           sizes="(min-width: 1024px) 47.5vw, 100vw"
@@ -141,7 +141,7 @@ export function ContentSection() {
         />
         <Image
           ref={colorLayerRef}
-          src="/images/african-science-rightisde-image-color-enhancer.png"
+          src="/images/african-science-rightisde-image-color-enhancer.webp"
           alt=""
           fill
           sizes="(min-width: 1024px) 47.5vw, 100vw"

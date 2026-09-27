@@ -143,7 +143,7 @@ export function LivedExperienceSection() {
         <div className="w-full max-w-[640px] xl:w-[calc(100%_-_660px)] xl:pt-[25px]">
           <motion.div ref={photoFrameRef} data-motion-reveal initial={reduceMotion ? false : "hidden"} whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={photoReveal} className="overflow-hidden rounded-[6%]">
             <div ref={photoRef} className={reduceMotion ? undefined : "scale-[1.02]"}>
-              <Image src="/images/knowledge-live-exp-right-section.png" alt="Two speakers sharing African Sacred Science with a seated audience" width={1280} height={1414} sizes="(min-width: 1280px) 45vw, (min-width: 768px) 640px, 100vw" className="h-auto w-full" />
+              <Image src="/images/knowledge-live-exp-right-section.webp" alt="Two speakers sharing African Sacred Science with a seated audience" width={1280} height={1414} sizes="(min-width: 1440px) 640px, (min-width: 1280px) calc(90vw - 660px), (min-width: 640px) min(640px, calc(100vw - 64px)), calc(100vw - 40px)" className="h-auto w-full" />
             </div>
           </motion.div>
         </div>

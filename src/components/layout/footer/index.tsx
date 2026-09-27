@@ -22,17 +22,12 @@ function ArrowFlourish({ reversed = false }: { reversed?: boolean }) {
 
 function SocialMarks() {
   return (
-    <div
-      role="group"
-      aria-label="Social media"
-      className="flex items-center gap-3.5"
-    >
+    <div className="flex items-center gap-3.5">
       {socialIcons.map(({ label, file, width, height }) => (
-        <button
+        <span
           key={label}
-          type="button"
-          aria-label={label}
-          className="flex h-11 w-11 cursor-pointer items-center justify-center rounded-full border border-plum bg-transparent transition-colors hover:bg-plum focus-visible:bg-plum focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold"
+          aria-hidden="true"
+          className="flex h-11 w-11 items-center justify-center rounded-full border border-plum bg-transparent"
         >
           <Image
             src={`/images/footer-arrows/${file}`}
@@ -40,7 +35,7 @@ function SocialMarks() {
             width={width}
             height={height}
           />
-        </button>
+        </span>
       ))}
     </div>
   );
@@ -80,12 +75,12 @@ export function Footer({ homePage = true }: { homePage?: boolean }) {
             </ul>
           </ScrollReveal>
           <ScrollReveal delay={0.1} className="flex items-center gap-8 whitespace-nowrap">
-            <Typography as="span" variant="sm" className="text-white/65">
-              Privacy Policy
-            </Typography>
-            <Typography as="span" variant="sm" className="text-white/65">
-              Terms &amp; Conditions
-            </Typography>
+            <Link href="/privacy-policy" className="text-white/65 hover:text-gold focus-visible:outline-2 focus-visible:outline-gold">
+              <Typography as="span" variant="sm">Privacy Policy</Typography>
+            </Link>
+            <Link href="/terms-and-conditions" className="text-white/65 hover:text-gold focus-visible:outline-2 focus-visible:outline-gold">
+              <Typography as="span" variant="sm">Terms &amp; Conditions</Typography>
+            </Link>
           </ScrollReveal>
         </Container>
 

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, Inter, Plus_Jakarta_Sans } from "next/font/google";
 import type { ReactNode } from "react";
+import { siteUrl } from "@/lib/site-url";
 import "./globals.css";
 
 const inter = Inter({
@@ -22,8 +23,7 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "African Sacred Sciences",
-  description: "A frontend foundation for African Sacred Sciences.",
+  metadataBase: siteUrl,
 };
 
 interface RootLayoutProps {
