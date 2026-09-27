@@ -8,6 +8,7 @@ import { Container } from "@/components/layout/container";
 import { ButtonLink, buttonVariants } from "@/components/ui/button";
 import { Typography } from "@/components/ui/typography";
 import { motionTiming, slideUp, staggerReveal } from "@/lib/motion";
+import { useAnimationReady } from "@/lib/use-animation-ready";
 
 const collageReveal: Variants = {
   hidden: {
@@ -25,6 +26,7 @@ const collageReveal: Variants = {
 
 export function HeroSection() {
   const reduceMotion = useReducedMotion();
+  const animate = useAnimationReady() && !reduceMotion;
   const heroRef = useRef<HTMLElement>(null);
   const collageRef = useRef<HTMLDivElement>(null);
   const scrollLayerRef = useRef<HTMLDivElement>(null);
@@ -98,7 +100,8 @@ export function HeroSection() {
     >
       <Container className="flex flex-col items-center gap-10 pb-16 pt-36 sm:gap-12 sm:pb-20 sm:pt-44 min-[90rem]:min-h-[800px] min-[90rem]:flex-row min-[90rem]:items-start min-[90rem]:gap-[77px] min-[90rem]:pb-[93px] min-[90rem]:pt-[138px]">
         <motion.div
-          initial={reduceMotion ? false : "hidden"}
+          key={animate ? "animated" : "static"}
+          initial={animate ? "hidden" : false}
           animate="visible"
           variants={staggerReveal}
           className="flex w-full min-w-0 max-w-[720px] flex-col gap-[30px] min-[90rem]:w-[563px] min-[90rem]:shrink-0 min-[90rem]:pt-[70px]"
@@ -184,7 +187,8 @@ export function HeroSection() {
             <div ref={pointerLayerRef} className="absolute inset-0">
               <motion.div
                 data-motion-reveal
-                initial={reduceMotion ? false : "hidden"}
+                key={animate ? "animated" : "static"}
+                initial={animate ? "hidden" : false}
                 animate="visible"
                 variants={collageReveal}
                 className="absolute inset-0"

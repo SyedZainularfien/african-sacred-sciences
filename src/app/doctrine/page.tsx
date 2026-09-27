@@ -18,6 +18,16 @@ const socialImage = {
   alt: "African Sacred Science purple and gold emblem on a dark plum background",
 };
 
+const doctrineJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": absoluteUrl("/doctrine#webpage"),
+  url: absoluteUrl("/doctrine"),
+  name: title,
+  description,
+  isPartOf: { "@id": absoluteUrl("/#website") },
+};
+
 export const metadata: Metadata = {
   title,
   description,
@@ -41,6 +51,10 @@ export const metadata: Metadata = {
 export default function DoctrinePage() {
   return (
     <div className="min-h-screen bg-black">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(doctrineJsonLd).replace(/</g, "\\u003c") }}
+      />
       <Header />
       <main>
         <DoctrineHeroSection />

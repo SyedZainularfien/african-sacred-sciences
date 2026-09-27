@@ -1,13 +1,9 @@
-const temporarySiteUrl = "https://www.africansacredscience.example";
+const productionSiteUrl = "https://african-sacred-sciences.com";
 
 function resolveSiteUrl(): URL {
   const configuredUrl = process.env.SITE_URL?.trim();
 
-  if (!configuredUrl && process.env.NODE_ENV === "production") {
-    throw new Error("SITE_URL must be set to the final public HTTPS domain before a production build or deployment.");
-  }
-
-  const value = configuredUrl || temporarySiteUrl;
+  const value = configuredUrl || productionSiteUrl;
   let url: URL;
 
   try {

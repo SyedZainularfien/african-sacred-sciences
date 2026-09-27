@@ -1,10 +1,7 @@
 "use client";
 
-import { useEffect, useRef } from "react";
 import { motion, useReducedMotion, type Variants } from "motion/react";
 import Link from "next/link";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Typography } from "@/components/ui/typography";
 import Image from "next/image";
 import { Container } from "@/components/layout/container";
@@ -12,6 +9,7 @@ import { buttonVariants } from "@/components/ui/button";
 
 import { principles } from "@/constants/home";
 import { motionTiming } from "@/lib/motion";
+import { useAnimationReady } from "@/lib/use-animation-ready";
 
 const textReveal: Variants = {
   hidden: { opacity: 0, y: 14 },
@@ -69,57 +67,17 @@ function AlignmentDiagram() {
 
 export function CommunitySection() {
   const reduceMotion = useReducedMotion();
-  const sectionRef = useRef<HTMLElement>(null);
-  const cardsRef = useRef<HTMLUListElement>(null);
-
-  useEffect(() => {
-    if (reduceMotion || !sectionRef.current || !cardsRef.current) return;
-
-    gsap.registerPlugin(ScrollTrigger);
-    const cards = Array.from(cardsRef.current.children) as HTMLLIElement[];
-    const icons = cards.map((card) => card.querySelector("img") as HTMLImageElement);
-    const context = gsap.context(() => {
-      const media = gsap.matchMedia();
-
-      media.add("(min-width: 1280px)", () => {
-        gsap.set(cards, { opacity: 0, y: 16 });
-        gsap.set(icons, { opacity: 0.65, scale: 0.95 });
-        const reveal = gsap.timeline({
-          scrollTrigger: { trigger: cardsRef.current, start: "top 82%", once: true },
-        });
-        cards.forEach((card, index) => {
-          const at = index * 0.12;
-          reveal.to(card, { opacity: 1, y: 0, duration: 0.62, ease: "power2.out" }, at);
-          reveal.to(icons[index], { opacity: 1, scale: 1, duration: 0.48, ease: "power2.out" }, at + 0.12);
-        });
-      });
-
-      media.add("(max-width: 1279px)", () => {
-        cards.forEach((card, index) => {
-          gsap.set(card, { opacity: 0, y: 16 });
-          gsap.set(icons[index], { opacity: 0.65, scale: 0.95 });
-          const reveal = gsap.timeline({
-            scrollTrigger: { trigger: card, start: "top 88%", once: true },
-          });
-          reveal.to(card, { opacity: 1, y: 0, duration: 0.62, ease: "power2.out" });
-          reveal.to(icons[index], { opacity: 1, scale: 1, duration: 0.48, ease: "power2.out" }, "<0.12");
-        });
-      });
-
-      return () => media.revert();
-    }, sectionRef);
-
-    return () => context.revert();
-  }, [reduceMotion]);
+  const animate = useAnimationReady() && !reduceMotion;
 
   return (
-    <section ref={sectionRef} id="doctrine" aria-labelledby="divine-alignment-title" className="relative isolate overflow-hidden py-16 text-white sm:py-20 xl:pb-[82px] xl:pt-[130px]" style={{ background: "radial-gradient(80% 65% at 50% 50%, rgba(107, 27, 92, 0.22) 0%, rgba(85, 22, 98, 0.15) 27.5%, rgba(25, 7, 115, 0.08) 55%, rgba(25, 7, 115, 0) 75%), linear-gradient(180deg, #020104 0%, #180619 40%, #320a2d 100%)" }}>
+    <section id="doctrine" aria-labelledby="divine-alignment-title" className="relative isolate overflow-hidden py-16 text-white sm:py-20 xl:pb-[82px] xl:pt-[130px]" style={{ background: "radial-gradient(80% 65% at 50% 50%, rgba(107, 27, 92, 0.22) 0%, rgba(85, 22, 98, 0.15) 27.5%, rgba(25, 7, 115, 0.08) 55%, rgba(25, 7, 115, 0) 75%), linear-gradient(180deg, #020104 0%, #180619 40%, #320a2d 100%)" }}>
       <AlignmentDiagram />
       <Container className="relative z-10 flex flex-col items-center">
         <div className="flex w-full max-w-[1200px] flex-col items-center gap-12 xl:gap-[72px]">
           <div className="flex w-full flex-col items-center gap-12 xl:gap-16">
             <motion.header
-              initial={reduceMotion ? false : "hidden"}
+              key={animate ? "animated" : "static"}
+              initial={animate ? "hidden" : false}
               whileInView="visible"
               viewport={{ once: true, amount: 0.4 }}
               className="flex w-full flex-col items-center gap-10 text-center"
@@ -142,7 +100,7 @@ export function CommunitySection() {
                 <Typography variant="md" className="max-w-[780px] leading-[29.666667px] text-grey">The Doctrine of Divine Alignment™ provides a unifying philosophical foundation for African Sacred Science while respecting the diversity of Africa&apos;s spiritual, philosophical and knowledge traditions. It invites us to examine the relationship between:</Typography>
               </motion.div>
             </motion.header>
-            <ul ref={cardsRef} className="flex w-full flex-wrap justify-center gap-[10px]">
+            <ul className="flex w-full flex-wrap justify-center gap-[10px]">
               {principles.map(({ name, alignment, description, icon }) => (
                 <li key={name} className="flex w-full flex-col items-center gap-[14px] rounded-[18px] border border-gold/18 bg-white/[0.035] px-[22px] pb-[19px] pt-8 text-center sm:w-[calc((100%_-_10px)/2)] lg:w-[calc((100%_-_20px)/3)] xl:min-h-[270px] xl:w-[calc((100%_-_40px)/5)]">
                   <div className="flex flex-col items-center gap-4">
@@ -159,7 +117,8 @@ export function CommunitySection() {
             </ul>
           </div>
           <motion.div
-            initial={reduceMotion ? false : "hidden"}
+            key={animate ? "animated" : "static"}
+            initial={animate ? "hidden" : false}
             whileInView="visible"
             viewport={{ once: true, amount: 0.35 }}
             className="flex w-full flex-col items-center gap-10"

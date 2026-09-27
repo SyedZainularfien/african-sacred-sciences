@@ -10,6 +10,7 @@ import { Typography } from "@/components/ui/typography";
 
 import { navigationItems } from "@/constants/navigation";
 import { motionTiming } from "@/lib/motion";
+import { useAnimationReady } from "@/lib/use-animation-ready";
 
 function Brand({ onClick }: { onClick?: () => void }) {
   return (
@@ -52,6 +53,7 @@ export function Header({ homePage = false }: { homePage?: boolean }) {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const [menuOpen, setMenuOpen] = useState(false);
   const reduceMotion = useReducedMotion();
+  const animate = useAnimationReady() && !reduceMotion;
   const activeItem = homePage ? "Home" : "The Doctrine";
 
   useEffect(() => {
@@ -82,7 +84,8 @@ export function Header({ homePage = false }: { homePage?: boolean }) {
       <Container>
         <motion.div
           data-motion-reveal
-          initial={reduceMotion ? false : { opacity: 0, y: -12 }}
+          key={animate ? "animated" : "static"}
+          initial={animate ? { opacity: 0, y: -12 } : false}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: motionTiming.entrance, ease: motionTiming.ease }}
           className="flex items-center justify-between gap-4 rounded-[18px] border border-white/5 bg-[#100e12] p-3 pl-4 sm:px-5 sm:py-4 min-[90rem]:min-h-[68px] min-[90rem]:gap-10 min-[90rem]:rounded-[20px] min-[90rem]:border-white/25 min-[90rem]:bg-[#d9d9d9]/20 min-[90rem]:py-2 min-[90rem]:pl-[19px] min-[90rem]:pr-[10px] min-[90rem]:backdrop-blur-sm"

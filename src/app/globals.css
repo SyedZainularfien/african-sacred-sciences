@@ -73,6 +73,18 @@ html {
   scroll-behavior: smooth;
 }
 
+html,
+body,
+dialog {
+  scrollbar-width: none;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar,
+dialog::-webkit-scrollbar {
+  display: none;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

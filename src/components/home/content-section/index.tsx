@@ -7,6 +7,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Typography } from "@/components/ui/typography";
 import { motionTiming } from "@/lib/motion";
+import { useAnimationReady } from "@/lib/use-animation-ready";
 
 const textReveal: Variants = {
   hidden: { opacity: 0, y: 14 },
@@ -28,6 +29,7 @@ const cardReveal: Variants = {
 
 export function ContentSection() {
   const reduceMotion = useReducedMotion();
+  const animate = useAnimationReady() && !reduceMotion;
   const artworkRef = useRef<HTMLDivElement>(null);
   const colorLayerRef = useRef<HTMLImageElement>(null);
 
@@ -57,9 +59,10 @@ export function ContentSection() {
 
   return (
     <motion.section
+      key={animate ? "animated" : "static"}
       id="african-sacred-science"
       aria-labelledby="what-is-african-sacred-science"
-      initial={reduceMotion ? false : "hidden"}
+      initial={animate ? "hidden" : false}
       whileInView="visible"
       viewport={{ once: true, amount: 0.25 }}
       className="flex bg-background-yellow lg:min-h-[800px]"

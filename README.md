@@ -23,14 +23,13 @@ This project uses [`next/font`](https://nextjs.org/docs/app/building-your-applic
 ## SEO site URL
 
 `SITE_URL` is the single origin used for canonical links, Open Graph page URLs,
-`sitemap.xml`, and the sitemap reference in `robots.txt`. In local development,
-an unset `SITE_URL` uses `https://www.africansacredscience.example` as a temporary
-placeholder. This is **not a live domain** and must never be deployed.
+`sitemap.xml`, and the sitemap reference in `robots.txt`. The default origin is
+`https://african-sacred-sciences.com`, the planned production domain.
 
-Set `SITE_URL` to the final public HTTPS origin (without a path, query, or
-fragment) in the production build and runtime environment. Production fails if
-it is unset or points to a placeholder or local domain. Replace the development
-placeholder by setting `SITE_URL`; no page metadata needs editing.
+If `SITE_URL` is set in a deployment environment, set it to
+`https://african-sacred-sciences.com` (without a trailing path, query, or
+fragment). Production rejects placeholder and local domains. Configure the
+domain and HTTPS in hosting before publishing; the URL is not live yet.
 
 ## Learn More
 

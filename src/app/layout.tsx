@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, Inter, Plus_Jakarta_Sans } from "next/font/google";
 import type { ReactNode } from "react";
-import { siteUrl } from "@/lib/site-url";
+import { absoluteUrl, siteUrl } from "@/lib/site-url";
 import "./globals.css";
 
 const inter = Inter({
@@ -26,6 +26,14 @@ export const metadata: Metadata = {
   metadataBase: siteUrl,
 };
 
+const websiteJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": absoluteUrl("/#website"),
+  name: "African Sacred Science",
+  url: absoluteUrl("/"),
+};
+
 interface RootLayoutProps {
   children: ReactNode;
 }
@@ -33,7 +41,13 @@ interface RootLayoutProps {
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en" className={`${inter.variable} ${cormorantGaramond.variable} ${plusJakartaSans.variable}`}>
-      <body>{children}</body>
+      <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd).replace(/</g, "\\u003c") }}
+        />
+        {children}
+      </body>
     </html>
   );
 }

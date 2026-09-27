@@ -3,6 +3,7 @@
 import type { ReactNode } from "react";
 import { motion, useReducedMotion, type Variants } from "motion/react";
 import { motionTiming } from "@/lib/motion";
+import { useAnimationReady } from "@/lib/use-animation-ready";
 
 type RevealSettings = { delay: number; distance: number; duration: number; scale: number };
 
@@ -42,14 +43,16 @@ export function ScrollReveal({
   amount = 0.2,
 }: ScrollRevealProps) {
   const reduceMotion = useReducedMotion();
+  const animate = useAnimationReady() && !reduceMotion;
   const Component = as === "article" ? motion.article : as === "li" ? motion.li : as === "header" ? motion.header : as === "nav" ? motion.nav : as === "span" ? motion.span : motion.div;
 
   return (
     <Component
+      key={animate ? "animated" : "static"}
       aria-label={ariaLabel}
       id={id}
       data-motion-reveal
-      initial={reduceMotion ? false : "hidden"}
+      initial={animate ? "hidden" : false}
       whileInView="visible"
       viewport={{ once: true, amount }}
       variants={reveal}

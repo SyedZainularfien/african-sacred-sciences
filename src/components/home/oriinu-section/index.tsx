@@ -1,4 +1,3 @@
-"use client";
 import { Typography } from "@/components/ui/typography";
 import Image from "next/image";
 import { Container } from "@/components/layout/container";

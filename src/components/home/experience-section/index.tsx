@@ -1,4 +1,3 @@
-"use client";
 import { Container } from "@/components/layout/container";
 import { ButtonLink } from "@/components/ui/button";
 import { Typography } from "@/components/ui/typography";
