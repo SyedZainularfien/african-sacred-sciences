@@ -3,12 +3,12 @@ import type { ButtonHTMLAttributes, ReactNode } from "react";
 import { Typography } from "@/components/ui/typography";
 
 export const buttonVariants = cva(
-  "inline-flex max-w-full min-w-0 items-center justify-center gap-3 rounded-full border text-center",
+  "inline-flex max-w-full min-w-0 items-center justify-center gap-3 rounded-full border cursor-pointer text-center",
   {
     variants: {
       variant: {
         primary: "border-transparent bg-gold-gradient text-full-black",
-        outline: "border-plum bg-full-black text-white",
+        outline: "border-plum bg-black! text-white",
       },
       size: {
         default: "px-4 py-3.5 sm:px-6 sm:py-4",
@@ -28,7 +28,8 @@ export const buttonVariants = cva(
 );
 
 interface ButtonProps
-  extends ButtonHTMLAttributes<HTMLButtonElement>,
+  extends
+    ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
   children: ReactNode;
   showArrow?: boolean;
@@ -45,7 +46,11 @@ export function Button({
   ...props
 }: ButtonProps) {
   return (
-    <button className={buttonVariants({ variant, size, width, className })} type={type} {...props}>
+    <button
+      className={buttonVariants({ variant, size, width, className })}
+      type={type}
+      {...props}
+    >
       <Typography as="span" variant="cta" className="max-sm:text-sm">
         {children}
       </Typography>

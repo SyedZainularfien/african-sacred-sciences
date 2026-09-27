@@ -3,21 +3,24 @@ import { Typography } from "@/components/ui/typography";
 
 export function ContentSection() {
   return (
-    <section aria-labelledby="what-is-african-sacred-science" className="grid bg-background-yellow lg:min-h-[800px] lg:grid-cols-[52.5%_47.5%]">
-      <div className="flex items-center px-5 py-16 sm:px-8 sm:py-20 lg:py-16 lg:pl-[4.86vw] lg:pr-10">
-        <div className="w-full max-w-[640px]">
-          <Typography as="p" variant="md" className="mb-3 text-md font-medium text-gold">What Is African Sacred Science?</Typography>
+    <section id="african-sacred-science" aria-labelledby="what-is-african-sacred-science" className="flex bg-background-yellow lg:min-h-[800px]">
+      <div className="flex w-full items-start px-5 py-16 sm:px-8 sm:py-20 lg:w-[52.430556%] lg:pb-16 lg:pl-[4.861111%] lg:pr-[45px] lg:pt-20">
+        <div className="flex w-full max-w-[640px] flex-col gap-[60px]">
+          <div className="flex flex-col gap-[30px]">
+          <div className="flex flex-col gap-[10px]">
+          <Typography as="p" variant="mdMedium" className="leading-[17px] text-gold">What Is African Sacred Science?</Typography>
 
-          <Typography id="what-is-african-sacred-science" variant="h2" className="leading-[1.05] text-full-black">
-            <span className="block font-sans text-[clamp(2.5rem,4vw,3.5rem)] font-medium">
+          <Typography id="what-is-african-sacred-science" variant="h2" className="flex flex-col text-full-black">
+            <span className="font-sans [font-size:clamp(2.5rem,4vw,3rem)]! font-medium leading-[57px]">
               Africa&apos;s Wisdom Is
             </span>
-            <span className="mt-1 block bg-plum-gradient bg-clip-text pb-2 font-serif text-[clamp(3rem,4.5vw,4rem)] font-bold italic leading-[0.95] text-transparent">
+            <span className="bg-plum-gradient bg-clip-text font-serif [font-size:clamp(3rem,4.5vw,3.625rem)]! font-bold italic leading-[1.2] text-transparent">
               Vast, Diverse and Living.
             </span>
           </Typography>
 
-          <div className="mt-6 space-y-6 text-md leading-7 text-full-black/85 sm:mt-8 sm:leading-8">
+          </div>
+          <div className="flex max-w-[633px] flex-col gap-5 text-full-black/85 [&>p]:leading-[30.94px]">
             <Typography as="p" variant="md">
               African Sacred Science™ is a contemporary body of knowledge, studying, preserving
               and applying knowledge drawn from Africa&apos;s diverse philosophical, spiritual,
@@ -32,11 +35,12 @@ export function ContentSection() {
             </Typography>
           </div>
 
-          <div className="mt-10 rounded-2xl border border-gold bg-[#f1e5c5] px-5 py-5 text-full-black sm:mt-12 sm:px-7 sm:py-6">
-            <h3 className="font-sans text-md font-semibold sm:text-lg">
+          </div>
+          <div className="flex flex-col gap-[10px] rounded-[18px] border border-gold bg-[#f1e5c5] px-5 py-6 text-full-black sm:px-7">
+            <Typography as="h3" variant="md" className="font-semibold leading-[18px]">
               Africa Is Not One Tradition.
-            </h3>
-            <Typography as="p" variant="sm" className="mt-2 text-sm leading-7 sm:text-md sm:leading-8">
+            </Typography>
+            <Typography as="p" variant="sm" className="[font-size:15px]! leading-[25.8px]">
               African Sacred Science recognizes both shared patterns of wisdom and important
               differences among traditions. This distinction is fundamental to how the work is
               conducted.
@@ -45,7 +49,7 @@ export function ContentSection() {
         </div>
       </div>
 
-      <div className="relative hidden overflow-hidden bg-black lg:block lg:min-h-full">
+      <div className="relative hidden flex-1 overflow-hidden bg-black lg:block">
         <Image
           src="/images/what-is-african-sceince-rightside-image.png"
           alt=""

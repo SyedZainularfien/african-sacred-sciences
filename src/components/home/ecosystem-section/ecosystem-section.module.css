@@ -1,61 +1,60 @@
+/* Figma desktop: 854px section, 96px top, 60px bottom and 245px cards.
+   Short desktop viewports retain the requested single-screen presentation. */
 @media (min-width: 64rem) {
   .section {
-    height: 100svh;
-    padding-block: 4svh;
+    --layout-scale: min(1, calc(100svh / 854px));
+    padding-block: calc(96px * var(--layout-scale)) calc(60px * var(--layout-scale));
   }
 
-  .section > div {
-    height: 100%;
-    gap: 3svh;
+  .content { gap: calc(60px * var(--layout-scale)); }
+  .heading { gap: calc(20px * var(--layout-scale)); }
+  .heading > p {
+    font-size: calc(12px * var(--layout-scale));
+    line-height: calc(17px * var(--layout-scale));
+  }
+  .heading h2 {
+    height: calc(91px * var(--layout-scale));
+    justify-content: space-between;
+    gap: 0;
+    font-size: calc(48px * var(--layout-scale));
+    line-height: calc(52px * var(--layout-scale));
   }
 
-  .section header {
-    flex-shrink: 0;
-    gap: 1.5svh;
+  .heading h2 > span {
+    text-box-trim: trim-both;
+    text-box-edge: cap alphabetic;
   }
 
-  .section header > p,
-  .section li p:first-child {
-    font-size: min(0.9vw, 1.8svh);
+  .cards { gap: calc(20px * var(--layout-scale)) 20px; }
+  .card {
+    min-height: calc(245px * var(--layout-scale));
+    padding-block: calc(16px * var(--layout-scale));
+    column-gap: calc(40px * var(--layout-scale));
   }
+  .cardContent { gap: calc(24px * var(--layout-scale)); }
+  .cardContent > div { gap: calc(12px * var(--layout-scale)); }
+  .card:nth-child(2) .cardContent { padding-top: calc(16px * var(--layout-scale)); }
+  .card:nth-child(2) .cardContent > div { gap: calc(6px * var(--layout-scale)); }
+  .cardContent > div > p:first-child {
+    font-size: calc(12px * var(--layout-scale));
+    line-height: calc(17px * var(--layout-scale));
+  }
+  .card h3 {
+    font-size: calc(24px * var(--layout-scale));
+    line-height: calc(24px * var(--layout-scale));
+  }
+  .card:nth-child(2) h3 { line-height: calc(31px * var(--layout-scale)); }
+  .card h3 + p {
+    font-size: calc(16px * var(--layout-scale));
+    line-height: calc(25.8px * var(--layout-scale));
+  }
+  .card button {
+    font-size: calc(14px * var(--layout-scale));
+    line-height: calc(20px * var(--layout-scale));
+  }
+  .logo { width: calc(129px * var(--layout-scale)); }
+}
 
-  .section h2 {
-    font-size: min(3.4vw, 6.3svh);
-  }
-
-  .section ul {
-    flex: 1;
-    min-height: 0;
-    gap: 2.4svh 1.3vw;
-  }
-
-  .section li {
-    height: calc((100% - 2.4svh) / 2);
-    min-height: 0;
-    padding-block: 2svh;
-  }
-
-  .section li > div:first-child {
-    gap: 2.5svh;
-  }
-
-  .section li > div:first-child > div {
-    gap: 1.2svh;
-  }
-
-  .section h3 {
-    font-size: min(1.7vw, 3.2svh);
-  }
-
-  .section li h3 + p {
-    font-size: min(1.15vw, 2.2svh);
-  }
-
-  .section button {
-    font-size: min(1vw, 2svh);
-  }
-
-  .section li > div:last-child {
-    width: min(9vw, 16svh);
-  }
+@media (min-width: 64rem) and (max-width: 70rem) {
+  .cardContent { gap: calc(6px * var(--layout-scale)); }
 }
