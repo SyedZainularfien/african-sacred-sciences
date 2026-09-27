@@ -5,7 +5,7 @@ import { motion, useReducedMotion, type Variants } from "motion/react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Container } from "@/components/layout/container";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { Typography } from "@/components/ui/typography";
 import { motionTiming, slideUp, staggerReveal } from "@/lib/motion";
 
@@ -139,12 +139,17 @@ export function HeroSection() {
             </div>
             <div className="flex flex-col gap-5 sm:flex-row sm:flex-wrap min-[90rem]:flex-nowrap">
               <motion.div data-motion-reveal variants={slideUp} className="w-full sm:w-fit">
-                <Button
-                  width="full"
-                  className="sm:w-fit min-[90rem]:h-[60px] min-[90rem]:w-[313px] min-[90rem]:shrink-0"
+                <a
+                  href="#african-sacred-science"
+                  className={buttonVariants({
+                    width: "full",
+                    className: "sm:w-fit min-[90rem]:h-[60px] min-[90rem]:w-[313px] min-[90rem]:shrink-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold",
+                  })}
                 >
-                  Discover African Sacred Science
-                </Button>
+                  <Typography as="span" variant="cta" className="max-sm:text-sm">
+                    Discover African Sacred Science
+                  </Typography>
+                </a>
               </motion.div>
               <motion.div data-motion-reveal variants={slideUp} className="w-full sm:w-fit">
                 <Button

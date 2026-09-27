@@ -2,12 +2,13 @@
 
 import { useEffect, useRef } from "react";
 import { motion, useReducedMotion, type Variants } from "motion/react";
+import Link from "next/link";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Typography } from "@/components/ui/typography";
 import Image from "next/image";
 import { Container } from "@/components/layout/container";
-import { Button } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 
 import { principles } from "@/constants/home";
 import { motionTiming } from "@/lib/motion";
@@ -176,7 +177,14 @@ export function CommunitySection() {
                 whileTap={reduceMotion ? undefined : { scale: 0.985 }}
                 transition={{ duration: motionTiming.hover, ease: motionTiming.ease }}
               >
-                <Button className="h-[53px] w-full max-w-[297px]! bg-[linear-gradient(124.26deg,#c69b34_4.765%,#eec97c_50.434%,#c69b34_95.235%)]! uppercase tracking-[1.68px] [&>span]:text-sm [&>span]:leading-[21px]">Explore the Doctrine →</Button>
+                <Link
+                  href="/doctrine"
+                  className={buttonVariants({
+                    className: "h-[53px] w-full max-w-[297px]! bg-[linear-gradient(124.26deg,#c69b34_4.765%,#eec97c_50.434%,#c69b34_95.235%)]! uppercase tracking-[1.68px] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold [&>span]:text-sm [&>span]:leading-[21px]",
+                  })}
+                >
+                  <Typography as="span" variant="cta">Explore the Doctrine →</Typography>
+                </Link>
               </motion.div>
             </motion.div>
           </motion.div>
