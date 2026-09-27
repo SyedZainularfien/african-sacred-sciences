@@ -1,3 +1,4 @@
+"use client";
 import { Typography } from "@/components/ui/typography";
 import Image from "next/image";
 import { Container } from "@/components/layout/container";
@@ -19,7 +20,8 @@ const ecosystem = [
     category: "Research & Preservation",
     title: "African Sacred Science Research Institute",
     trademark: true,
-    description: "Scholarly research, source development and knowledge preservation.",
+    description:
+      "Scholarly research, source development and knowledge preservation.",
     action: "Explore the Institute",
     image: "africa-sacred-sciences.png",
     width: 243,
@@ -58,11 +60,19 @@ export function EcosystemSection() {
       className={`${styles.section} bg-[#0d0319] py-16 text-white sm:py-20`}
     >
       <Container className={`${styles.content} flex flex-col gap-10 sm:gap-12`}>
-        <header className={`${styles.heading} flex flex-col items-center gap-5 text-center`}>
-          <Typography as="p" variant="xs" className="font-semibold uppercase leading-[17px] tracking-[2.42px] text-gold">
+        <header
+          className={`${styles.heading} flex flex-col items-center gap-5 text-center`}
+        >
+          <Typography
+            as="p"
+            variant="xs"
+            className="font-semibold uppercase leading-[17px] tracking-[2.42px] text-gold"
+          >
             The Ecosystem
           </Typography>
-          <Typography as="h2" variant="mdMedium"
+          <Typography
+            as="h2"
+            variant="mdMedium"
             id="ecosystem-title"
             className="flex flex-col gap-5 max-lg:[font-size:clamp(2rem,3.4vw,3rem)]! leading-[52px] lg:[text-box-trim:trim-both] lg:[text-box-edge:cap_alphabetic]"
           >
@@ -82,32 +92,69 @@ export function EcosystemSection() {
               key={item.title}
               className={`${styles.card} flex w-full items-center justify-between gap-4 rounded-[20px] border border-plum bg-black px-5 py-8 sm:px-8 lg:w-[calc((100%_-_20px)/2)] lg:gap-10`}
             >
-              <div className={`${styles.cardContent} flex min-w-0 flex-1 flex-col gap-6`}>
+              <div
+                className={`${styles.cardContent} flex min-w-0 flex-1 flex-col gap-6`}
+              >
                 <div className="flex flex-col gap-3">
-                  <Typography as="p" variant="xs" className="font-semibold! uppercase leading-[17px] tracking-[2.42px] text-gold">
+                  <Typography
+                    as="p"
+                    variant="xs"
+                    className="font-semibold! uppercase leading-[17px] tracking-[2.42px] text-gold"
+                  >
                     {item.category}
                   </Typography>
-                  <Typography as="h3" variant="xl" className="font-semibold leading-[1.3] sm:[font-size:1.5rem]">
+                  <Typography
+                    as="h3"
+                    variant="xl"
+                    className="font-semibold leading-[1.3] sm:[font-size:1.5rem]"
+                  >
                     {item.title}
-                    {item.trademark ? <sup className="[font-size:0.5em]!">™</sup> : null}
+                    {item.trademark ? (
+                      <sup className="[font-size:0.5em]!">™</sup>
+                    ) : null}
                   </Typography>
-                  <Typography as="p" variant="sm" className="text-sm leading-[25.8px] text-white/70 sm:text-md">
+                  <Typography
+                    as="p"
+                    variant="sm"
+                    className="text-sm leading-[25.8px] text-white/70 sm:text-md"
+                  >
                     {item.description}
                   </Typography>
                 </div>
 
                 <button
                   type="button"
+                  onClick={
+                    item.title === "ORIINU"
+                      ? () =>
+                          window.open(
+                            "https://oriinu.ai/",
+                            "_blank",
+                            "noopener,noreferrer",
+                          )
+                      : undefined
+                  }
                   className="flex w-fit items-center gap-2 rounded-sm text-left text-sm font-semibold tracking-[1.04px] text-[#e5be68] transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold"
                 >
                   {item.action}
-                  <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-[1em] w-[1em] shrink-0">
+                  <svg
+                    aria-hidden="true"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="h-[1em] w-[1em] shrink-0"
+                  >
                     <path d="M4 12h16m-7-7 7 7-7 7" />
                   </svg>
                 </button>
               </div>
 
-              <div className={`${styles.logo} flex w-16 shrink-0 items-center justify-center sm:w-28 lg:w-[129px]`}>
+              <div
+                className={`${styles.logo} flex w-16 shrink-0 items-center justify-center sm:w-28 lg:w-[129px]`}
+              >
                 <Image
                   src={`/images/the-ecosystem/${item.image}`}
                   alt=""

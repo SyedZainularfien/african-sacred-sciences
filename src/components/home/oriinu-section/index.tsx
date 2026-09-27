@@ -1,3 +1,4 @@
+"use client";
 import { Typography } from "@/components/ui/typography";
 import Image from "next/image";
 import { Container } from "@/components/layout/container";
@@ -177,12 +178,28 @@ export function OriinuSection() {
             </ol>
           </div>
           <div className="flex flex-col items-center justify-center gap-5 sm:flex-row">
-            <Button className="h-[60px] w-full sm:w-[187px]">
+            <Button
+              onClick={() =>
+                window.open(
+                  "https://oriinu.ai/",
+                  "_blank",
+                  "noopener,noreferrer",
+                )
+              }
+              className="h-[60px] w-full sm:w-[187px]"
+            >
               Launch ORIINU
             </Button>
             <Button
               variant="outline"
               showArrow
+              onClick={() =>
+                window.open(
+                  "https://oriinu.ai/",
+                  "_blank",
+                  "noopener,noreferrer",
+                )
+              }
               className="h-[60px] w-full bg-black sm:w-[294px]"
             >
               Learn How ORIINU Works

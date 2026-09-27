@@ -3,7 +3,7 @@ import { Typography } from "@/components/ui/typography";
 
 export function ContentSection() {
   return (
-    <section aria-labelledby="what-is-african-sacred-science" className="flex bg-background-yellow lg:min-h-[800px]">
+    <section id="african-sacred-science" aria-labelledby="what-is-african-sacred-science" className="flex bg-background-yellow lg:min-h-[800px]">
       <div className="flex w-full items-start px-5 py-16 sm:px-8 sm:py-20 lg:w-[52.430556%] lg:pb-16 lg:pl-[4.861111%] lg:pr-[45px] lg:pt-20">
         <div className="flex w-full max-w-[640px] flex-col gap-[60px]">
           <div className="flex flex-col gap-[30px]">

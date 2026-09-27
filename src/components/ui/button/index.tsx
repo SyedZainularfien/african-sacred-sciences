@@ -3,7 +3,7 @@ import type { ButtonHTMLAttributes, ReactNode } from "react";
 import { Typography } from "@/components/ui/typography";
 
 export const buttonVariants = cva(
-  "inline-flex max-w-full min-w-0 items-center justify-center gap-3 rounded-full border text-center",
+  "inline-flex max-w-full min-w-0 items-center justify-center gap-3 rounded-full border cursor-pointer text-center",
   {
     variants: {
       variant: {

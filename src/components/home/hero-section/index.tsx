@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import { Container } from "@/components/layout/container";
 import { Button } from "@/components/ui/button";
@@ -50,6 +51,13 @@ export function HeroSection() {
               </Button>
               <Button
                 variant="outline"
+                onClick={() =>
+                  window.open(
+                    "https://oriinu.ai/",
+                    "_blank",
+                    "noopener,noreferrer",
+                  )
+                }
                 width="full"
                 className="bg-black! sm:w-fit min-[90rem]:h-[60px] min-[90rem]:w-[230px] min-[90rem]:shrink-0 [&>span]:whitespace-nowrap"
               >

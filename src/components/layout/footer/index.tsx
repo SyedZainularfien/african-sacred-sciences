@@ -5,7 +5,7 @@ import { Typography } from "@/components/ui/typography";
 
 const navigation = [
   { label: "Home", href: "/" },
-  { label: "African Sacred Science", href: "#what-is-african-sacred-science" },
+  { label: "African Sacred Science", href: "#african-sacred-science" },
   { label: "Research", href: "#research" },
   { label: "ORIINU", href: "#oriinu" },
   { label: "Books" },
@@ -45,7 +45,7 @@ function SocialMarks() {
           key={label}
           type="button"
           aria-label={label}
-          className={`flex h-11 w-11 cursor-pointer items-center justify-center rounded-full border border-plum transition-colors hover:bg-plum focus-visible:bg-plum focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold bg-transparent}`}
+          className="flex h-11 w-11 cursor-pointer items-center justify-center rounded-full border border-plum bg-transparent transition-colors hover:bg-plum focus-visible:bg-plum focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold"
         >
           <Image
             src={`/images/footer-arrows/${file}`}
@@ -59,18 +59,22 @@ function SocialMarks() {
   );
 }
 
-export function Footer() {
+export function Footer({ homePage = true }: { homePage?: boolean }) {
   return (
     <footer className="bg-black text-white">
       <div className="overflow-hidden rounded-t-[72px] border-t border-plum bg-black sm:rounded-t-[100px]">
-        <Container className="flex min-h-[220px] flex-col items-center justify-center gap-8 py-14 lg:flex-row lg:justify-between lg:gap-10 lg:py-20">
+        <Container className="flex min-h-[220px] flex-col items-center justify-center gap-8 py-14 lg:min-h-0 lg:flex-row lg:justify-between lg:gap-10 lg:py-20">
           <nav aria-label="Footer navigation">
             <ul className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4 lg:justify-start">
               {navigation.map(({ label, ...item }) => (
                 <li key={label}>
                   {"href" in item ? (
                     <Link
-                      href={item.href}
+                      href={
+                        !homePage && item.href.startsWith("#")
+                          ? `/${item.href}`
+                          : item.href
+                      }
                       className="text-base text-white/80 hover:text-gold focus-visible:outline-2 focus-visible:outline-gold"
                     >
                       {label}
@@ -99,7 +103,7 @@ export function Footer() {
         </Container>
 
         <div className="border-t border-white/20">
-          <div className="flex flex-col gap-16 pb-5 pt-[68px]">
+          <div className="flex flex-col gap-12 pb-[10px] pt-12">
             <Container className="flex items-center justify-center gap-8 lg:justify-between">
               <ArrowFlourish />
               <SocialMarks />
