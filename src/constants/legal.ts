@@ -1,115 +1,259 @@
+export interface LegalContactDetail {
+  label: string;
+  value: string;
+  href: string;
+}
+
 export interface LegalSection {
   title: string;
   paragraphs?: readonly string[];
   items?: readonly string[];
   closing?: string;
-  contact?: boolean;
+  contactDetails?: readonly LegalContactDetail[];
 }
+
+export const privacyIntroduction = [
+  "This Privacy Policy explains how information may be collected, used, disclosed, and protected when you visit africansacredscience.ai, communicate with us, subscribe to communications, or interact with features available through this website.",
+] as const;
+
+export const termsIntroduction = [
+  "Welcome to africansacredscience.ai.",
+  "By accessing or using the website, you agree to these Terms.",
+  "If you do not agree with these Terms, please discontinue use of the website.",
+] as const;
 
 export const privacySections: readonly LegalSection[] = [
   {
-    title: "About This Policy",
+    title: "Information We May Collect",
     paragraphs: [
-      "This Privacy Policy explains how information relating to visitors may be handled when they use the African Sacred Science website. It applies to this website, including its pages about African Sacred Science and the Doctrine of Divine Alignment. Websites linked from this site have their own privacy practices.",
+      "Depending on how you use the website, we may collect information that you voluntarily provide, including your name, email address, telephone number, information submitted through contact or inquiry forms, newsletter or mailing-list subscriptions, and other information you choose to provide.",
+      "We may also automatically receive limited technical information when you visit the website, such as your IP address, browser type, device type, operating system, pages visited, referring website, approximate geographic region, and information collected through cookies or similar technologies.",
     ],
   },
   {
-    title: "Information Involved in Visiting the Website",
+    title: "How We Use Information",
     paragraphs: [
-      "As with most websites, the hosting service may receive technical information needed to deliver pages and keep the site secure. This may include an IP address, browser and device information, the page requested, and the time of the request. The website itself does not currently offer user accounts or payment processing.",
-      "The community form displays name and email fields, but its current Join the Community button does not submit those entries to African Sacred Science. Please do not enter sensitive personal information into the form.",
+      "Information collected through this website may be used to operate and improve the website; respond to inquiries; provide requested information; communicate about African Sacred Science programs, publications, research, events, educational opportunities, or related initiatives; maintain website security; understand website usage; and comply with applicable legal obligations.",
+      "We do not use personal information for purposes materially different from those described in this Policy without providing appropriate notice where required.",
     ],
   },
   {
-    title: "How Information Is Used",
+    title: "Cookies and Analytics",
     paragraphs: [
-      "Technical information may be used to deliver the website, maintain its availability, diagnose errors, and protect it from misuse. We do not use the name and email fields in the community form to create a mailing-list subscription in the website's current implementation.",
+      "The website at africansacredscience.ai may use cookies and similar technologies to enable website functionality, understand visitor activity, improve website performance, and maintain security.",
+      "Some third-party website, analytics, hosting, security, or embedded-content providers may also use cookies or similar technologies according to their own privacy practices.",
+      "Visitors may be able to control certain cookies through their browser settings or any cookie-management tools provided on the website.",
     ],
   },
   {
-    title: "Cookies and External Websites",
+    title: "Sharing of Information",
     paragraphs: [
-      "This website does not currently include a first-party analytics or advertising integration. The hosting service may use technical logs or essential technologies to operate the site. Any additional tools introduced later should be described in an updated policy before they are used.",
-      "Links to ORIINU, The Enlightenment Academy, and other external sites take you to services outside this website. Their operators may collect information under their own privacy policies. Please review those policies before sharing information with them.",
+      "We may disclose information to trusted service providers that help us operate the website or provide related services, including website hosting, analytics, communications, security, and technical support.",
+      "We may also disclose information where reasonably necessary to comply with applicable law, respond to lawful requests, protect our rights or property, investigate fraud or security concerns, or protect the safety and integrity of our services.",
+      "African Sacred Science does not sell personal information for monetary consideration.",
+      "If our data practices change in the future, this Privacy Policy will be updated as required.",
     ],
   },
   {
-    title: "Sharing, Retention, and Security",
+    title: "The African Sacred Science Ecosystem",
     paragraphs: [
-      "A hosting provider may process technical information on our behalf to deliver and protect the website. The retention of technical logs depends on the production hosting service and any applicable legal obligations.",
-      "No method of transmitting or storing information online can promise absolute security.",
+      "The africansacredscience.ai website serves as the principal digital gateway to the African Sacred Science™ knowledge ecosystem.",
+      "The website may contain links to or introduce related initiatives, including:",
+    ],
+    items: [
+      "ORIINU™ — the AI-powered personal intelligence experience",
+      "African Sacred Science Research Institute™ — research, scholarship, and knowledge preservation",
+      "The Enlightenment Academy™ — education, formation, and teaching",
+      "Books & Publications — books, journals, educational materials, and other resources",
+    ],
+    closing:
+      "These services or websites may maintain separate privacy policies or terms appropriate to their activities. When you leave africansacredscience.ai and use another website, platform, application, payment provider, or third-party service, additional privacy practices may apply.",
+  },
+  {
+    title: "ORIINU™",
+    paragraphs: [
+      "The africansacredscience.ai website may provide links directing visitors to ORIINU™, including app.oriinu.ai.",
+      "ORIINU is a separate interactive digital experience and may collect additional information necessary to provide user accounts, subscriptions, AI-powered interactions, personalization, and related functionality.",
+      "Use of ORIINU is therefore subject to the Privacy Policy and Terms applicable to that service.",
     ],
   },
   {
-    title: "Your Choices and Rights",
+    title: "Data Security",
     paragraphs: [
-      "You can choose whether to follow links to external services. Depending on where you live, you may have rights to request access to, correction of, or deletion of personal information, or to object to certain uses. The available rights and how to exercise them depend on the law that applies to you and the information involved.",
+      "We use reasonable administrative, technical, and organizational measures intended to protect personal information.",
+      "However, no internet transmission, electronic storage system, or digital platform can be guaranteed to be completely secure.",
     ],
   },
   {
-    title: "Changes to This Policy",
+    title: "Data Retention",
     paragraphs: [
-      "We may update this policy when the website's features, providers, or information practices change. The current version will be made available on this page.",
+      "We retain personal information only for as long as reasonably necessary for the purposes for which it was collected, to provide requested services, maintain legitimate business records, resolve disputes, protect our rights, and comply with applicable legal obligations.",
     ],
   },
   {
-    title: "Website",
-    paragraphs: ["The African Sacred Science website is available at:"],
-    contact: true,
+    title: "Your Privacy Choices and Rights",
+    paragraphs: [
+      "Depending upon where you live and applicable law, you may have rights concerning your personal information, which may include rights to request access to, correction of, or deletion of certain personal information, or to obtain information about how it is used or disclosed.",
+      "Where applicable, requests may be submitted using our contact us information.",
+      "We will not unlawfully discriminate against individuals for exercising applicable privacy rights.",
+    ],
+  },
+  {
+    title: "Children's Privacy",
+    paragraphs: [
+      "The africansacredscience.ai website is intended for a general adult audience and is not directed to children under 13.",
+      "We do not knowingly seek to collect personal information from children under 13 through this website. If we learn that such information has been collected in circumstances governed by applicable children's privacy laws, we will take appropriate steps to address it.",
+    ],
+  },
+  {
+    title: "Third-Party Links",
+    paragraphs: [
+      "The website may contain links to third-party websites, platforms, social-media services, or other resources.",
+      "African Sacred Science is not responsible for the privacy practices, content, security, or operation of independently operated third-party services. Visitors should review the applicable privacy policies before providing personal information to them.",
+    ],
+  },
+  {
+    title: "Changes to This Privacy Policy",
+    paragraphs: [
+      "We may update this Privacy Policy periodically to reflect changes in our services, technology, business practices, or applicable law.",
+      "The revised policy will be posted on this page with an updated revision date.",
+    ],
+  },
+  {
+    title: "Contact Us",
+    paragraphs: [
+      "Questions or requests concerning this Privacy Policy or personal information may be directed to:",
+      "African Sacred Science™",
+    ],
+    contactDetails: [
+      { label: "Email", value: "Support@Africansacredscience.ai", href: "mailto:Support@Africansacredscience.ai" },
+      { label: "Website", value: "africansacredscience.ai", href: "https://africansacredscience.ai" },
+    ],
   },
 ];
 
 export const termsSections: readonly LegalSection[] = [
   {
-    title: "About These Terms",
+    title: "About African Sacred Science",
     paragraphs: [
-      "These Terms and Conditions apply to your use of the African Sacred Science website. The site introduces African Sacred Science, the Doctrine of Divine Alignment, its founders, and related learning and research initiatives. By using the website, you agree to use it lawfully and in accordance with these terms.",
+      "African Sacred Science™ is a contemporary knowledge framework devoted to recovering, researching, preserving, interpreting, teaching, and responsibly applying knowledge drawn from Africa's diverse philosophical, spiritual, ethical, cultural, and indigenous intellectual traditions.",
+      "The africansacredscience.ai website serves as a digital gateway to this work and its related knowledge ecosystem.",
     ],
   },
   {
-    title: "Informational Content",
+    title: "Educational and Informational Purpose",
     paragraphs: [
-      "The material on this website is provided for general educational and informational purposes. It is an introduction to ideas and initiatives, not a substitute for professional medical, mental health, legal, financial, or other individual advice. You should seek qualified advice when making decisions that require it.",
-      "Descriptions of ORIINU, courses, publications, and other initiatives do not mean that those offerings are provided through this website. Availability and terms for an external offering are determined by its own provider.",
+      "Content available through the africansacredscience.ai website is provided primarily for educational, informational, cultural, philosophical, and spiritual purposes.",
+      "Nothing on this website should be interpreted as individualized medical, psychological, legal, financial, investment, or other regulated professional advice.",
+      "Users should seek appropriately qualified professional advice when circumstances require it.",
     ],
   },
   {
-    title: "Acceptable Use",
-    paragraphs: ["When using this website, you agree not to:"],
-    items: [
-      "Use the site for unlawful, fraudulent, or harmful purposes.",
-      "Interfere with the site's operation, security, or access by other visitors.",
-      "Attempt to access systems or information you are not authorized to access.",
-      "Copy, republish, or present site materials as your own without permission, except where applicable law allows it.",
+    title: "Respect for Africa's Diverse Traditions",
+    paragraphs: [
+      "African Sacred Science recognizes that Africa encompasses many peoples, languages, civilizations, philosophical systems, spiritual traditions, and knowledge traditions.",
+      "Material presented through this website may include documented knowledge, living traditions, scholarly interpretations, historical sources, contemporary interpretations, and areas of continuing scholarly or cultural debate.",
+      "African Sacred Science does not claim that a single interpretation represents every African tradition, community, scholar, or practitioner.",
     ],
   },
   {
-    title: "Content and Intellectual Property",
+    title: "Intellectual Property",
     paragraphs: [
-      "The site's text, images, design, names, and logos may be protected by copyright, trademark, and other intellectual-property laws. You may read and share links to public pages for personal, non-commercial use. Other use of site materials requires permission from the relevant rights holder unless applicable law permits it.",
+      "Unless otherwise indicated, the website's original text, branding, graphics, frameworks, educational materials, publications, designs, and other original content are owned by or licensed to African Sacred Science and are protected by applicable intellectual-property laws.",
+      "The names and marks African Sacred Science™, ORIINU™, The Doctrine of Divine Alignment™, The Enlightenment Academy™, and associated names, logos, phrases, frameworks, and branding may constitute trademarks or other proprietary intellectual property.",
+      "Nothing on this website grants permission to use these marks without prior authorization.",
     ],
   },
   {
-    title: "External Links",
+    title: "Permitted Use",
     paragraphs: [
-      "The website links to independent services, including ORIINU and The Enlightenment Academy. A link is provided for convenience and context. Once you leave this website, the other site's terms, privacy policy, content, and availability are its operator's responsibility.",
+      "Visitors may access website content for lawful personal, educational, and informational purposes.",
+      "Unless expressly authorized in writing, users may not reproduce substantial portions of proprietary materials; republish or commercially distribute website content; remove copyright, trademark, or attribution notices; falsely represent African Sacred Science content as their own; use African Sacred Science branding in a manner suggesting unauthorized affiliation or endorsement; or exploit proprietary materials for unauthorized commercial purposes.",
     ],
   },
   {
-    title: "Availability and Accuracy",
+    title: "Scholarly and Third-Party Materials",
     paragraphs: [
-      "We aim to keep the information on this website useful and current, but content may change and the site may occasionally be unavailable. To the extent permitted by applicable law, the website is provided without a guarantee that every page will always be available, complete, or error-free. Nothing in these terms limits rights that cannot lawfully be limited.",
+      "Certain content may discuss, quote, cite, interpret, or reference historical works, scholarship, cultural traditions, languages, oral traditions, or third-party materials.",
+      "Ownership of third-party intellectual property remains with its respective owners.",
+      "References to scholars, traditions, institutions, communities, or historical materials do not necessarily imply their endorsement of African Sacred Science.",
+    ],
+  },
+  {
+    title: "ORIINU and Related Services",
+    paragraphs: [
+      "The africansacredscience.ai website may provide access or links to ORIINU™, The Enlightenment Academy™, African Sacred Science Research Institute™, publications, educational programs, and other related services.",
+      "Some services may be governed by additional or separate terms, including terms concerning accounts, subscriptions, payments, cancellations, artificial intelligence, user-generated information, educational programs, and digital services.",
+      "Where separate terms apply, users must agree to those terms when accessing the relevant service.",
+    ],
+  },
+  {
+    title: "Artificial Intelligence",
+    paragraphs: [
+      "The africansacredscience.ai website may introduce or link to AI-powered services such as ORIINU™.",
+      "AI-generated responses may contain errors, incomplete information, differing interpretations, or information that requires independent verification.",
+      "Users remain responsible for decisions made based upon information obtained through AI-powered services and should seek appropriate professional advice for consequential decisions.",
+      "Detailed terms governing ORIINU should be provided within the ORIINU application itself.",
+    ],
+  },
+  {
+    title: "External Websites",
+    paragraphs: [
+      "Links to external websites or services may be provided for convenience or informational purposes.",
+      "African Sacred Science does not necessarily control, endorse, guarantee, or assume responsibility for independently operated third-party websites, products, services, information, or privacy practices.",
+    ],
+  },
+  {
+    title: "No Guarantee of Results",
+    paragraphs: [
+      "African Sacred Science provides educational frameworks, teachings, resources, and opportunities for reflection and learning.",
+      "Individual experiences and outcomes vary.",
+      "We do not guarantee particular spiritual, educational, personal, professional, financial, business, relationship, health, or other outcomes from using the website or related educational materials.",
+    ],
+  },
+  {
+    title: "Website Availability",
+    paragraphs: [
+      "We may modify, suspend, discontinue, or update portions of the website at any time.",
+      "We do not guarantee that the website will always operate uninterrupted, securely, or without technical errors.",
+    ],
+  },
+  {
+    title: "Disclaimer of Warranties",
+    paragraphs: [
+      "To the extent permitted by applicable law, the website and its content are provided on an “as is” and “as available” basis without warranties of any kind, whether express or implied.",
+      "Nothing in these Terms excludes rights or warranties that cannot lawfully be excluded.",
+    ],
+  },
+  {
+    title: "Limitation of Liability",
+    paragraphs: [
+      "To the fullest extent permitted by applicable law, African Sacred Science and its affiliated entities, officers, directors, founders, employees, contractors, and representatives will not be liable for indirect, incidental, special, consequential, or punitive damages arising from use of, or inability to use, this website.",
+      "Nothing in these Terms limits liability where such limitation is prohibited by law.",
     ],
   },
   {
     title: "Changes to These Terms",
     paragraphs: [
-      "These terms may be updated as the website develops. The current version will be made available on this page. Continued use of the site after an update is subject to the updated terms where permitted by applicable law.",
+      "We may revise these Terms periodically.",
+      "Updated Terms will be posted on this page with a revised effective or last-updated date. Continued use of the website after changes become effective constitutes acceptance of the revised Terms to the extent permitted by applicable law.",
     ],
   },
   {
-    title: "Website",
-    paragraphs: ["The African Sacred Science website is available at:"],
-    contact: true,
+    title: "Governing Law",
+    paragraphs: [
+      "These Terms shall be governed by the laws of the State of Georgia, United States, without regard to conflict-of-law principles, except where applicable law requires otherwise.",
+    ],
+  },
+  {
+    title: "Contact",
+    paragraphs: [
+      "Questions concerning these Terms may be directed to:",
+      "African Sacred Science™",
+    ],
+    contactDetails: [
+      { label: "Email", value: "Support@Africansacredscience.ai", href: "mailto:Support@Africansacredscience.ai" },
+      { label: "Website", value: "africansacredscience.ai", href: "https://africansacredscience.ai" },
+    ],
   },
 ];

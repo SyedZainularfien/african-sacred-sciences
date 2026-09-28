@@ -3,18 +3,20 @@ import Link from "next/link";
 import { Container } from "@/components/layout/container";
 import { Typography } from "@/components/ui/typography";
 import type { LegalSection } from "@/constants/legal";
-import { siteUrl } from "@/lib/site-url";
 
 interface LegalContentProps {
   title: string;
   accent: string;
   description: string;
   heroImage: string;
+  effectiveDate: string;
+  lastUpdated: string;
+  introduction: readonly string[];
   companion: { href: string; label: string };
   sections: readonly LegalSection[];
 }
 
-export function LegalContent({ title, accent, description, heroImage, companion, sections }: LegalContentProps) {
+export function LegalContent({ title, accent, description, heroImage, effectiveDate, lastUpdated, introduction, companion, sections }: LegalContentProps) {
   return (
     <main>
       <section className="relative isolate overflow-hidden bg-[#09050b] text-white">
@@ -82,7 +84,16 @@ export function LegalContent({ title, accent, description, heroImage, companion,
             <div className="flex flex-col gap-3 border-b border-plum/20 pb-8 sm:pb-10">
               <Typography as="span" variant="xs" className="font-semibold uppercase tracking-[0.2em] text-plum">African Sacred Science</Typography>
               <Typography as="h2" variant="h3" className="font-normal! leading-[1.15] text-[#241526]">{title} <span className="italic text-plum">{accent}</span></Typography>
+              <div className="flex flex-wrap gap-x-6 gap-y-2">
+                <Typography as="span" variant="xs" className="text-[#6a5d66]"><strong className="font-semibold text-plum">Effective Date:</strong> {effectiveDate}</Typography>
+                <Typography as="span" variant="xs" className="text-[#6a5d66]"><strong className="font-semibold text-plum">Last Updated:</strong> {lastUpdated}</Typography>
+              </div>
             </div>
+            <section aria-label={`${title} ${accent} introduction`} className="flex flex-col gap-5 border-b border-plum/15 py-8 sm:py-9">
+              {introduction.map((paragraph) => (
+                <Typography key={paragraph} variant="md" className="max-w-[760px] leading-[1.85] text-[#514850]">{paragraph}</Typography>
+              ))}
+            </section>
             {sections.map((section, index) => (
               <section key={section.title} id={`legal-section-${index + 1}`} aria-labelledby={`legal-heading-${index + 1}`} className="scroll-mt-10 flex flex-col gap-5 border-b border-plum/15 py-9 sm:gap-6 sm:py-11">
                 <div className="flex items-start gap-4 sm:gap-6">
@@ -104,11 +115,17 @@ export function LegalContent({ title, accent, description, heroImage, companion,
                     </ul>
                   )}
                   {section.closing && <Typography variant="md" className="leading-[1.85] text-[#514850]">{section.closing}</Typography>}
-                  {section.contact && (
-                    <a href={siteUrl.href} className="flex w-fit items-center gap-3 break-all border-b border-plum/30 pb-1 text-plum transition-colors hover:border-plum hover:text-[#3b0e34] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold">
-                      <Typography as="span" variant="mdMedium">{siteUrl.href}</Typography>
-                      <span aria-hidden="true">↗</span>
-                    </a>
+                  {section.contactDetails && (
+                    <div className="flex flex-col gap-3">
+                      {section.contactDetails.map(({ label, value, href }) => (
+                        <div key={label} className="flex flex-wrap items-baseline gap-x-2 gap-y-1">
+                          <Typography as="span" variant="sm" className="font-semibold text-[#342935]">{label}:</Typography>
+                          <a href={href} className="break-all text-plum underline decoration-plum/30 underline-offset-4 transition-colors hover:text-[#3b0e34] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold">
+                            <Typography as="span" variant="mdMedium">{value}</Typography>
+                          </a>
+                        </div>
+                      ))}
+                    </div>
                   )}
                 </div>
               </section>
