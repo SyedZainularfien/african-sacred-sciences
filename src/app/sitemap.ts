@@ -5,5 +5,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     { url: absoluteUrl("/") },
     { url: absoluteUrl("/doctrine") },
+    { url: absoluteUrl("/privacy-policy") },
+    { url: absoluteUrl("/terms-and-conditions") },
   ];
 }

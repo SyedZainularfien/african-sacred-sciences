@@ -49,12 +49,11 @@ function NavigationArrow({ active = false }: { active?: boolean }) {
   );
 }
 
-export function Header({ homePage = false }: { homePage?: boolean }) {
+export function Header({ homePage = false, activeItem = homePage ? "Home" : "The Doctrine" }: { homePage?: boolean; activeItem?: string | null }) {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const [menuOpen, setMenuOpen] = useState(false);
   const reduceMotion = useReducedMotion();
   const animate = useAnimationReady() && !reduceMotion;
-  const activeItem = homePage ? "Home" : "The Doctrine";
 
   useEffect(() => {
     if (!menuOpen) return;
