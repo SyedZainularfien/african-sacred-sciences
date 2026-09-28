@@ -19,7 +19,7 @@ export default function TermsAndConditionsPage() {
         title="Terms &"
         accent="Conditions"
         description="These Terms & Conditions govern your access to and use of this website."
-        heroImage="/images/legal/terms-hero.webp"
+        heroImage="/images/legal/terms-&-condition.png"
         effectiveDate="October 2026"
         lastUpdated="October 2026"
         introduction={termsIntroduction}

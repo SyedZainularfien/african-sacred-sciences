@@ -19,7 +19,7 @@ export default function PrivacyPolicyPage() {
         title="Privacy"
         accent="Policy"
         description="African Sacred Science™ respects your privacy and is committed to handling personal information responsibly and transparently."
-        heroImage="/images/legal/privacy-hero.webp"
+        heroImage="/images/legal/privacy-policy-hero.png"
         effectiveDate="October 2026"
         lastUpdated="October 2026"
         introduction={privacyIntroduction}
