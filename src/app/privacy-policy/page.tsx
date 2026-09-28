@@ -19,10 +19,11 @@ export default function PrivacyPolicyPage() {
         title="Privacy"
         accent="Policy"
         description="How information is handled when you visit African Sacred Science, and the choices available to you."
+        heroImage="/images/legal/privacy-hero.webp"
         companion={{ href: "/terms-and-conditions", label: "Terms & Conditions" }}
         sections={privacySections}
       />
-      <Footer homePage={false} />
+      <Footer homePage={false} creamCorners />
     </div>
   );
 }

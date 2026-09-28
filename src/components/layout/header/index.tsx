@@ -155,32 +155,33 @@ export function Header({ homePage = false, activeItem = homePage ? "Home" : "The
         onClick={(event) => {
           if (event.target === event.currentTarget) closeMenu();
         }}
-        className="fixed inset-0 m-0 h-dvh max-h-none w-full max-w-none flex-col items-center overflow-y-auto overscroll-contain bg-transparent px-5 py-[15px] text-white outline-none backdrop:bg-transparent open:flex sm:items-end sm:px-8 lg:px-[4.861111%]"
+        className="fixed inset-0 m-0 h-dvh max-h-none w-full max-w-none overflow-y-auto overscroll-contain bg-[#09050b] text-white outline-none backdrop:bg-[#09050b] open:block min-[90rem]:hidden"
       >
-        <motion.div
-          aria-hidden="true"
-          className="pointer-events-none fixed inset-0 bg-black/80"
-          initial={false}
-          animate={{ opacity: menuOpen ? 1 : 0 }}
-          transition={{ duration: reduceMotion ? 0 : 0.28 }}
-        />
         <motion.div
           data-motion-reveal
           initial={false}
-          animate={{ opacity: menuOpen ? 1 : 0, y: menuOpen ? 0 : 14 }}
-          transition={{ duration: reduceMotion ? 0 : 0.34, ease: motionTiming.ease }}
+          animate={{ opacity: menuOpen ? 1 : 0, y: menuOpen ? 0 : 12 }}
+          transition={{ duration: reduceMotion ? 0 : 0.32, ease: motionTiming.ease }}
           onAnimationComplete={() => {
             if (!menuOpen && dialogRef.current?.open) dialogRef.current.close();
           }}
-          className="relative flex w-full max-w-[420px] shrink-0 flex-col gap-5 rounded-[20px] border border-[#56304d] bg-[#140e16] p-4 sm:gap-6 sm:p-5"
+          className="relative isolate mx-auto flex min-h-dvh w-full max-w-[1120px] flex-col overflow-hidden px-5 pb-8 pt-5 sm:px-8 sm:pb-12 sm:pt-8 lg:px-12"
         >
-          <div className="flex shrink-0 items-center justify-between gap-3">
+          <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_75%_55%_at_85%_55%,rgba(107,27,92,0.38),transparent_78%),radial-gradient(ellipse_55%_50%_at_0%_0%,rgba(89,31,81,0.24),transparent_85%)]" />
+          <svg aria-hidden="true" className="pointer-events-none absolute -right-56 top-28 -z-10 h-[600px] w-[600px] opacity-40 sm:-right-28 sm:h-[800px] sm:w-[800px]" viewBox="0 0 800 800" fill="none">
+            <g stroke="#C69B34" strokeOpacity="0.2" strokeWidth="0.7">
+              <circle cx="400" cy="400" r="120" /><circle cx="400" cy="400" r="205" />
+              <circle cx="400" cy="400" r="290" /><circle cx="400" cy="400" r="375" />
+            </g>
+          </svg>
+
+          <div className="flex shrink-0 items-center justify-between gap-4 border-b border-gold/20 pb-6 sm:pb-8">
             <Brand onClick={closeMenu} />
             <button
               type="button"
               aria-label="Close navigation"
               onClick={closeMenu}
-              className="flex h-10 w-12 shrink-0 cursor-pointer items-center justify-center rounded-full border border-white/20 text-white/75 hover:border-white/40 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold"
+              className="flex size-11 shrink-0 cursor-pointer items-center justify-center rounded-full border border-gold/35 bg-white/[0.03] text-gold transition-colors hover:border-gold hover:bg-gold/10 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold sm:size-12"
             >
               <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" className="size-5">
                 <motion.line
@@ -198,68 +199,81 @@ export function Header({ homePage = false, activeItem = homePage ? "Home" : "The
             </button>
           </div>
 
-          <nav aria-label="Mobile navigation links">
-            <ul className="flex flex-col">
-              {navigationItems.map(({ label, href }, index) => {
-                const active = label === activeItem;
-                const content = (
-                  <>
-                    <Typography as="span" variant="md" className={`leading-6 ${active ? "font-semibold" : "font-normal"}`}>
-                      {label}
-                    </Typography>
-                    <NavigationArrow active={active} />
-                  </>
-                );
-                const rowClassName = `flex min-h-14 items-center justify-between gap-3 rounded-lg px-3 py-3 outline-offset-2 focus-visible:outline-2 focus-visible:outline-gold ${active ? "bg-[#3b1d35] text-[#e3b94e]" : "text-[#e6e0e6] hover:bg-white/[0.035] [&>svg]:text-[#a79aa7]"}`;
+          <div className="flex w-full max-w-[850px] flex-1 flex-col gap-7 py-9 sm:gap-10 sm:py-12">
+            <div className="flex flex-col gap-3">
+              <div className="flex items-center gap-3">
+                <span aria-hidden="true" className="h-px w-7 bg-gold" />
+                <Typography as="span" variant="xs" className="font-semibold uppercase tracking-[0.22em] text-gold">Explore the world of</Typography>
+              </div>
+              <Typography as="h2" variant="h2" className="font-normal! leading-none text-[clamp(2.75rem,6vw,4rem)]!">African <span className="bg-plum-gradient bg-clip-text italic text-transparent">Sacred Science.</span></Typography>
+            </div>
 
-                return (
-                  <motion.li
-                    key={label}
-                    data-motion-reveal
-                    initial={false}
-                    animate={{ opacity: menuOpen ? 1 : 0, y: menuOpen ? 0 : 8 }}
-                    transition={{ duration: reduceMotion ? 0 : 0.26, delay: reduceMotion || !menuOpen ? 0 : 0.07 + index * 0.045, ease: motionTiming.ease }}
-                    className="border-b border-[#382a36] py-1 first:pt-0 last:border-0 last:pb-0"
-                  >
-                    {href ? (
-                      href.includes("#") ? (
-                        <a
-                          href={homePage ? href.replace(/^\/#/, "#") : href}
-                          onClick={closeMenu}
-                          aria-current={active ? "page" : undefined}
-                          className={rowClassName}
-                        >
-                          {content}
-                        </a>
+            <nav aria-label="Mobile navigation links">
+              <ul className="flex flex-col">
+                {navigationItems.map(({ label, href }, index) => {
+                  const active = label === activeItem;
+                  const content = (
+                    <>
+                      <Typography as="span" variant="xs" className="w-8 shrink-0 font-medium tabular-nums tracking-[0.1em] text-gold/75">{String(index + 1).padStart(2, "0")}</Typography>
+                      <Typography as="span" variant="h5" className={`min-w-0 flex-1 font-normal! leading-[1.15] max-sm:text-[1.4rem]! ${active ? "text-gold" : "text-white/85"}`}>
+                        {label}
+                      </Typography>
+                      <span aria-hidden="true" className={`flex size-8 shrink-0 items-center justify-center rounded-full border transition-colors ${active ? "border-gold/55 text-gold" : "border-white/15 text-white/50 group-hover:border-gold/50 group-hover:text-gold"}`}>
+                        <NavigationArrow active={active} />
+                      </span>
+                    </>
+                  );
+                  const rowClassName = "group flex min-h-[62px] items-center gap-3 py-3 outline-offset-2 transition-colors hover:[&>span:nth-child(2)]:text-gold focus-visible:outline-2 focus-visible:outline-gold sm:min-h-[70px] sm:gap-5";
+
+                  return (
+                    <motion.li
+                      key={label}
+                      data-motion-reveal
+                      initial={false}
+                      animate={{ opacity: menuOpen ? 1 : 0, y: menuOpen ? 0 : 8 }}
+                      transition={{ duration: reduceMotion ? 0 : 0.26, delay: reduceMotion || !menuOpen ? 0 : 0.07 + index * 0.045, ease: motionTiming.ease }}
+                      className="border-b border-gold/15 first:border-t"
+                    >
+                      {href ? (
+                        href.includes("#") ? (
+                          <a
+                            href={homePage ? href.replace(/^\/#/, "#") : href}
+                            onClick={closeMenu}
+                            aria-current={active ? "page" : undefined}
+                            className={rowClassName}
+                          >
+                            {content}
+                          </a>
+                        ) : (
+                          <Link href={href} onClick={closeMenu} aria-current={active ? "page" : undefined} className={rowClassName}>
+                            {content}
+                          </Link>
+                        )
                       ) : (
-                        <Link href={href} onClick={closeMenu} aria-current={active ? "page" : undefined} className={rowClassName}>
-                          {content}
-                        </Link>
-                      )
-                    ) : (
-                      <div className={rowClassName}>{content}</div>
-                    )}
-                  </motion.li>
-                );
-              })}
-            </ul>
-          </nav>
+                        <div className={rowClassName}>{content}</div>
+                      )}
+                    </motion.li>
+                  );
+                })}
+              </ul>
+            </nav>
+          </div>
 
-          <div className="flex shrink-0 flex-col items-center gap-4">
+          <div className="flex shrink-0 flex-col gap-5 border-t border-gold/20 pt-6 sm:flex-row sm:items-center sm:justify-between sm:gap-8 sm:pt-8">
+            <div className="flex flex-col gap-2">
+              <Typography as="span" variant="xs" className="font-semibold uppercase tracking-[0.2em] text-gold">Go deeper</Typography>
+              <Typography variant="sm" className="leading-5 text-white/55">Remember · Align · Flourish.</Typography>
+            </div>
             <ButtonLink
               href="https://oriinu.ai/"
               target="_blank"
               rel="noopener noreferrer"
               onClick={closeMenu}
-              width="full"
               showArrow
-              className="min-h-14 bg-[#e0b64d] bg-none! text-[#211705] hover:bg-[#ebc35d] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold [&>span]:text-md! [&>span]:font-semibold"
+              className="min-h-13 w-full border-0 bg-gold-gradient px-6 text-[#211705] transition-[filter] hover:brightness-110 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold sm:w-auto [&>span]:text-sm! [&>span]:font-semibold"
             >
               Experience ORIINU
             </ButtonLink>
-            <Typography variant="sm" className="text-center leading-5 tracking-[0.01em] text-[#d2ac50]">
-              Remember · Align · Flourish.
-            </Typography>
           </div>
         </motion.div>
       </dialog>

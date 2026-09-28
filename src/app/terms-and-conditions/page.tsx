@@ -19,10 +19,11 @@ export default function TermsAndConditionsPage() {
         title="Terms &"
         accent="Conditions"
         description="A clear guide to using this website and engaging with the ideas and information shared here."
+        heroImage="/images/legal/terms-hero.webp"
         companion={{ href: "/privacy-policy", label: "Privacy Policy" }}
         sections={termsSections}
       />
-      <Footer homePage={false} />
+      <Footer homePage={false} creamCorners />
     </div>
   );
 }

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Container } from "@/components/layout/container";
 import { Typography } from "@/components/ui/typography";
@@ -8,11 +9,12 @@ interface LegalContentProps {
   title: string;
   accent: string;
   description: string;
+  heroImage: string;
   companion: { href: string; label: string };
   sections: readonly LegalSection[];
 }
 
-export function LegalContent({ title, accent, description, companion, sections }: LegalContentProps) {
+export function LegalContent({ title, accent, description, heroImage, companion, sections }: LegalContentProps) {
   return (
     <main>
       <section className="relative isolate overflow-hidden bg-[#09050b] text-white">
@@ -23,22 +25,35 @@ export function LegalContent({ title, accent, description, companion, sections }
             <circle cx="400" cy="400" r="290" /><circle cx="400" cy="400" r="375" />
           </g>
         </svg>
-        <Container className="relative flex max-w-[1440px] flex-col gap-9 pb-20 pt-44 sm:pb-24 sm:pt-48 lg:gap-12 lg:pb-28 lg:pt-52">
-          <div className="flex items-center gap-4">
-            <span aria-hidden="true" className="h-px w-8 bg-gold" />
-            <Typography as="span" variant="xs" className="font-semibold uppercase tracking-[0.24em] text-gold">The essentials</Typography>
+        <Container className="relative flex max-w-[1440px] flex-col gap-9 pb-20 pt-44 sm:pb-24 sm:pt-48 lg:flex-row lg:items-center lg:gap-10 lg:pb-20 lg:pt-40">
+          <div className="flex min-w-0 flex-1 flex-col gap-9 lg:gap-12">
+            <div className="flex items-center gap-4">
+              <span aria-hidden="true" className="h-px w-8 bg-gold" />
+              <Typography as="span" variant="xs" className="font-semibold uppercase tracking-[0.24em] text-gold">The essentials</Typography>
+            </div>
+            <div className="flex max-w-[800px] flex-col gap-7">
+              <Typography as="h1" variant="h1" className="flex flex-col font-normal! leading-[0.98]! tracking-[-0.025em] text-[clamp(3.75rem,8vw,7.5rem)]!">
+                <span>{title}</span>
+                <span className="bg-[linear-gradient(100deg,#e9b4df_0%,#c789bb_55%,#ae609e_100%)] bg-clip-text italic text-transparent">{accent}</span>
+              </Typography>
+              <Typography variant="lg" className="max-w-[620px] leading-[1.8] text-white/70">{description}</Typography>
+            </div>
+            <a href="#legal-content" className="flex w-fit items-center gap-3 text-gold transition-colors hover:text-white focus-visible:rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold">
+              <Typography as="span" variant="xs" className="font-semibold uppercase tracking-[0.18em]">Explore the document</Typography>
+              <span aria-hidden="true" className="text-xl leading-none">↓</span>
+            </a>
           </div>
-          <div className="flex max-w-[800px] flex-col gap-7">
-            <Typography as="h1" variant="h1" className="flex flex-col font-normal! leading-[0.98]! tracking-[-0.025em] text-[clamp(3.75rem,8vw,7.5rem)]!">
-              <span>{title}</span>
-              <span className="bg-[linear-gradient(100deg,#e9b4df_0%,#c789bb_55%,#ae609e_100%)] bg-clip-text italic text-transparent">{accent}</span>
-            </Typography>
-            <Typography variant="lg" className="max-w-[620px] leading-[1.8] text-white/70">{description}</Typography>
+          <div className="hidden lg:flex lg:w-[42%] lg:max-w-[480px] lg:shrink-0 lg:items-center lg:justify-center">
+            <Image
+              src={heroImage}
+              alt=""
+              aria-hidden="true"
+              width={1024}
+              height={1536}
+              sizes="(min-width: 1440px) 480px, (min-width: 1024px) 42vw, 0px"
+              className="h-auto max-h-[560px] w-full object-contain"
+            />
           </div>
-          <a href="#legal-content" className="flex w-fit items-center gap-3 text-gold transition-colors hover:text-white focus-visible:rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold">
-            <Typography as="span" variant="xs" className="font-semibold uppercase tracking-[0.18em]">Explore the document</Typography>
-            <span aria-hidden="true" className="text-xl leading-none">↓</span>
-          </a>
         </Container>
       </section>
 
