@@ -4,8 +4,8 @@ export const navigationItems = [
   { label: "The Doctrine", href: "/doctrine" },
   { label: "Research", href: "/#research" },
   { label: "ORIINU", href: "/#oriinu" },
-  { label: "Books", href: "/#books" },
-  { label: "Academy", href: "/#academy" },
+  { label: "Books", href: "/#ecosystem" },
+  { label: "Academy", href: "/#ecosystem" },
   { label: "About", href: "/#founders" },
 ];
 
@@ -14,8 +14,8 @@ export const navigation = [
   { label: "African Sacred Science", href: "#african-sacred-science" },
   { label: "Research", href: "#research" },
   { label: "ORIINU", href: "#oriinu" },
-  { label: "Books" },
-  { label: "Academy" },
+  { label: "Books", href: "#ecosystem" },
+  { label: "Academy", href: "#ecosystem" },
   { label: "About", href: "#founders" },
 ] as const;
 

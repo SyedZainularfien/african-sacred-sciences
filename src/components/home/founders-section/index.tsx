@@ -44,7 +44,7 @@ export function FoundersSection() {
                   alt={name}
                   width={1587}
                   height={840}
-                  sizes="(min-width: 1024px) 37vw, (min-width: 768px) 45vw, 100vw"
+                  sizes="(min-width: 1200px) 530px, (min-width: 768px) calc(45vw - 10px), (min-width: 640px) calc(100vw - 64px), calc(100vw - 40px)"
                   className="h-auto w-full lg:aspect-[528/280] lg:object-cover"
                 />
                 <div className="flex min-h-[77px] flex-1 items-center px-5 py-6 sm:px-7 lg:items-start lg:pb-5 lg:pt-[28px]">

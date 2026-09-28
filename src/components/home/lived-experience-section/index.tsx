@@ -9,6 +9,7 @@ import { Typography } from "@/components/ui/typography";
 import { Container } from "@/components/layout/container";
 import { reflectionQuestions } from "@/constants/home";
 import { motionTiming } from "@/lib/motion";
+import { useAnimationReady } from "@/lib/use-animation-ready";
 
 const textReveal: Variants = {
   hidden: { opacity: 0, y: 14 },
@@ -39,6 +40,7 @@ const photoReveal: Variants = {
 
 export function LivedExperienceSection() {
   const reduceMotion = useReducedMotion();
+  const animate = useAnimationReady() && !reduceMotion;
   const sectionRef = useRef<HTMLElement>(null);
   const questionsRef = useRef<HTMLUListElement>(null);
   const conclusionRef = useRef<HTMLDivElement>(null);
@@ -114,7 +116,7 @@ export function LivedExperienceSection() {
       <Container className="flex flex-col items-center gap-10 sm:gap-12 xl:flex-row xl:items-start xl:gap-[90px]">
         <div className="flex w-full min-w-0 flex-col gap-8 xl:w-[570px] xl:shrink-0">
           <div className="flex flex-col gap-10 xl:gap-[52px]">
-            <motion.div initial={reduceMotion ? false : "hidden"} whileInView="visible" viewport={{ once: true, amount: 0.4 }} className="flex flex-col gap-[30px]">
+            <motion.div key={animate ? "animated" : "static"} initial={animate ? "hidden" : false} whileInView="visible" viewport={{ once: true, amount: 0.4 }} className="flex flex-col gap-[30px]">
               <div className="flex flex-col gap-5">
                 <motion.div data-motion-reveal custom={0} variants={textReveal}>
                   <Typography variant="xs" className="font-semibold uppercase leading-[17px] tracking-[2.42px] text-gold">From Knowledge to Lived Experience</Typography>
@@ -136,14 +138,14 @@ export function LivedExperienceSection() {
               ))}
             </ul>
           </div>
-          <motion.div ref={conclusionRef} data-motion-reveal initial={reduceMotion ? false : "hidden"} whileInView="visible" viewport={{ once: true, amount: 0.6 }} variants={textReveal} custom={0}>
+          <motion.div key={animate ? "animated" : "static"} ref={conclusionRef} data-motion-reveal initial={animate ? "hidden" : false} whileInView="visible" viewport={{ once: true, amount: 0.6 }} variants={textReveal} custom={0}>
             <Typography variant="lg" className="flex min-h-[49px] w-full max-w-[563px] items-center border-l-4 border-gold bg-[linear-gradient(90deg,#eec97c,transparent)] px-[26px] py-2 font-semibold leading-[25px]">This Is Where ORIINU™ Comes To Life.</Typography>
           </motion.div>
         </div>
         <div className="w-full max-w-[640px] xl:w-[calc(100%_-_660px)] xl:pt-[25px]">
-          <motion.div ref={photoFrameRef} data-motion-reveal initial={reduceMotion ? false : "hidden"} whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={photoReveal} className="overflow-hidden rounded-[6%]">
+          <motion.div key={animate ? "animated" : "static"} ref={photoFrameRef} data-motion-reveal initial={animate ? "hidden" : false} whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={photoReveal} className="overflow-hidden rounded-[6%]">
             <div ref={photoRef} className={reduceMotion ? undefined : "scale-[1.02]"}>
-              <Image src="/images/knowledge-live-exp-right-section.png" alt="Two speakers sharing African Sacred Science with a seated audience" width={1280} height={1414} sizes="(min-width: 1280px) 45vw, (min-width: 768px) 640px, 100vw" className="h-auto w-full" />
+              <Image src="/images/knowledge-live-exp-right-section.webp" alt="Two speakers sharing African Sacred Science with a seated audience" width={1280} height={1414} sizes="(min-width: 1440px) 640px, (min-width: 1280px) calc(90vw - 660px), (min-width: 640px) min(640px, calc(100vw - 64px)), calc(100vw - 40px)" className="h-auto w-full" />
             </div>
           </motion.div>
         </div>

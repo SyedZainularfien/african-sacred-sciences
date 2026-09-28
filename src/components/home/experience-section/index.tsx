@@ -1,6 +1,5 @@
-"use client";
 import { Container } from "@/components/layout/container";
-import { Button } from "@/components/ui/button";
+import { ButtonLink } from "@/components/ui/button";
 import { Typography } from "@/components/ui/typography";
 import { ScrollReveal } from "@/components/ui/scroll-reveal";
 
@@ -48,16 +47,16 @@ export function ExperienceSection() {
           </div>
         </div>
         <ScrollReveal delay={0.48}>
-          <Button
-            onClick={() =>
-              window.open("https://oriinu.ai/", "_blank", "noopener,noreferrer")
-            }
+          <ButtonLink
+            href="https://oriinu.ai/"
+            target="_blank"
+            rel="noopener noreferrer"
             showArrow
             size="compact"
             className="h-[54px] uppercase tracking-[0.1em] [&_span]:text-sm! [&_svg]:h-4 [&_svg]:w-4"
           >
             Launch ORIINU
-          </Button>
+          </ButtonLink>
         </ScrollReveal>
       </Container>
     </section>

@@ -1,14 +1,12 @@
 "use client";
 
-import { useEffect, useRef } from "react";
 import Image from "next/image";
 import { motion, useReducedMotion, type Variants } from "motion/react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Container } from "@/components/layout/container";
 import { Typography } from "@/components/ui/typography";
 import { features } from "@/constants/home";
 import { motionTiming } from "@/lib/motion";
+import { useAnimationReady } from "@/lib/use-animation-ready";
 
 const headingReveal: Variants = {
   hidden: { opacity: 0, y: 16 },
@@ -37,78 +35,21 @@ const closingReveal: Variants = {
   },
 };
 
+const cardReveal: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: (index: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.58, delay: index * 0.08, ease: motionTiming.ease },
+  }),
+};
+
 export function FeatureSection() {
   const reduceMotion = useReducedMotion();
-  const sectionRef = useRef<HTMLElement>(null);
-  const gridRef = useRef<HTMLUListElement>(null);
-
-  useEffect(() => {
-    if (reduceMotion || !sectionRef.current || !gridRef.current) return;
-
-    gsap.registerPlugin(ScrollTrigger);
-    const cards = Array.from(gridRef.current.children) as HTMLLIElement[];
-    const icons = cards.map((card) => card.querySelector("img") as HTMLImageElement);
-    const context = gsap.context(() => {
-      const media = gsap.matchMedia();
-
-      media.add("(min-width: 1280px)", () => {
-        const diagonalOrder = [0, 1, 3, 2, 4, 6, 5, 7, 8];
-        gsap.set(cards, { opacity: 0, y: 20 });
-        gsap.set(icons, { opacity: 0.6, scale: 0.94 });
-
-        const reveal = gsap.timeline({
-          scrollTrigger: { trigger: gridRef.current, start: "top 82%", once: true },
-        });
-        diagonalOrder.forEach((index, position) => {
-          const at = position * 0.1;
-          reveal.to(cards[index], { opacity: 1, y: 0, duration: 0.58, ease: "power2.out" }, at);
-          reveal.to(icons[index], { opacity: 1, scale: 1, duration: 0.42, ease: "power2.out" }, at + 0.12);
-        });
-      });
-
-      media.add("(max-width: 1279px)", () => {
-        cards.forEach((card, index) => {
-          gsap.set(card, { opacity: 0, y: 20 });
-          gsap.set(icons[index], { opacity: 0.6, scale: 0.94 });
-          const reveal = gsap.timeline({
-            scrollTrigger: { trigger: card, start: "top 88%", once: true },
-          });
-          reveal.to(card, { opacity: 1, y: 0, duration: 0.58, ease: "power2.out" });
-          reveal.to(icons[index], { opacity: 1, scale: 1, duration: 0.42, ease: "power2.out" }, "<0.12");
-        });
-      });
-
-      media.add("(min-width: 1024px) and (hover: hover) and (pointer: fine)", () => {
-        const enter = cards.map((card, index) => () => {
-          gsap.to(card, { y: -4, borderColor: "rgba(198, 155, 52, 0.38)", duration: 0.26, ease: "power2.out", overwrite: "auto" });
-          gsap.to(icons[index], { scale: 1.05, duration: 0.26, ease: "power2.out", overwrite: "auto" });
-        });
-        const leave = cards.map((card, index) => () => {
-          gsap.to(card, { y: 0, borderColor: "rgba(198, 155, 52, 0.18)", duration: 0.26, ease: "power2.out", overwrite: "auto" });
-          gsap.to(icons[index], { scale: 1, duration: 0.26, ease: "power2.out", overwrite: "auto" });
-        });
-        cards.forEach((card, index) => {
-          card.addEventListener("mouseenter", enter[index]);
-          card.addEventListener("mouseleave", leave[index]);
-        });
-        return () => {
-          cards.forEach((card, index) => {
-            card.removeEventListener("mouseenter", enter[index]);
-            card.removeEventListener("mouseleave", leave[index]);
-          });
-          gsap.killTweensOf([...cards, ...icons]);
-        };
-      });
-
-      return () => media.revert();
-    }, sectionRef);
-
-    return () => context.revert();
-  }, [reduceMotion]);
+  const animate = useAnimationReady() && !reduceMotion;
 
   return (
     <section
-      ref={sectionRef}
       aria-labelledby="wisdom-for-the-future"
       className="pb-[60px] pt-16 text-white sm:pt-20"
       style={{
@@ -119,7 +60,8 @@ export function FeatureSection() {
       <Container className="flex flex-col items-center gap-10">
         <div className="flex w-full flex-col items-center gap-12 lg:gap-[72px]">
           <motion.div
-            initial={reduceMotion ? false : "hidden"}
+            key={animate ? "animated" : "static"}
+            initial={animate ? "hidden" : false}
             whileInView="visible"
             viewport={{ once: true, amount: 0.35 }}
             className="flex w-full max-w-[1009px] flex-col items-center gap-5 text-center"
@@ -167,11 +109,17 @@ export function FeatureSection() {
             </motion.div>
           </motion.div>
 
-          <ul ref={gridRef} className="flex w-full flex-wrap gap-5">
-            {features.map(({ title, question, icon }) => (
-              <li
-                key={title}
+          <ul className="flex w-full flex-wrap gap-5">
+            {features.map(({ title, question, icon }, index) => (
+              <motion.li
+                key={`${title}-${animate ? "animated" : "static"}`}
                 data-wisdom-card
+                data-motion-reveal
+                initial={animate ? "hidden" : false}
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.2 }}
+                variants={cardReveal}
+                custom={index}
                 className="flex min-h-[125px] w-full items-center gap-5 rounded-[20px] border border-gold/18 bg-white/5 px-5 py-[23px] md:w-[calc((100%_-_20px)/2)] xl:w-[calc((100%_-_40px)/3)] xl:gap-10 xl:px-10"
               >
                 <Image
@@ -185,13 +133,14 @@ export function FeatureSection() {
                   <Typography as="h3" variant="xl" className="font-semibold leading-[1.2] xl:[text-box-trim:trim-both] xl:[text-box-edge:cap_alphabetic]">{title}</Typography>
                   <Typography as="p" variant="md" className="leading-[22px] text-grey xl:[text-box-trim:trim-both] xl:[text-box-edge:cap_alphabetic]">{question}</Typography>
                 </div>
-              </li>
+              </motion.li>
             ))}
           </ul>
         </div>
         <motion.div
           data-motion-reveal
-          initial={reduceMotion ? false : "hidden"}
+          key={animate ? "animated" : "static"}
+          initial={animate ? "hidden" : false}
           whileInView="visible"
           viewport={{ once: true, amount: 0.6 }}
           variants={closingReveal}

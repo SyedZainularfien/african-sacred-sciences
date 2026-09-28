@@ -5,11 +5,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, useReducedMotion } from "motion/react";
 import { Container } from "@/components/layout/container";
-import { Button } from "@/components/ui/button";
+import { ButtonLink } from "@/components/ui/button";
 import { Typography } from "@/components/ui/typography";
 
 import { navigationItems } from "@/constants/navigation";
 import { motionTiming } from "@/lib/motion";
+import { useAnimationReady } from "@/lib/use-animation-ready";
 
 function Brand({ onClick }: { onClick?: () => void }) {
   return (
@@ -20,11 +21,11 @@ function Brand({ onClick }: { onClick?: () => void }) {
       className="block shrink-0 rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold"
     >
       <Image
-        src="/images/header-logo.png"
+        src="/images/header-logo.webp"
         alt="African Sacred Science"
         width={328}
         height={99}
-        priority
+        loading="eager"
         className="h-auto w-[164px] min-[375px]:w-[180px] sm:w-[200px] min-[90rem]:w-[164px]"
       />
     </Link>
@@ -52,6 +53,7 @@ export function Header({ homePage = false }: { homePage?: boolean }) {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const [menuOpen, setMenuOpen] = useState(false);
   const reduceMotion = useReducedMotion();
+  const animate = useAnimationReady() && !reduceMotion;
   const activeItem = homePage ? "Home" : "The Doctrine";
 
   useEffect(() => {
@@ -82,7 +84,8 @@ export function Header({ homePage = false }: { homePage?: boolean }) {
       <Container>
         <motion.div
           data-motion-reveal
-          initial={reduceMotion ? false : { opacity: 0, y: -12 }}
+          key={animate ? "animated" : "static"}
+          initial={animate ? { opacity: 0, y: -12 } : false}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: motionTiming.entrance, ease: motionTiming.ease }}
           className="flex items-center justify-between gap-4 rounded-[18px] border border-white/5 bg-[#100e12] p-3 pl-4 sm:px-5 sm:py-4 min-[90rem]:min-h-[68px] min-[90rem]:gap-10 min-[90rem]:rounded-[20px] min-[90rem]:border-white/25 min-[90rem]:bg-[#d9d9d9]/20 min-[90rem]:py-2 min-[90rem]:pl-[19px] min-[90rem]:pr-[10px] min-[90rem]:backdrop-blur-sm"
@@ -93,23 +96,34 @@ export function Header({ homePage = false }: { homePage?: boolean }) {
             <ul className="flex items-center justify-start gap-[25px] whitespace-nowrap text-sm leading-6">
               {navigationItems.map(({ label, href }) => (
                 <li key={label}>
-                  <Link href={href} className="hover:text-gold focus-visible:outline-2 focus-visible:outline-gold">
-                    <Typography as="span" variant="sm">{label}</Typography>
-                  </Link>
+                  {href.includes("#") ? (
+                    <a
+                      href={homePage ? href.replace(/^\/#/, "#") : href}
+                      className="hover:text-gold focus-visible:outline-2 focus-visible:outline-gold"
+                    >
+                      <Typography as="span" variant="sm">{label}</Typography>
+                    </a>
+                  ) : (
+                    <Link href={href} className="hover:text-gold focus-visible:outline-2 focus-visible:outline-gold">
+                      <Typography as="span" variant="sm">{label}</Typography>
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>
           </nav>
 
           <div className="hidden shrink-0 min-[90rem]:block">
-            <Button
+            <ButtonLink
+              href="https://oriinu.ai/"
+              target="_blank"
+              rel="noopener noreferrer"
               size="compact"
               className="h-[46px] w-[214px]"
               showArrow
-              onClick={() => window.open("https://oriinu.ai/", "_blank", "noopener,noreferrer")}
             >
               Experience ORIINU
-            </Button>
+            </ButtonLink>
           </div>
 
           <button
@@ -209,9 +223,20 @@ export function Header({ homePage = false }: { homePage?: boolean }) {
                     className="border-b border-[#382a36] py-1 first:pt-0 last:border-0 last:pb-0"
                   >
                     {href ? (
-                      <Link href={href} onClick={closeMenu} aria-current={active ? "page" : undefined} className={rowClassName}>
-                        {content}
-                      </Link>
+                      href.includes("#") ? (
+                        <a
+                          href={homePage ? href.replace(/^\/#/, "#") : href}
+                          onClick={closeMenu}
+                          aria-current={active ? "page" : undefined}
+                          className={rowClassName}
+                        >
+                          {content}
+                        </a>
+                      ) : (
+                        <Link href={href} onClick={closeMenu} aria-current={active ? "page" : undefined} className={rowClassName}>
+                          {content}
+                        </Link>
+                      )
                     ) : (
                       <div className={rowClassName}>{content}</div>
                     )}
@@ -222,14 +247,17 @@ export function Header({ homePage = false }: { homePage?: boolean }) {
           </nav>
 
           <div className="flex shrink-0 flex-col items-center gap-4">
-            <Button
+            <ButtonLink
+              href="https://oriinu.ai/"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={closeMenu}
               width="full"
               showArrow
-              onClick={() => window.open("https://oriinu.ai/", "_blank", "noopener,noreferrer")}
               className="min-h-14 bg-[#e0b64d] bg-none! text-[#211705] hover:bg-[#ebc35d] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold [&>span]:text-md! [&>span]:font-semibold"
             >
               Experience ORIINU
-            </Button>
+            </ButtonLink>
             <Typography variant="sm" className="text-center leading-5 tracking-[0.01em] text-[#d2ac50]">
               Remember · Align · Flourish.
             </Typography>

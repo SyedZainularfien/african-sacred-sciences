@@ -20,6 +20,17 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
+## SEO site URL
+
+`SITE_URL` is the single origin used for canonical links, Open Graph page URLs,
+`sitemap.xml`, and the sitemap reference in `robots.txt`. The default origin is
+`https://african-sacred-sciences.com`, the planned production domain.
+
+If `SITE_URL` is set in a deployment environment, set it to
+`https://african-sacred-sciences.com` (without a trailing path, query, or
+fragment). Production rejects placeholder and local domains. Configure the
+domain and HTTPS in hosting before publishing; the URL is not live yet.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
