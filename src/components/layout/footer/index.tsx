@@ -41,9 +41,9 @@ function SocialMarks() {
   );
 }
 
-export function Footer({ homePage = true }: { homePage?: boolean }) {
+export function Footer({ homePage = true, creamCorners = false }: { homePage?: boolean; creamCorners?: boolean }) {
   return (
-    <footer className="bg-black text-white">
+    <footer className={`${creamCorners ? "bg-background-yellow" : "bg-black"} text-white`}>
       <div className="overflow-hidden rounded-t-[72px] border-t border-plum bg-black sm:rounded-t-[100px]">
         <Container className="flex min-h-[220px] flex-col items-center justify-center gap-8 py-14 lg:min-h-0 lg:flex-row lg:justify-between lg:gap-10 lg:py-20">
           <ScrollReveal as="nav" aria-label="Footer navigation">

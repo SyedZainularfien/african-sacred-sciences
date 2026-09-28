@@ -24,10 +24,10 @@ This project uses [`next/font`](https://nextjs.org/docs/app/building-your-applic
 
 `SITE_URL` is the single origin used for canonical links, Open Graph page URLs,
 `sitemap.xml`, and the sitemap reference in `robots.txt`. The default origin is
-`https://african-sacred-sciences.com`, the planned production domain.
+`https://africansacredscience.ai`, the planned production domain.
 
 If `SITE_URL` is set in a deployment environment, set it to
-`https://african-sacred-sciences.com` (without a trailing path, query, or
+`https://africansacredscience.ai` (without a trailing path, query, or
 fragment). Production rejects placeholder and local domains. Configure the
 domain and HTTPS in hosting before publishing; the URL is not live yet.
 

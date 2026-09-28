@@ -1,4 +1,4 @@
-const productionSiteUrl = "https://african-sacred-sciences.com";
+const productionSiteUrl = "https://africansacredscience.ai";
 
 function resolveSiteUrl(): URL {
   const configuredUrl = process.env.SITE_URL?.trim();
