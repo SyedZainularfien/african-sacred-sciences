@@ -35,6 +35,15 @@ const closingReveal: Variants = {
   },
 };
 
+const cardReveal: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: (index: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.58, delay: index * 0.08, ease: motionTiming.ease },
+  }),
+};
+
 export function FeatureSection() {
   const reduceMotion = useReducedMotion();
   const animate = useAnimationReady() && !reduceMotion;
@@ -101,10 +110,16 @@ export function FeatureSection() {
           </motion.div>
 
           <ul className="flex w-full flex-wrap gap-5">
-            {features.map(({ title, question, icon }) => (
-              <li
-                key={title}
+            {features.map(({ title, question, icon }, index) => (
+              <motion.li
+                key={`${title}-${animate ? "animated" : "static"}`}
                 data-wisdom-card
+                data-motion-reveal
+                initial={animate ? "hidden" : false}
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.2 }}
+                variants={cardReveal}
+                custom={index}
                 className="flex min-h-[125px] w-full items-center gap-5 rounded-[20px] border border-gold/18 bg-white/5 px-5 py-[23px] md:w-[calc((100%_-_20px)/2)] xl:w-[calc((100%_-_40px)/3)] xl:gap-10 xl:px-10"
               >
                 <Image
@@ -118,7 +133,7 @@ export function FeatureSection() {
                   <Typography as="h3" variant="xl" className="font-semibold leading-[1.2] xl:[text-box-trim:trim-both] xl:[text-box-edge:cap_alphabetic]">{title}</Typography>
                   <Typography as="p" variant="md" className="leading-[22px] text-grey xl:[text-box-trim:trim-both] xl:[text-box-edge:cap_alphabetic]">{question}</Typography>
                 </div>
-              </li>
+              </motion.li>
             ))}
           </ul>
         </div>

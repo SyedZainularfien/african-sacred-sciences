@@ -46,6 +46,15 @@ const ctaReveal: Variants = {
   },
 };
 
+const cardReveal: Variants = {
+  hidden: { opacity: 0, y: 16 },
+  visible: (index: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.62, delay: index * 0.1, ease: motionTiming.ease },
+  }),
+};
+
 function AlignmentDiagram() {
   return (
     <svg
@@ -101,8 +110,17 @@ export function CommunitySection() {
               </motion.div>
             </motion.header>
             <ul className="flex w-full flex-wrap justify-center gap-[10px]">
-              {principles.map(({ name, alignment, description, icon }) => (
-                <li key={name} className="flex w-full flex-col items-center gap-[14px] rounded-[18px] border border-gold/18 bg-white/[0.035] px-[22px] pb-[19px] pt-8 text-center sm:w-[calc((100%_-_10px)/2)] lg:w-[calc((100%_-_20px)/3)] xl:min-h-[270px] xl:w-[calc((100%_-_40px)/5)]">
+              {principles.map(({ name, alignment, description, icon }, index) => (
+                <motion.li
+                  key={`${name}-${animate ? "animated" : "static"}`}
+                  data-motion-reveal
+                  initial={animate ? "hidden" : false}
+                  whileInView="visible"
+                  viewport={{ once: true, amount: 0.2 }}
+                  variants={cardReveal}
+                  custom={index}
+                  className="flex w-full flex-col items-center gap-[14px] rounded-[18px] border border-gold/18 bg-white/[0.035] px-[22px] pb-[19px] pt-8 text-center sm:w-[calc((100%_-_10px)/2)] lg:w-[calc((100%_-_20px)/3)] xl:min-h-[270px] xl:w-[calc((100%_-_40px)/5)]"
+                >
                   <div className="flex flex-col items-center gap-4">
                     <Image src={`/images/foundational-philosophy/${icon}`} alt="" width={88} height={88} className="h-11 w-11 object-contain" />
                     <div className="flex flex-col items-center gap-3">
@@ -112,7 +130,7 @@ export function CommunitySection() {
                   </div>
                   <span aria-hidden="true" className="h-px w-6 shrink-0 bg-gold/20" />
                   <Typography variant="sm" className="max-w-[240px] leading-[21.45px] text-white/75">{description}</Typography>
-                </li>
+                </motion.li>
               ))}
             </ul>
           </div>
