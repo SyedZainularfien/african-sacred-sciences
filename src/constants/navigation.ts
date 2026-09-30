@@ -7,6 +7,7 @@ export const navigationItems = [
   { label: "Books", href: "/#ecosystem" },
   { label: "Academy", href: "/#ecosystem" },
   { label: "About", href: "/#founders" },
+  { label: "Contact Us", href: "/contact-us" },
 ];
 
 export const navigation = [
@@ -17,6 +18,7 @@ export const navigation = [
   { label: "Books", href: "#ecosystem" },
   { label: "Academy", href: "#ecosystem" },
   { label: "About", href: "#founders" },
+  { label: "Contact Us", href: "/contact-us" },
 ] as const;
 
 export const socialIcons = [
