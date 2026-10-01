@@ -56,7 +56,7 @@ function NavigationArrow({ active = false }: { active?: boolean }) {
 export function Header({ homePage = false, activeItem = homePage ? "Home" : "The Doctrine" }: { homePage?: boolean; activeItem?: string | null }) {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const anchorNavigationRef = useRef(false);
-  const anchorNavigationTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const anchorNavigationTimerRef = useRef<number | null>(null);
   const [menuOpen, setMenuOpen] = useState(false);
   const [headerHidden, setHeaderHidden] = useState(false);
   const reduceMotion = useReducedMotion();
