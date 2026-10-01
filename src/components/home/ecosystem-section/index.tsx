@@ -22,10 +22,10 @@ export function EcosystemSection() {
       aria-labelledby="ecosystem-title"
       className={`${styles.section} bg-[#0d0319] py-16 text-white sm:py-20`}
     >
-      <Container className={`${styles.content} flex flex-col gap-10 sm:gap-12`}>
+      <Container className={`${styles.content} flex flex-col gap-12 sm:gap-14 lg:gap-16`}>
         <ScrollReveal
           as="header"
-          className={`${styles.heading} flex flex-col items-center gap-5 text-center`}
+          className={`${styles.heading} flex flex-col items-center gap-8 text-center sm:gap-8`}
         >
           <Typography
             as="p"
@@ -38,7 +38,7 @@ export function EcosystemSection() {
             as="h2"
             variant="mdMedium"
             id="ecosystem-title"
-            className="flex flex-col gap-5 max-lg:[font-size:clamp(2rem,3.4vw,3rem)]! leading-[52px] lg:[text-box-trim:trim-both] lg:[text-box-edge:cap_alphabetic]"
+            className="flex flex-col gap-5 max-lg:[font-size:clamp(2rem,3.4vw,3rem)]! leading-[1.2] sm:gap-8 lg:leading-[52px]"
           >
             <span>One Body of Knowledge.</span>
             <span>
@@ -62,9 +62,9 @@ export function EcosystemSection() {
               className={`${styles.card} flex w-full items-center justify-between gap-4 rounded-[20px] border border-plum bg-black px-5 py-8 sm:px-8 lg:w-[calc((100%_-_20px)/2)] lg:gap-10`}
             >
               <div
-                className={`${styles.cardContent} flex min-w-0 flex-1 flex-col gap-6`}
+                className={`${styles.cardContent} flex min-w-0 flex-1 flex-col gap-8 sm:gap-6`}
               >
-                <div className="flex flex-col gap-3">
+                <div className="flex flex-col gap-6 sm:gap-4">
                   <Typography
                     as="p"
                     variant="xs"

@@ -58,34 +58,34 @@ export function FeatureSection() {
       }}
     >
       <Container className="flex flex-col items-center gap-10">
-        <div className="flex w-full flex-col items-center gap-12 lg:gap-[72px]">
+        <div className="flex w-full flex-col items-center gap-12 sm:gap-14 lg:gap-16">
           <motion.div
             key={animate ? "animated" : "static"}
             initial={animate ? "hidden" : false}
             whileInView="visible"
             viewport={{ once: true, amount: 0.35 }}
-            className="flex w-full max-w-[1009px] flex-col items-center gap-5 text-center"
+            className="flex w-full max-w-[1009px] flex-col items-center gap-12 text-center sm:gap-14 lg:gap-15"
           >
-            <div className="flex flex-col gap-[10px]">
+            <div className="flex flex-col gap-8 sm:gap-8">
               <motion.div data-motion-reveal custom={0} variants={headingReveal}>
                 <Typography as="p" variant="xs" className="text-xs font-semibold uppercase leading-[17px] tracking-[2.42px] text-gold">
                   The Wisdom We Need for the Future
                 </Typography>
               </motion.div>
 
-              <Typography id="wisdom-for-the-future" variant="h2" className="flex flex-col">
+              <Typography id="wisdom-for-the-future" variant="h2" className="flex flex-col gap-4 sm:gap-6">
                 <motion.span
                   data-motion-reveal
                   custom={0.12}
                   variants={headingReveal}
-                  className="font-sans [font-size:clamp(2rem,4vw,3rem)]! font-medium leading-[72px]"
+                  className="font-sans [font-size:clamp(2rem,4vw,3rem)]! font-medium leading-[1.15] lg:leading-[72px]"
                 >
                   What If Some of the
                 </motion.span>
                 <motion.span
                   data-motion-reveal
                   variants={gradientReveal}
-                  className="bg-plum-gradient bg-clip-text font-serif [font-size:clamp(2.75rem,5vw,3.625rem)]! font-semibold italic leading-[62px] text-transparent"
+                  className="bg-plum-gradient bg-clip-text font-serif [font-size:clamp(2.75rem,5vw,3.625rem)]! font-semibold italic leading-[1.05] text-transparent lg:leading-[62px]"
                 >
                   Wisdom We Need for the Future
                 </motion.span>
@@ -93,7 +93,7 @@ export function FeatureSection() {
                   data-motion-reveal
                   custom={0.4}
                   variants={headingReveal}
-                  className="font-sans [font-size:clamp(2rem,4vw,3rem)]! font-medium leading-[72px]"
+                  className="font-sans [font-size:clamp(2rem,4vw,3rem)]! font-medium leading-[1.15] lg:leading-[72px]"
                 >
                   Has Been With Us All Along?
                 </motion.span>
@@ -120,7 +120,7 @@ export function FeatureSection() {
                 viewport={{ once: true, amount: 0.2 }}
                 variants={cardReveal}
                 custom={index}
-                className="flex min-h-[125px] w-full items-center gap-5 rounded-[20px] border border-gold/18 bg-white/5 px-5 py-[23px] md:w-[calc((100%_-_20px)/2)] xl:w-[calc((100%_-_40px)/3)] xl:gap-10 xl:px-10"
+                className="flex min-h-[125px] w-full items-center gap-5 rounded-[20px] border border-gold/18 bg-white/5 px-5 py-[23px] max-[360px]:gap-2 md:w-[calc((100%_-_20px)/2)] xl:w-[calc((100%_-_40px)/3)] xl:gap-10 xl:px-10"
               >
                 <Image
                   src={`/images/wisdom-for-future/${icon}`}
@@ -129,7 +129,7 @@ export function FeatureSection() {
                   height={158}
                   className="h-[77px] w-[78px] shrink-0 object-contain"
                 />
-                <div className="flex min-w-0 flex-col gap-[15px]">
+                <div className="flex min-w-0 flex-col gap-6 sm:gap-4">
                   <Typography as="h3" variant="xl" className="font-semibold leading-[1.2] xl:[text-box-trim:trim-both] xl:[text-box-edge:cap_alphabetic]">{title}</Typography>
                   <Typography as="p" variant="md" className="leading-[22px] text-grey xl:[text-box-trim:trim-both] xl:[text-box-edge:cap_alphabetic]">{question}</Typography>
                 </div>

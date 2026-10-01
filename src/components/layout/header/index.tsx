@@ -12,6 +12,10 @@ import { navigationItems } from "@/constants/navigation";
 import { motionTiming } from "@/lib/motion";
 import { useAnimationReady } from "@/lib/use-animation-ready";
 
+const HEADER_SCROLL_THRESHOLD = 8;
+const HEADER_TOP_ZONE = 24;
+const HEADER_HIDE_AFTER = 120;
+
 function Brand({ onClick }: { onClick?: () => void }) {
   return (
     <Link
@@ -52,8 +56,42 @@ function NavigationArrow({ active = false }: { active?: boolean }) {
 export function Header({ homePage = false, activeItem = homePage ? "Home" : "The Doctrine" }: { homePage?: boolean; activeItem?: string | null }) {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [headerHidden, setHeaderHidden] = useState(false);
   const reduceMotion = useReducedMotion();
   const animate = useAnimationReady() && !reduceMotion;
+
+  useEffect(() => {
+    if (menuOpen) return;
+
+    let previousScrollY = Math.max(0, window.scrollY);
+
+    const updateVisibility = () => {
+      const currentScrollY = window.scrollY;
+      const maxScrollY = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
+      // Ignore mobile rubber-band movement outside the document.
+      if (currentScrollY < 0 || currentScrollY > maxScrollY) return;
+
+      if (currentScrollY <= HEADER_TOP_ZONE) {
+        setHeaderHidden(false);
+        previousScrollY = currentScrollY;
+        return;
+      }
+
+      // Accumulate small movements instead of reversing on every scroll event.
+      const scrollDelta = currentScrollY - previousScrollY;
+      if (Math.abs(scrollDelta) < HEADER_SCROLL_THRESHOLD) return;
+
+      if (scrollDelta < 0) {
+        setHeaderHidden(false);
+      } else if (currentScrollY > HEADER_HIDE_AFTER) {
+        setHeaderHidden(true);
+      }
+      previousScrollY = currentScrollY;
+    };
+
+    window.addEventListener("scroll", updateVisibility, { passive: true });
+    return () => window.removeEventListener("scroll", updateVisibility);
+  }, [menuOpen]);
 
   useEffect(() => {
     if (!menuOpen) return;
@@ -79,7 +117,10 @@ export function Header({ homePage = false, activeItem = homePage ? "Home" : "The
   }
 
   return (
-    <header className="absolute inset-x-0 top-0 z-20 pt-[15px] text-white">
+    <header
+      inert={headerHidden && !menuOpen}
+      className={`fixed inset-x-0 top-0 z-50 pt-[15px] text-white transition-transform duration-200 ease-out motion-reduce:transition-none ${headerHidden && !menuOpen ? "-translate-y-full" : "translate-y-0"}`}
+    >
       <Container>
         <motion.div
           data-motion-reveal
@@ -87,7 +128,7 @@ export function Header({ homePage = false, activeItem = homePage ? "Home" : "The
           initial={animate ? { opacity: 0, y: -12 } : false}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: motionTiming.entrance, ease: motionTiming.ease }}
-          className="flex items-center justify-between gap-4 rounded-[18px] border border-white/5 bg-[#100e12] p-3 pl-4 sm:px-5 sm:py-4 min-[90rem]:min-h-[68px] min-[90rem]:gap-10 min-[90rem]:rounded-[20px] min-[90rem]:border-white/25 min-[90rem]:bg-[#d9d9d9]/20 min-[90rem]:py-2 min-[90rem]:pl-[19px] min-[90rem]:pr-[10px] min-[90rem]:backdrop-blur-sm"
+          className="flex items-center justify-between gap-4 rounded-[18px] border border-white/5 bg-[#100e12]/90 p-3 pl-4 backdrop-blur-md sm:px-5 sm:py-4 min-[90rem]:min-h-[68px] min-[90rem]:gap-10 min-[90rem]:rounded-[20px] min-[90rem]:border-white/25 min-[90rem]:bg-[#d9d9d9]/20 min-[90rem]:py-2 min-[90rem]:pl-[19px] min-[90rem]:pr-[10px]"
         >
           <Brand />
 

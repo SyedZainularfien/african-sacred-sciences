@@ -92,13 +92,13 @@ export function ContactForm() {
             invalid={Boolean(formik.touched.topic && formik.errors.topic)}
             errorId="contact-topic-error"
           />
-          {formik.touched.topic && formik.errors.topic && <Typography as="span" id="contact-topic-error" variant="xs" className="text-plum">{formik.errors.topic}</Typography>}
+          {formik.touched.topic && formik.errors.topic && <Typography as="span" id="contact-topic-error" variant="xs" className="text-red-600">{formik.errors.topic}</Typography>}
         </div>
 
         <Textarea id="contact-message" name="message" label="Your message" required maxLength={5000} rows={4} placeholder="Tell us a little about what’s on your mind…" value={formik.values.message} onChange={formik.handleChange} onBlur={formik.handleBlur} error={formik.touched.message ? formik.errors.message : undefined} />
 
         <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
-          <Button type="submit" showArrow className="min-h-13 w-full px-7 transition-[filter] hover:brightness-110 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold sm:w-auto">Send message</Button>
+          <Button type="submit" showArrow className="min-h-13 w-full shrink-0 whitespace-nowrap px-7 transition-[filter] hover:brightness-110 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold sm:w-auto">Send message</Button>
           <Typography variant="xs" className="max-w-[290px] leading-[1.6] text-[#655765]">Online submissions are coming soon. Please use the direct email link for now.</Typography>
         </div>
       </form>

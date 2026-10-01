@@ -9,6 +9,7 @@ import { Typography } from "@/components/ui/typography";
 import { absoluteUrl } from "@/lib/site-url";
 
 const email = "Support@Africansacredscience.ai";
+const [emailName, emailDomain] = email.split("@");
 
 export const metadata: Metadata = {
   title: "Contact Us | African Sacred Science",
@@ -104,11 +105,15 @@ export default function ContactUsPage() {
                   <span aria-hidden="true" className="pointer-events-none absolute -right-32 -top-36 size-[400px] rounded-full border border-gold/20 bg-[radial-gradient(circle,rgba(133,43,104,0.35),transparent_68%)]" />
                   <div className="relative flex flex-col gap-4">
                     <Typography as="span" variant="xs" className="font-semibold uppercase tracking-[0.22em] text-gold">Prefer email?</Typography>
-                    <Typography as="h3" variant="h4" className="font-normal! leading-[1.1]">Reach us <span className="italic text-[#dba9ce]">directly.</span></Typography>
-                    <Typography variant="sm" className="leading-[1.75] text-white/65">You can always send a note from your own email app.</Typography>
+                    <div className="flex flex-col gap-2">
+                      <Typography as="h3" variant="h4" className="font-normal! leading-[1.1]">Reach us <span className="italic text-[#dba9ce]">directly.</span></Typography>
+                      <Typography variant="sm" className="leading-[1.75] text-white/65">You can always send a note from your own email app.</Typography>
+                    </div>
                   </div>
                   <a href={`mailto:${email}`} className="relative flex w-fit max-w-full items-center gap-3 border-b border-gold/50 pb-2 text-gold transition-colors hover:border-white hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold">
-                    <Typography as="span" variant="sm" className="break-all font-semibold">{email}</Typography>
+                    <Typography as="span" variant="sm" className="min-w-0 font-semibold">
+                      {emailName}@<wbr /><span className="whitespace-nowrap">{emailDomain}</span>
+                    </Typography>
                     <span aria-hidden="true" className="shrink-0 text-xl">↗</span>
                   </a>
                 </div>

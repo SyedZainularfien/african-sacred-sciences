@@ -11,8 +11,8 @@ export function DoctrineDimensionDetailsSection() {
       aria-labelledby="dimension-details-title"
       className="bg-background-yellow py-16 text-full-black lg:pb-[100px] lg:pt-20"
     >
-      <Container className="flex flex-col items-center gap-14">
-        <ScrollReveal className="flex flex-col items-center gap-3 text-center">
+      <Container className="flex flex-col items-center gap-12 sm:gap-14 lg:gap-16">
+        <ScrollReveal className="flex flex-col items-center gap-8 text-center sm:gap-5">
           <Typography
             as="span"
             variant="xs"
@@ -48,12 +48,12 @@ export function DoctrineDimensionDetailsSection() {
                 className="flex flex-col overflow-hidden rounded-[20px] border border-[#e6d9cf] bg-[#faf8f4] lg:flex-row"
               >
                 <div
-                  className={`flex flex-col justify-center gap-5 px-8 py-9 text-white lg:w-[280px] lg:shrink-0 lg:px-9 ${index % 2 === 0 ? "bg-[linear-gradient(135deg,#10051d,#2b0d3d)]" : "bg-[linear-gradient(135deg,#26072f,#6d195d)]"}`}
+                  className={`flex flex-col justify-center gap-6 px-8 sm:gap-6 py-9 text-white lg:w-[280px] lg:shrink-0 lg:px-9 ${index % 2 === 0 ? "bg-[linear-gradient(135deg,#10051d,#2b0d3d)]" : "bg-[linear-gradient(135deg,#26072f,#6d195d)]"}`}
                 >
                   <span className="flex h-[52px] w-[52px] items-center justify-center rounded-full border border-gold/35 bg-gold/[0.06]">
                     <DimensionIcon icon={icon} className="h-6 w-6" />
                   </span>
-                  <div className="flex flex-col gap-1">
+                  <div className="flex flex-col gap-4 sm:gap-2">
                     <Typography
                       as="h3"
                       variant="xl"
@@ -77,8 +77,8 @@ export function DoctrineDimensionDetailsSection() {
                   </Typography>
                 </div>
 
-                <div className="flex min-w-0 flex-1 flex-col justify-between gap-6 px-6 py-9 sm:px-9 lg:px-11 lg:pb-9 lg:pt-11">
-                  <div className="flex flex-col gap-5">
+                <div className="flex min-w-0 flex-1 flex-col justify-between gap-6 px-6 sm:gap-8 py-9 sm:px-9 lg:px-11 lg:pb-9 lg:pt-11">
+                  <div className="flex flex-col gap-6 sm:gap-4">
                     {paragraphs.map((paragraph) => (
                       <Typography
                         key={paragraph}
@@ -89,7 +89,7 @@ export function DoctrineDimensionDetailsSection() {
                       </Typography>
                     ))}
                   </div>
-                  <div className="flex flex-col gap-2 rounded-[14px] border border-l-4 border-plum bg-plum/[0.055] px-5 py-4">
+                  <div className="flex flex-col gap-4 rounded-[14px] sm:gap-2 border border-l-4 border-plum bg-plum/[0.055] px-5 py-4">
                     <Typography
                       as="span"
                       variant="sm"

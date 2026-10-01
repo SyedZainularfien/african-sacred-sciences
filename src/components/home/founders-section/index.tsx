@@ -12,12 +12,12 @@ export function FoundersSection() {
       aria-labelledby="founders-title"
       className="bg-black py-16 text-white sm:py-20 lg:pb-[60px] lg:pt-20"
     >
-      <Container className="flex flex-col items-center gap-10 sm:gap-12 lg:gap-[60px]">
-        <ScrollReveal as="header" className="flex flex-col items-center gap-5 text-center lg:gap-[25px] lg:pl-[78px]">
+      <Container className="flex flex-col items-center gap-12 sm:gap-14 lg:gap-16">
+        <ScrollReveal as="header" className="flex flex-col items-center gap-8 text-center sm:gap-8 lg:pl-[78px]">
           <Typography variant="xs" className="font-semibold uppercase leading-[17px] tracking-[0.2em] text-gold xl:[font-size:12px]! xl:tracking-[2.42px]">
             The People Behind the Work
           </Typography>
-          <div className="flex flex-col items-center gap-5">
+          <div className="flex flex-col items-center gap-5 sm:gap-7">
           <Typography
             as="h2"
             variant="mdMedium"
@@ -29,7 +29,7 @@ export function FoundersSection() {
               Founders
             </span>
           </Typography>
-          <Typography variant="mdMedium" className="text-xl leading-[1.4] text-gold lg:[font-size:clamp(1.25rem,2vw,3.5rem)]! xl:bg-gold-gradient xl:bg-clip-text xl:[font-size:28px]! xl:leading-[1.821429] xl:text-transparent">
+          <Typography variant="mdMedium" className="text-xl leading-[1.4] text-gold lg:[font-size:clamp(1.25rem,2vw,3.5rem)]! xl:bg-gold-gradient xl:bg-clip-text xl:[font-size:28px]! xl:text-transparent">
             A Shared Life of Leadership, Enterprise, Wisdom, and Service
           </Typography>
           </div>

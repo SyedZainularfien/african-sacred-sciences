@@ -16,10 +16,10 @@ export function OriinuSection() {
     >
       <Container className="flex flex-col gap-5">
         <div className="relative isolate flex flex-col overflow-hidden rounded-[28px] border border-gold bg-[#0b0b0b] lg:min-h-[640px] lg:flex-row lg:rounded-[34px]">
-          <div className="relative z-10 flex min-w-0 flex-col gap-[30px] px-6 pt-10 sm:px-10 sm:pt-12 lg:w-[670px] lg:max-w-[54%] lg:pb-[55px] lg:pl-[59px] lg:pr-0 lg:pt-[59px]">
-            <ScrollReveal className="flex flex-col gap-5">
-              <div className="flex flex-col gap-[18px]">
-                <div className="flex flex-col gap-[17px]">
+          <div className="relative z-10 flex min-w-0 flex-col gap-6 px-6 pt-10 sm:gap-8 sm:px-10 sm:pt-12 lg:w-[670px] lg:max-w-[54%] lg:pb-[55px] lg:pl-[59px] lg:pr-0 lg:pt-[59px]">
+            <ScrollReveal className="flex flex-col gap-8 sm:gap-8">
+              <div className="flex flex-col gap-5 sm:gap-7">
+                <div className="flex flex-col gap-8 sm:gap-8">
                   <Typography
                     variant="xs"
                     className="font-semibold uppercase leading-[17px] tracking-[2.42px] text-gold"
@@ -30,7 +30,7 @@ export function OriinuSection() {
                     as="h2"
                     variant="mdMedium"
                     id="oriinu-title"
-                    className="[font-size:clamp(2.5rem,3.45vw,3rem)]! leading-[52px] lg:[text-box-trim:trim-both] lg:[text-box-edge:cap_alphabetic]"
+                    className="[font-size:clamp(2.5rem,3.45vw,3rem)]! leading-[1.2] lg:leading-[52px] lg:[text-box-trim:trim-both] lg:[text-box-edge:cap_alphabetic]"
                   >
                     Meet{" "}
                     <span className="bg-plum-gradient bg-clip-text font-serif [font-size:1.208333em]! italic text-transparent">
@@ -40,7 +40,7 @@ export function OriinuSection() {
                 </div>
                 <Typography
                   variant="mdMedium"
-                  className="[font-size:clamp(1.25rem,1.95vw,1.75rem)]! leading-[51px] text-gold"
+                  className="[font-size:clamp(1.25rem,1.95vw,1.75rem)]! leading-[1.3] text-gold lg:leading-[1.4]"
                 >
                   Awaken Your Inner Intelligence.
                 </Typography>
@@ -55,7 +55,7 @@ export function OriinuSection() {
                 opportunities of everyday life.
               </Typography>
             </ScrollReveal>
-            <ScrollReveal delay={0.18} className="flex flex-col gap-5">
+            <ScrollReveal delay={0.18} className="flex flex-col gap-8 sm:gap-8">
               <Typography variant="md" className="leading-8 text-white/85">
                 Use ORIINU to explore questions involving:
               </Typography>
@@ -93,10 +93,10 @@ export function OriinuSection() {
         </div>
         <section
           aria-labelledby="oriinu-stages-title"
-          className="relative isolate flex flex-col gap-[30px] overflow-hidden rounded-[28px] border border-gold bg-black bg-[url('/images/how-orinnu-works-bg.webp')] bg-cover bg-center px-6 py-10 sm:px-10 sm:py-12 lg:rounded-[34px] lg:px-[39px] lg:pb-[58px] lg:pt-[59px]"
+          className="relative isolate flex flex-col gap-10 overflow-hidden rounded-[28px] border border-gold bg-black bg-[url('/images/how-orinnu-works-bg.webp')] bg-cover bg-center px-6 py-10 sm:gap-12 sm:px-10 sm:py-12 lg:rounded-[34px] lg:px-[39px] lg:pb-[58px] lg:pt-[59px]"
         >
-          <div className="flex flex-col gap-10">
-            <ScrollReveal as="header" className="flex flex-col gap-5">
+          <div className="flex flex-col gap-12 sm:gap-14 lg:gap-16">
+            <ScrollReveal as="header" className="flex flex-col gap-8 sm:gap-8">
               <Typography
                 variant="xs"
                 className="font-semibold uppercase leading-[17px] tracking-[2.42px] text-gold"
@@ -107,7 +107,7 @@ export function OriinuSection() {
                 as="h2"
                 variant="mdMedium"
                 id="oriinu-stages-title"
-                className="[font-size:clamp(2rem,3.45vw,3rem)]! leading-[52px] lg:[text-box-trim:trim-both] lg:[text-box-edge:cap_alphabetic]"
+                className="[font-size:clamp(2rem,3.45vw,3rem)]! leading-[1.2] lg:leading-[52px] lg:[text-box-trim:trim-both] lg:[text-box-edge:cap_alphabetic]"
               >
                 Four Stages of{" "}
                 <span className="bg-plum-gradient bg-clip-text font-serif [font-size:1.208333em]! italic text-transparent">
@@ -121,7 +121,7 @@ export function OriinuSection() {
                   as="li"
                   key={title}
                   delay={(index % 2) * 0.1}
-                  className="flex w-full flex-col gap-5 rounded-[20px] border border-gold/20 bg-black px-7 py-9 sm:w-[calc((100%_-_18.769px)/2)] lg:first:pr-2 lg:min-h-[271px] lg:w-[calc((100%_-_56.307px)/4)]"
+                  className="flex w-full flex-col gap-5 rounded-[20px] border border-gold/20 bg-black px-7 py-9 sm:gap-6 sm:w-[calc((100%_-_18.769px)/2)] lg:first:pr-2 lg:min-h-[271px] lg:w-[calc((100%_-_56.307px)/4)]"
                 >
                   <Typography
                     as="span"
@@ -130,7 +130,7 @@ export function OriinuSection() {
                   >
                     {String(index + 1).padStart(2, "0")}
                   </Typography>
-                  <div className="flex flex-col gap-3">
+                  <div className="flex flex-col gap-6 sm:gap-4">
                     <Typography
                       as="h3"
                       variant="xl"
@@ -149,12 +149,12 @@ export function OriinuSection() {
               ))}
             </ol>
           </div>
-          <ScrollReveal className="flex flex-col items-center justify-center gap-5 sm:flex-row">
+          <ScrollReveal className="flex flex-col items-center justify-center gap-6 sm:flex-row sm:gap-5">
             <ButtonLink
               href="https://oriinu.ai/"
               target="_blank"
               rel="noopener noreferrer"
-              className="h-[60px] w-full sm:w-[187px]"
+              className="min-h-[72px] w-full sm:min-h-[60px] sm:w-[187px]"
             >
               Launch ORIINU
             </ButtonLink>
@@ -164,7 +164,7 @@ export function OriinuSection() {
               rel="noopener noreferrer"
               variant="outline"
               showArrow
-              className="h-[60px] w-full bg-black sm:w-[294px]"
+              className="min-h-[72px] w-full sm:min-h-[60px] bg-black sm:w-[294px]"
             >
               Learn How ORIINU Works
             </ButtonLink>

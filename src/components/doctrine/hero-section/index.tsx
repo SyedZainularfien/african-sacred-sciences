@@ -30,49 +30,51 @@ export function DoctrineHeroSection() {
   return (
     <section className="relative isolate flex min-h-screen overflow-hidden bg-[#050308] bg-[radial-gradient(ellipse_55%_65%_at_50%_65%,rgba(91,18,74,0.6)_0%,rgba(47,9,58,0.5)_43%,transparent_90%),radial-gradient(ellipse_45%_60%_at_18%_50%,rgba(58,13,44,0.45),transparent_85%)] text-white">
       <AlignmentRings />
-      <Container className="relative z-10 flex flex-col pb-20 pt-40 sm:pt-44 lg:pb-[128px] lg:pl-[9.722222%] lg:pt-[177px]">
-        <div className="flex max-w-[1120px] flex-col gap-10 lg:gap-0">
-          <div className="flex flex-col gap-6">
-            <ScrollReveal>
+      <Container className="relative z-10 flex flex-col pb-12 pt-36 sm:pb-20 sm:pt-44 lg:pb-[128px] lg:pt-52">
+        <div className="flex max-w-[1120px] flex-col gap-10 sm:gap-12">
+          <div className="flex flex-col gap-10 sm:gap-9">
+            <div className="flex flex-col gap-8 sm:gap-4">
+              <ScrollReveal>
+                <Typography
+                  as="span"
+                  variant="xs"
+                  className="font-semibold uppercase tracking-[0.25em] text-gold lg:[font-size:12px]!"
+                >
+                  The Foundational Philosophy
+                </Typography>
+              </ScrollReveal>
               <Typography
-                as="span"
-                variant="xs"
-                className="font-semibold uppercase tracking-[0.25em] text-gold lg:[font-size:12px]!"
+                as="h1"
+                variant="mdMedium"
+                className="flex flex-col font-normal!"
               >
-                The Foundational Philosophy
+                <ScrollReveal as="span" delay={0.12} className="text-[clamp(2.375rem,7vw,3.875rem)]! leading-[1.1]">
+                  The Doctrine of
+                </ScrollReveal>
+                <ScrollReveal as="span" delay={0.26} className="w-fit bg-[linear-gradient(100deg,#e8b1dd_0%,#d090bd_48%,#8c2879_100%)] bg-clip-text font-serif text-[clamp(2.75rem,6.4vw,5.125rem)]! italic leading-[1.25] text-transparent lg:leading-[1.20]">
+                  Divine Alignment
+                  <sup className="relative -top-[0.15em] ml-1 align-super text-[0.43em]! not-italic">
+                    TM
+                  </sup>
+                </ScrollReveal>
+              </Typography>
+            </div>
+
+            <ScrollReveal delay={0.38}>
+              <Typography
+                variant="md"
+                className="max-w-[700px] leading-8 text-white/75"
+              >
+                At the heart of African Sacred Science™ is the principle of Divine
+                Alignment: that human flourishing is strengthened when our inner
+                life, character, purpose, choices and actions come into greater
+                alignment with Divine order.
               </Typography>
             </ScrollReveal>
-            <Typography
-              as="h1"
-              variant="mdMedium"
-              className="flex flex-col font-normal!"
-            >
-              <ScrollReveal as="span" delay={0.12} className="text-[clamp(3.25rem,5vw,4rem)]! leading-[1.1]">
-                The Doctrine of
-              </ScrollReveal>
-              <ScrollReveal as="span" delay={0.26} className="w-fit bg-[linear-gradient(100deg,#e8b1dd_0%,#d090bd_48%,#8c2879_100%)] bg-clip-text font-serif text-[clamp(4rem,6.5vw,5.25rem)]! italic leading-[1.20] text-transparent">
-                Divine Alignment
-                <sup className="relative -top-[0.15em] ml-1 align-super text-[0.43em]! not-italic">
-                  TM
-                </sup>
-              </ScrollReveal>
-            </Typography>
           </div>
 
-          <ScrollReveal delay={0.38}>
-            <Typography
-              variant="md"
-              className="max-w-[700px] leading-8 text-white/75 lg:pt-7"
-            >
-              At the heart of African Sacred Science™ is the principle of Divine
-              Alignment: that human flourishing is strengthened when our inner
-              life, character, purpose, choices and actions come into greater
-              alignment with Divine order.
-            </Typography>
-          </ScrollReveal>
-
           <ScrollReveal delay={0.48}>
-            <ul className="flex flex-wrap gap-3 lg:pt-14">
+            <ul className="flex flex-wrap gap-3">
             {DOCTRINE_HERO_DIMENSIONS.map(({ icon, label }) => (
               <li
                 key={label}
@@ -91,7 +93,7 @@ export function DoctrineHeroSection() {
             </ul>
           </ScrollReveal>
 
-          <ScrollReveal delay={0.58} className="flex flex-wrap items-center gap-x-4 gap-y-5 lg:pt-14">
+          <ScrollReveal delay={0.58} className="flex flex-wrap items-center gap-x-4 gap-y-6 sm:gap-y-5">
             <Link
               href="#dimensions"
               className={buttonVariants({
@@ -114,7 +116,7 @@ export function DoctrineHeroSection() {
               href="https://oriinu.ai/"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex min-h-12 items-center gap-2 rounded-sm text-sm font-semibold tracking-[0.12em] text-[#a897aa] hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold"
+              className="inline-flex min-h-12 items-center gap-2 rounded-sm text-sm font-semibold tracking-[0.12em] text-[#a897aa] hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold max-sm:w-full max-sm:justify-center"
             >
               Experience Through ORIINU <span aria-hidden="true">→</span>
             </Link>

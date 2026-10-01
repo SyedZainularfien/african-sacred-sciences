@@ -1,0 +1,13 @@
+/* Trim outer font whitespace consistently; preserve line-height within paragraphs.
+   Parent gaps include extra room where title descenders extend below the baseline. */
+.rhythm :where(h1, h2, h3, h4, p),
+.rhythm :where(h1, h2) > span {
+  text-box-trim: trim-both;
+  text-box-edge: cap alphabetic;
+}
+
+/* Gradient text needs its full descent inside the background painting area. */
+.rhythm :is(h1, h2):has(:global(.bg-clip-text)),
+.rhythm :global(.bg-clip-text) {
+  text-box-edge: cap text;
+}

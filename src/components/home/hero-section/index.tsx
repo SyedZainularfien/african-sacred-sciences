@@ -104,11 +104,11 @@ export function HeroSection() {
           initial={animate ? "hidden" : false}
           animate="visible"
           variants={staggerReveal}
-          className="flex w-full min-w-0 max-w-[720px] flex-col gap-[30px] min-[90rem]:w-[563px] min-[90rem]:shrink-0 min-[90rem]:pt-[70px]"
+          className="flex w-full min-w-0 max-w-[720px] flex-col gap-8 sm:gap-10 min-[90rem]:w-[563px] min-[90rem]:shrink-0 min-[90rem]:pt-[70px]"
         >
-          <div className="flex flex-col gap-10">
-            <div className="flex flex-col gap-5">
-              <div className="flex flex-col gap-[10px]">
+          <div className="flex flex-col gap-10 sm:gap-12">
+            <div className="flex flex-col gap-10 sm:gap-12">
+              <div className="flex flex-col gap-8 sm:gap-8">
                 <motion.div data-motion-reveal variants={slideUp}>
                   <Typography
                     variant="xs"
@@ -120,7 +120,7 @@ export function HeroSection() {
                 <Typography
                   as="h1"
                   variant="mdMedium"
-                  className="flex flex-col"
+                  className="flex flex-col gap-4 sm:gap-6"
                 >
                   <motion.span data-motion-reveal variants={slideUp} className="[font-size:clamp(2.375rem,7vw,3.875rem)]! leading-[1.16] min-[90rem]:leading-[72px]">
                     Ancient Wisdom

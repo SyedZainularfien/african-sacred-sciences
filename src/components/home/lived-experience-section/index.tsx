@@ -115,13 +115,13 @@ export function LivedExperienceSection() {
     <section ref={sectionRef} aria-labelledby="lived-experience-title" className="bg-background-yellow py-16 text-full-black sm:py-20 xl:pb-[84px] xl:pt-[111px]">
       <Container className="flex flex-col items-center gap-10 sm:gap-12 xl:flex-row xl:items-start xl:gap-[90px]">
         <div className="flex w-full min-w-0 flex-col gap-8 xl:w-[570px] xl:shrink-0">
-          <div className="flex flex-col gap-10 xl:gap-[52px]">
-            <motion.div key={animate ? "animated" : "static"} initial={animate ? "hidden" : false} whileInView="visible" viewport={{ once: true, amount: 0.4 }} className="flex flex-col gap-[30px]">
-              <div className="flex flex-col gap-5">
+          <div className="flex flex-col gap-12 sm:gap-14 lg:gap-16">
+            <motion.div key={animate ? "animated" : "static"} initial={animate ? "hidden" : false} whileInView="visible" viewport={{ once: true, amount: 0.4 }} className="flex flex-col gap-10 sm:gap-12">
+              <div className="flex flex-col gap-8 sm:gap-8">
                 <motion.div data-motion-reveal custom={0} variants={textReveal}>
                   <Typography variant="xs" className="font-semibold uppercase leading-[17px] tracking-[2.42px] text-gold">From Knowledge to Lived Experience</Typography>
                 </motion.div>
-                <Typography as="h2" variant="mdMedium" id="lived-experience-title" className="[font-size:clamp(2rem,3.4vw,3rem)]! leading-[52px] xl:[text-box-trim:trim-both] xl:[text-box-edge:cap_alphabetic]">
+                <Typography as="h2" variant="mdMedium" id="lived-experience-title" className="flex flex-col gap-4 [font-size:clamp(2rem,3.4vw,3rem)]! leading-[1.2] sm:gap-6 xl:leading-[52px]">
                   <motion.span data-motion-reveal custom={0.12} variants={textReveal} className="block">African Sacred Science</motion.span>
                   <motion.span data-motion-reveal custom={0.24} variants={textReveal} className="block">Is Meant to <motion.span data-motion-reveal variants={gradientReveal} className="bg-plum-gradient bg-clip-text font-serif [font-size:1.208333em]! font-semibold italic text-transparent">Be Lived</motion.span></motion.span>
                 </Typography>

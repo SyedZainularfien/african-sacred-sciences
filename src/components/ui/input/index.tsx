@@ -25,7 +25,7 @@ export function Input({ id, label, error, required, className = "", ...props }: 
         className={`${fieldClassName} h-11 px-3.5 sm:h-14 sm:px-4 ${className}`}
         {...props}
       />
-      {error && <Typography as="span" id={errorId} variant="xs" className="text-plum">{error}</Typography>}
+      {error && <Typography as="span" id={errorId} variant="xs" className="text-red-600">{error}</Typography>}
     </div>
   );
 }

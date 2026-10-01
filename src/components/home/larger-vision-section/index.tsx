@@ -34,7 +34,7 @@ function VisionDiagram() {
           <span aria-hidden="true" className="flex h-9 w-9 items-center justify-center rounded-full border border-gold/40 bg-[#16091e] sm:h-12 sm:w-12">
             <span className="h-2 w-2 rounded-full bg-gold sm:h-2.5 sm:w-2.5" />
           </span>
-          <Typography as="span" variant="md" className="whitespace-nowrap text-center text-[10px]! uppercase leading-5 tracking-[0.04em] text-white/90 sm:text-sm! xl:text-base!">
+          <Typography as="span" variant="md" className={`whitespace-nowrap text-center text-[10px]! uppercase leading-5 tracking-[0.04em] text-white/90 sm:text-sm! xl:text-base! ${label === "Pass Forward" ? "max-md:-translate-x-1/3" : ""}`}>
             {label}
           </Typography>
         </div>
@@ -46,18 +46,18 @@ function VisionDiagram() {
 export function LargerVisionSection() {
   return (
     <section aria-labelledby="larger-vision-title" className="overflow-hidden bg-[linear-gradient(180deg,#0a0313_0%,#0c0317_46%,#210a35_100%)] py-16 text-white lg:min-h-[800px] lg:py-20">
-      <Container className="flex flex-col items-center justify-between gap-16 lg:min-h-[640px] lg:flex-row lg:gap-10">
-        <div className="flex w-full min-w-0 flex-col gap-8 lg:max-w-[575px] lg:self-start lg:pt-[66px]">
-          <div className="flex flex-col gap-4 lg:gap-1">
-            <div className="flex flex-col gap-2">
+      <Container className="flex flex-col items-center justify-between gap-16 min-[1025px]:min-h-[640px] min-[1025px]:flex-row min-[1025px]:gap-10">
+        <div className="flex w-full min-w-0 flex-col gap-8 min-[1025px]:max-w-[575px] min-[1025px]:self-start min-[1025px]:pt-[66px]">
+          <div className="flex flex-col gap-7 sm:gap-9">
+            <div className="flex flex-col gap-8 sm:gap-8">
               <ScrollReveal>
                 <Typography variant="xs" className="font-semibold uppercase leading-[17px] tracking-[2.42px] text-gold">The Larger Vision</Typography>
               </ScrollReveal>
               <ScrollReveal delay={0.12}>
                 <Typography as="h2" id="larger-vision-title" variant="mdMedium" className="text-[clamp(2.5rem,3.4vw,3rem)]! font-medium! leading-[1.34]">
                   Africa&apos;s Wisdom<br />
-                  Belongs in <span className="bg-plum-gradient bg-clip-text font-serif text-[1.12em]! italic text-transparent">Humanity&apos;s</span><br />
-                  <span className="bg-plum-gradient bg-clip-text font-serif text-[1.12em]! italic text-transparent">Future.</span>
+                  Belongs in <span className="bg-plum-gradient bg-clip-text font-serif text-[1.12em]! italic leading-none text-transparent">Humanity&apos;s</span><br />
+                  <span className="bg-plum-gradient bg-clip-text font-serif text-[1.12em]! italic leading-none text-transparent">Future.</span>
                 </Typography>
               </ScrollReveal>
             </div>
@@ -74,7 +74,7 @@ export function LargerVisionSection() {
           </ScrollReveal>
         </div>
 
-        <ScrollReveal distance={0} scale={0.97} duration={0.8} className="flex w-full min-w-0 justify-center lg:w-[600px] lg:shrink-0">
+        <ScrollReveal distance={0} scale={0.97} duration={0.8} className="flex w-full min-w-0 justify-center min-[1025px]:w-[600px] min-[1025px]:shrink-0">
           <VisionDiagram />
         </ScrollReveal>
       </Container>

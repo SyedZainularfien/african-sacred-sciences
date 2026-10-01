@@ -27,9 +27,9 @@ export function ExperienceSection() {
         </g>
       </svg>
 
-      <Container className="relative z-10 flex flex-col items-center gap-10 text-center">
-        <div className="flex flex-col items-center gap-5">
-          <div className="flex flex-col items-center gap-7">
+      <Container className="relative z-10 flex flex-col items-center gap-10 text-center sm:gap-12">
+        <div className="flex flex-col items-center gap-8 sm:gap-12">
+          <div className="flex flex-col items-center gap-8 sm:gap-8">
             <ScrollReveal>
               <Typography variant="xs" className="font-semibold uppercase leading-[17px] tracking-[2.42px] text-gold">You Have Discovered the Wisdom.</Typography>
             </ScrollReveal>
@@ -37,7 +37,7 @@ export function ExperienceSection() {
               <Typography as="h2" id="experience-title" variant="mdMedium" className="text-[clamp(2.75rem,4.5vw,4rem)]! font-medium! leading-[1.1] text-white">Now Experience It.</Typography>
             </ScrollReveal>
           </div>
-          <div className="flex flex-col items-center gap-3">
+          <div className="flex flex-col items-center gap-6 sm:gap-4">
             <ScrollReveal delay={0.25}>
               <Typography variant="mdMedium" className="bg-gold-gradient bg-clip-text font-serif text-[clamp(2.5rem,3.4vw,3rem)]! italic leading-none text-transparent">ORIINU<sup className="text-[0.45em]">™</sup></Typography>
             </ScrollReveal>

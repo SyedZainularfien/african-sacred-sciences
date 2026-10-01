@@ -15,6 +15,7 @@ import { ResearchSection } from "@/components/home/research-section";
 import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
 import { absoluteUrl } from "@/lib/site-url";
+import homeRhythm from "@/components/home/home-rhythm.module.css";
 
 const title = "African Sacred Science | Ancient Wisdom, Living Intelligence";
 const description =
@@ -50,7 +51,7 @@ export default function Home() {
   return (
     <div className="flex min-h-screen flex-col">
       <Header homePage />
-      <main className="flex-1">
+      <main className={`flex-1 ${homeRhythm.rhythm}`}>
         <HeroSection />
         <ContentSection />
         <FeatureSection />

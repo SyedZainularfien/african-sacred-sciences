@@ -25,7 +25,7 @@ export function Textarea({ id, label, error, required, className = "", ...props 
         className={`${fieldClassName} min-h-28 resize-y px-3.5 py-2.5 sm:min-h-40 sm:px-4 sm:py-3 ${className}`}
         {...props}
       />
-      {error && <Typography as="span" id={errorId} variant="xs" className="text-plum">{error}</Typography>}
+      {error && <Typography as="span" id={errorId} variant="xs" className="text-red-600">{error}</Typography>}
     </div>
   );
 }

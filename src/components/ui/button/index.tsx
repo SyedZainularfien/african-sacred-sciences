@@ -2,9 +2,12 @@ import { cva, type VariantProps } from "class-variance-authority";
 import Link from "next/link";
 import type { AnchorHTMLAttributes, ButtonHTMLAttributes, ReactNode } from "react";
 import { Typography } from "@/components/ui/typography";
+import styles from "./button.module.css";
+
+export const buttonShimmer = styles.shimmer;
 
 export const buttonVariants = cva(
-  "inline-flex max-w-full min-w-0 items-center justify-center gap-3 rounded-full border cursor-pointer text-center",
+  `${buttonShimmer} inline-flex max-w-full min-w-0 items-center justify-center gap-3 rounded-full border cursor-pointer text-center`,
   {
     variants: {
       variant: {
@@ -44,7 +47,7 @@ interface ButtonLinkProps
   showArrow?: boolean;
 }
 
-function ButtonArrow() {
+export function ButtonArrow({ direction = "right" }: { direction?: "left" | "right" }) {
   return (
     <svg
       aria-hidden="true"
@@ -56,7 +59,7 @@ function ButtonArrow() {
       strokeLinecap="round"
       strokeLinejoin="round"
     >
-      <path d="M4 12h16m-7-7 7 7-7 7" />
+      <path d={direction === "left" ? "M20 12H4m7-7-7 7 7 7" : "M4 12h16m-7-7 7 7-7 7"} />
     </svg>
   );
 }

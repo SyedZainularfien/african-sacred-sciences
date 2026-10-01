@@ -82,23 +82,23 @@ export function CommunitySection() {
     <section id="doctrine" aria-labelledby="divine-alignment-title" className="relative isolate overflow-hidden py-16 text-white sm:py-20 xl:pb-[82px] xl:pt-[130px]" style={{ background: "radial-gradient(80% 65% at 50% 50%, rgba(107, 27, 92, 0.22) 0%, rgba(85, 22, 98, 0.15) 27.5%, rgba(25, 7, 115, 0.08) 55%, rgba(25, 7, 115, 0) 75%), linear-gradient(180deg, #020104 0%, #180619 40%, #320a2d 100%)" }}>
       <AlignmentDiagram />
       <Container className="relative z-10 flex flex-col items-center">
-        <div className="flex w-full max-w-[1200px] flex-col items-center gap-12 xl:gap-[72px]">
-          <div className="flex w-full flex-col items-center gap-12 xl:gap-16">
+        <div className="flex w-full max-w-[1200px] flex-col items-center gap-12 sm:gap-14 lg:gap-16">
+          <div className="flex w-full flex-col items-center gap-12 sm:gap-14 lg:gap-16">
             <motion.header
               key={animate ? "animated" : "static"}
               initial={animate ? "hidden" : false}
               whileInView="visible"
               viewport={{ once: true, amount: 0.4 }}
-              className="flex w-full flex-col items-center gap-10 text-center"
+              className="flex w-full flex-col items-center gap-8 text-center sm:gap-8"
             >
-              <div className="flex w-full flex-col items-center gap-7">
-                <div className="flex flex-col items-center gap-5">
+              <div className="flex w-full flex-col items-center gap-10 sm:gap-12">
+                <div className="flex flex-col items-center gap-8 sm:gap-8">
                   <motion.div data-motion-reveal custom={0} variants={textReveal}>
                     <Typography variant="xs" className="font-semibold uppercase leading-[17px] tracking-[2.42px] text-gold">The Foundational Philosophy</Typography>
                   </motion.div>
-                  <Typography as="h2" variant="mdMedium" id="divine-alignment-title" className="[font-size:clamp(2rem,3.45vw,3rem)]! leading-[62px]">
+                  <Typography as="h2" variant="mdMedium" id="divine-alignment-title" className="[font-size:clamp(2rem,3.45vw,3rem)]! leading-[1.2] xl:leading-[62px]">
                     <motion.span data-motion-reveal custom={0.12} variants={textReveal} className="inline-block">The Doctrine of</motion.span>{" "}
-                    <motion.span data-motion-reveal variants={gradientReveal} className="bg-plum-gradient bg-clip-text font-serif [font-size:clamp(2.75rem,3.9vw,3.5rem)]! font-semibold italic text-transparent">Divine Alignment<sup className="align-super [font-size:0.45em]! not-italic">™</sup></motion.span>
+                    <motion.span data-motion-reveal variants={gradientReveal} className="bg-plum-gradient bg-clip-text font-serif [font-size:clamp(2.75rem,3.9vw,3.5rem)]! font-semibold italic leading-none text-transparent">Divine Alignment<sup className="align-super [font-size:0.45em]! not-italic">™</sup></motion.span>
                   </Typography>
                 </div>
                 <motion.div data-motion-reveal custom={0.4} variants={textReveal} className="w-full max-w-[680px]">
@@ -121,9 +121,9 @@ export function CommunitySection() {
                   custom={index}
                   className="flex w-full flex-col items-center gap-[14px] rounded-[18px] border border-gold/18 bg-white/[0.035] px-[22px] pb-[19px] pt-8 text-center sm:w-[calc((100%_-_10px)/2)] lg:w-[calc((100%_-_20px)/3)] xl:min-h-[270px] xl:w-[calc((100%_-_40px)/5)]"
                 >
-                  <div className="flex flex-col items-center gap-4">
+                  <div className="flex flex-col items-center gap-5 sm:gap-6">
                     <Image src={`/images/foundational-philosophy/${icon}`} alt="" width={88} height={88} className="h-11 w-11 object-contain" />
-                    <div className="flex flex-col items-center gap-3">
+                    <div className="flex flex-col items-center gap-6 sm:gap-4">
                       <Typography as="h3" variant="mdMedium" className="leading-4 [font-family:var(--font-plus-jakarta-sans)]!">{name}</Typography>
                       <Typography variant="xs" className="font-semibold uppercase leading-[14px] tracking-[1.44px] text-gold">{alignment}</Typography>
                     </div>
@@ -139,10 +139,10 @@ export function CommunitySection() {
             initial={animate ? "hidden" : false}
             whileInView="visible"
             viewport={{ once: true, amount: 0.35 }}
-            className="flex w-full flex-col items-center gap-10"
+            className="flex w-full flex-col items-center gap-10 sm:gap-12"
           >
             <motion.div data-motion-reveal variants={quoteReveal} className="w-full max-w-[500px]">
-              <Typography variant="mdMedium" className="w-full max-w-[500px] border-y border-gold/10 py-8 text-center font-serif [font-size:28px]! italic leading-[42px] text-gold xl:whitespace-nowrap">Alignment is not a destination. It is a way of living.</Typography>
+              <Typography variant="mdMedium" className="w-full max-w-[500px] border-y border-gold/10 py-8 text-center font-serif [font-size:28px]! italic leading-[42px] text-gold">Alignment is not a destination. It is a way of living.</Typography>
             </motion.div>
             <motion.div
               data-motion-reveal

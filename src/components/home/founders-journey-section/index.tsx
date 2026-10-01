@@ -8,20 +8,20 @@ export function FoundersJourneySection() {
   return (
     <section aria-labelledby="founders-journey-title" className="bg-black pb-[60px] pt-10 text-white">
       <Container className="flex flex-col items-start gap-8 xl:flex-row xl:gap-12">
-        <div className="flex w-full min-w-0 flex-col gap-5 xl:max-w-[803px] xl:flex-1">
-          <div className="flex flex-col gap-8">
+        <div className="flex w-full min-w-0 flex-col gap-8 sm:gap-5 xl:max-w-[803px] xl:flex-1">
+          <div className="flex flex-col gap-11 sm:gap-14">
             <ScrollReveal>
               <Typography
               as="h2"
               variant="mdMedium"
               id="founders-journey-title"
-              className="[font-size:clamp(1.625rem,2.1vw,1.875rem)]! font-bold! leading-[1.5] text-white xl:max-w-[750px]"
+              className="[font-size:clamp(1.625rem,2.1vw,1.875rem)]! font-bold! leading-[1.3] text-white xl:max-w-[750px]"
             >
               A shared journey rooted in spiritual wisdom, practical intelligence, and generational purpose.
               </Typography>
             </ScrollReveal>
 
-            <ScrollReveal delay={0.12} className="flex flex-col gap-6 text-[#bdbdbd]">
+            <ScrollReveal delay={0.12} className="flex flex-col gap-6 text-[#bdbdbd] sm:gap-8">
               <Typography variant="xl" className="leading-[36px]">
                 Their combined experience spans banking and finance, international consulting,
                 entrepreneurship, organizational leadership, spiritual formation, publishing,
@@ -42,7 +42,7 @@ export function FoundersJourneySection() {
           </div>
 
           <div className="flex flex-col gap-12">
-            <ScrollReveal className="flex flex-col gap-[18px] rounded-[20px] border border-plum bg-[linear-gradient(135deg,#17031d,#3c1037)] px-[30px] py-[34px]">
+            <ScrollReveal className="flex flex-col gap-6 rounded-[20px] border border-plum bg-[linear-gradient(135deg,#17031d,#3c1037)] px-[30px] py-[34px] sm:gap-4">
               <Typography as="h3" variant="sm" className="font-semibold! uppercase leading-5 tracking-[1.2px] text-gold">
                 Core Principles
               </Typography>
@@ -60,7 +60,7 @@ export function FoundersJourneySection() {
                 <Typography variant="xl" className="leading-[36px] text-[#bdbdbd]">
                   Their leadership is grounded in one shared conviction:
                 </Typography>
-                <div className="flex flex-col gap-4 rounded-[20px] border border-plum bg-black px-[38px] pb-4 pt-6">
+                <div className="flex flex-col gap-8 sm:gap-4 rounded-[20px] border border-plum bg-black px-[38px] pb-8 pt-6 sm:pb-4">
                   <Typography as="h3" variant="mdMedium" className="[font-size:26px]! font-semibold! leading-[42px] text-white">
                     Africa&apos;s wisdom is not merely an inheritance to be admired.
                   </Typography>
@@ -80,18 +80,18 @@ export function FoundersJourneySection() {
         </div>
 
         <div className="flex w-full min-w-0 flex-col gap-6 xl:w-[433px] xl:shrink-0">
-          <ScrollReveal delay={0.1} className="flex flex-col gap-4 rounded-[23px] border border-gold px-[25px] py-[23px]">
+          <ScrollReveal delay={0.1} className="flex flex-col gap-8 sm:gap-4 rounded-[23px] border border-gold px-[25px] py-[23px]">
             <Typography as="h3" variant="sm" className="font-semibold! uppercase leading-5 tracking-[1.2px] text-gold">
               Three Decades of Shared Service
             </Typography>
-            <ol className="flex flex-col gap-[18px]">
+            <ol className="flex flex-col gap-8 sm:gap-[18px]">
               {milestones.map(({ title, description }, index) => (
                 <li key={title} className="flex gap-[22px]">
                   <div aria-hidden="true" className="flex w-4 shrink-0 flex-col items-center gap-[9px]">
                     <span className="h-3 w-3 shrink-0 rounded-full bg-plum" />
                     <span className="w-px flex-1 bg-white/70" />
                   </div>
-                  <div className="flex min-w-0 flex-col gap-2">
+                  <div className="flex min-w-0 flex-col gap-6 sm:gap-4">
                     <Typography as="h4" variant="lg" className={`font-semibold! leading-7 text-white ${index === 1 ? "xl:max-w-[300px]" : ""}`}>
                       {title}
                     </Typography>
@@ -104,7 +104,7 @@ export function FoundersJourneySection() {
             </ol>
           </ScrollReveal>
 
-          <ScrollReveal delay={0.18} className="flex flex-col gap-5 rounded-[23px] border border-gold bg-[#0b0b0b] px-[25px] pb-[14px] pt-6">
+          <ScrollReveal delay={0.18} className="flex flex-col gap-6 rounded-[23px] border border-gold bg-[#0b0b0b] px-[25px] pb-[14px] pt-6 sm:gap-4">
             <Typography as="h3" variant="sm" className="font-semibold! uppercase leading-5 tracking-[1.2px] text-gold">
               The Doctrine of Divine Alignment™
             </Typography>

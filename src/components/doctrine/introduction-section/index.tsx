@@ -6,7 +6,7 @@ export function DoctrineIntroductionSection() {
   return (
     <section aria-label="About the Doctrine of Divine Alignment" className="bg-background-yellow py-16 text-full-black lg:pb-[88px] lg:pt-[99px]">
       <Container>
-        <div className="mx-auto flex w-full max-w-[900px] flex-col gap-10 lg:gap-14">
+        <div className="mx-auto flex w-full max-w-[900px] flex-col gap-10 sm:gap-12">
           <ScrollReveal>
             <Typography
               as="blockquote"
@@ -17,7 +17,7 @@ export function DoctrineIntroductionSection() {
             </Typography>
           </ScrollReveal>
 
-          <div className="flex flex-col gap-8 lg:gap-9">
+          <div className="flex flex-col gap-6 sm:gap-4">
             <ScrollReveal>
               <Typography variant="md" className="leading-[31px] text-[#282828]">
                 It is not a claim that Africa has one single belief system or one unified spiritual tradition. African Sacred Science recognises and respects the profound diversity of African civilisations, peoples, languages and philosophical lineages.

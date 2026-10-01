@@ -97,7 +97,7 @@ export function Footer({ homePage = true, creamCorners = false }: { homePage?: b
               <Typography
                 as="div"
                 variant="mdMedium"
-                className="w-full whitespace-nowrap bg-[linear-gradient(180deg,#070708_-11.58%,#1E1E21_100%)] bg-clip-text text-center text-[clamp(3.4rem,7.7vw,9rem)]! font-black! leading-none tracking-[-0.08em] text-transparent"
+                className="w-full whitespace-nowrap bg-[linear-gradient(180deg,#070708_-11.58%,#1E1E21_100%)] bg-clip-text text-center text-[clamp(1.25rem,7.7vw,9rem)]! font-black! leading-none tracking-[-0.08em] text-transparent"
               >
                 AFRICAN SACRED SCIENCE
               </Typography>

@@ -68,21 +68,21 @@ export function ContentSection() {
       className="flex bg-background-yellow lg:min-h-[800px]"
     >
       <div className="flex w-full items-start px-5 py-16 sm:px-8 sm:py-20 lg:w-[52.430556%] lg:pb-16 lg:pl-[4.861111%] lg:pr-[45px] lg:pt-20">
-        <div className="flex w-full max-w-[640px] flex-col gap-[60px]">
-          <div className="flex flex-col gap-[30px]">
-            <div className="flex flex-col gap-[10px]">
+        <div className="flex w-full max-w-[640px] flex-col gap-10 sm:gap-12">
+          <div className="flex flex-col gap-10 sm:gap-12">
+            <div className="flex flex-col gap-8 sm:gap-8">
               <motion.div data-motion-reveal custom={0} variants={textReveal}>
                 <Typography as="p" variant="mdMedium" className="leading-[17px] text-gold">
                   What Is African Sacred Science?
                 </Typography>
               </motion.div>
 
-              <Typography id="what-is-african-sacred-science" variant="h2" className="flex flex-col text-full-black">
+              <Typography id="what-is-african-sacred-science" variant="h2" className="flex flex-col gap-4 text-full-black sm:gap-6">
                 <motion.span
                   data-motion-reveal
                   custom={0.11}
                   variants={textReveal}
-                  className="font-sans [font-size:clamp(2.5rem,4vw,3rem)]! font-medium leading-[57px]"
+                  className="font-sans [font-size:clamp(2.5rem,4vw,3rem)]! font-medium leading-[1.15] lg:leading-[57px]"
                 >
                   Africa&apos;s Wisdom Is
                 </motion.span>
@@ -90,14 +90,14 @@ export function ContentSection() {
                   data-motion-reveal
                   custom={0.22}
                   variants={textReveal}
-                  className="bg-plum-gradient bg-clip-text font-serif [font-size:clamp(3rem,4.5vw,3.625rem)]! font-bold italic leading-[1.2] text-transparent"
+                  className="bg-plum-gradient bg-clip-text font-serif [font-size:clamp(3rem,4.5vw,3.625rem)]! font-bold italic leading-[1.1] text-transparent lg:leading-[1.2]"
                 >
                   Vast, Diverse and Living.
                 </motion.span>
               </Typography>
             </div>
 
-            <div className="flex max-w-[633px] flex-col gap-5 text-full-black/85">
+            <div className="flex max-w-[633px] flex-col gap-6 text-full-black/85 sm:gap-8">
               <motion.div data-motion-reveal custom={0.35} variants={textReveal}>
                 <Typography as="p" variant="md" className="leading-[30.94px]">
                   African Sacred Science™ is a contemporary body of knowledge, studying, preserving
@@ -120,7 +120,7 @@ export function ContentSection() {
           <motion.div
             data-motion-reveal
             variants={cardReveal}
-            className="flex flex-col gap-[10px] rounded-[18px] border border-gold bg-[#f1e5c5] px-5 py-6 text-full-black sm:px-7"
+            className="flex flex-col gap-6 rounded-[18px] border border-gold bg-[#f1e5c5] px-5 py-6 text-full-black sm:gap-4 sm:px-7"
           >
             <Typography as="h3" variant="md" className="font-semibold leading-[18px]">
               Africa Is Not One Tradition.

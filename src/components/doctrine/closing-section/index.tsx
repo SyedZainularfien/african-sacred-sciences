@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { buttonVariants } from "@/components/ui/button";
+import { ButtonArrow, buttonShimmer, buttonVariants } from "@/components/ui/button";
 import { Typography } from "@/components/ui/typography";
 import { ScrollReveal } from "@/components/ui/scroll-reveal";
 import { DOCTRINE_CLOSING_RING_RADII } from "@/constants/doctrine";
@@ -27,16 +27,16 @@ export function DoctrineClosingSection() {
     <section
       id="doctrine-closing"
       aria-labelledby="doctrine-closing-title"
-      className="relative isolate overflow-hidden bg-[#030303] bg-[radial-gradient(ellipse_42%_48%_at_50%_48%,rgba(71,15,55,0.24),transparent_88%)] px-5 pb-24 pt-20 text-white lg:pb-[162px] lg:pt-[140px]"
+      className="relative isolate flex flex-col items-center overflow-hidden bg-[#030303] bg-[radial-gradient(ellipse_42%_48%_at_50%_48%,rgba(71,15,55,0.24),transparent_88%)] px-5 pb-24 pt-20 text-white lg:pb-[162px] lg:pt-[140px]"
     >
       <ClosingRings />
-      <div className="relative z-10 flex w-full max-w-[780px] flex-col items-center gap-12 border-y border-gold/10 py-[52px] text-center lg:mx-auto lg:gap-[60px] lg:pb-[57px] lg:pt-[48px]">
-        <div className="flex flex-col items-center gap-12 lg:gap-[66px]">
+      <div className="relative z-10 flex w-full max-w-[780px] flex-col items-center gap-9 sm:gap-9 border-y border-gold/10 py-[52px] text-center lg:pb-[57px] lg:pt-[48px]">
+        <div className="flex flex-col items-center gap-10 sm:gap-10">
           <Typography
             as="h2"
             id="doctrine-closing-title"
             variant="h2"
-            className="flex flex-col font-normal! italic leading-[1.08]! max-sm:text-[clamp(2.5rem,9vw,3.25rem)]! sm:text-[3.25rem]!"
+            className="flex flex-col gap-1 font-normal! italic leading-[1.08]! max-sm:text-[clamp(2.5rem,9vw,3.25rem)]! sm:text-[3.25rem]!"
           >
             <ScrollReveal as="span">Alignment is not a destination.</ScrollReveal>
             <ScrollReveal as="span" delay={0.15} className="text-[#d5a846]">It is a way of living.</ScrollReveal>
@@ -55,38 +55,50 @@ export function DoctrineClosingSection() {
           </ScrollReveal>
         </div>
 
-        <ScrollReveal delay={0.38} className="flex w-full flex-col items-center justify-center gap-4 sm:flex-row sm:gap-[14px]">
+        <ScrollReveal delay={0.38} className="flex w-full flex-col items-center justify-center gap-6 sm:gap-4 min-[800px]:flex-row min-[800px]:gap-[14px]">
           <Link
             href="https://oriinu.ai/"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="Experience Through ORIINU"
             className={buttonVariants({
               className:
-                "min-h-[54px] w-full gap-2 px-5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold sm:w-auto sm:shrink-0 sm:px-[23px]",
+                "min-h-[54px] w-full gap-2 px-5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold min-[800px]:w-auto min-[800px]:shrink-0 min-[800px]:px-[23px]",
             })}
           >
             <Typography
               as="span"
               variant="cta"
-              className="text-sm! uppercase tracking-[0.12em] sm:whitespace-nowrap"
+              className="whitespace-nowrap text-sm! uppercase tracking-[0.12em] min-[440px]:hidden"
             >
-              Experience Through ORIINU
+              Experience ORIINU
             </Typography>
-            <span aria-hidden="true" className="text-xl leading-none">
-              →
-            </span>
-          </Link>
-          <Link
-            href="/"
-            className="inline-flex min-h-[54px] w-full items-center justify-center gap-2 rounded-full border border-white/20 px-5 text-center text-white/60 transition-colors hover:border-white/40 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold sm:w-auto sm:shrink-0 sm:px-[19px]"
-          >
-            <span aria-hidden="true" className="text-xl leading-none">
-              ←
-            </span>
             <Typography
               as="span"
               variant="cta"
-              className="text-sm! uppercase tracking-[0.12em] sm:whitespace-nowrap"
+              className="hidden whitespace-nowrap text-sm! uppercase tracking-[0.12em] min-[440px]:inline"
+            >
+              Experience Through ORIINU
+            </Typography>
+            <ButtonArrow />
+          </Link>
+          <Link
+            href="/"
+            aria-label="Return to African Sacred Science"
+            className={`${buttonShimmer} inline-flex min-h-[54px] w-full items-center justify-center gap-2 rounded-full border border-white/20 px-5 text-center text-white/60 transition-colors hover:border-white/40 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold min-[800px]:w-auto min-[800px]:shrink-0 min-[800px]:px-[19px]`}
+          >
+            <ButtonArrow direction="left" />
+            <Typography
+              as="span"
+              variant="cta"
+              className="whitespace-nowrap text-sm! uppercase tracking-[0.12em] min-[440px]:hidden"
+            >
+              Back to Home
+            </Typography>
+            <Typography
+              as="span"
+              variant="cta"
+              className="hidden whitespace-nowrap text-sm! uppercase tracking-[0.12em] min-[440px]:inline"
             >
               Return to African Sacred Science
             </Typography>
