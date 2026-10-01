@@ -9,7 +9,7 @@ function VisionDiagram() {
     <div
       role="img"
       aria-label="African Sacred Science at the center of seven actions: preserve, apply, pass forward, interpret, research, recover, and remember."
-      className="relative aspect-square w-full max-w-[600px] shrink-0"
+      className="relative aspect-square w-[calc(100%-3rem)] max-w-[600px] shrink-0 sm:w-full"
     >
       <svg aria-hidden="true" className="absolute inset-0 h-full w-full" viewBox="0 0 800 800" fill="none">
         <g stroke="#a27829" strokeOpacity="0.15" strokeWidth="1.5">
@@ -24,7 +24,7 @@ function VisionDiagram() {
       </svg>
 
       <div className="absolute left-1/2 top-1/2 flex h-[26%] w-[26%] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-plum/40 bg-[radial-gradient(circle,#491044_0%,#310832_68%,#200522_100%)] text-center">
-        <Typography as="span" variant="mdMedium" className="font-serif text-[clamp(1.15rem,2.1vw,1.5rem)]! font-medium! italic leading-[1.1] text-white">
+        <Typography as="span" variant="mdMedium" className="font-serif text-base! font-medium! italic leading-[1.1] text-white sm:text-[clamp(1.15rem,2.1vw,1.5rem)]!">
           African<br />Sacred<br />Science
         </Typography>
       </div>

@@ -113,9 +113,14 @@ export function Footer({ homePage = true, creamCorners = false }: { homePage?: b
                     ❤️
                   </span>{" "}
                   by{" "}
-                  <span className="font-semibold text-white/85">
+                  <Link
+                    href="https://linktr.ee/theflopstudios"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="cursor-pointer font-semibold text-white/85 focus-visible:outline-2 focus-visible:outline-gold"
+                  >
                     TheFlopStudios
-                  </span>
+                  </Link>
                 </Typography>
               </Container>
             </ScrollReveal>

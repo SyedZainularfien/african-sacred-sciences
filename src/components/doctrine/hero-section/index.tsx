@@ -4,6 +4,7 @@ import { Container } from "@/components/layout/container";
 import { buttonVariants } from "@/components/ui/button";
 import { Typography } from "@/components/ui/typography";
 import { ScrollReveal } from "@/components/ui/scroll-reveal";
+import headingSpacing from "@/components/doctrine/heading-spacing.module.css";
 
 import { DOCTRINE_HERO_DIMENSIONS, DOCTRINE_HERO_RING_RADII } from "@/constants/doctrine";
 
@@ -33,7 +34,7 @@ export function DoctrineHeroSection() {
       <Container className="relative z-10 flex flex-col pb-12 pt-36 sm:pb-20 sm:pt-44 lg:pb-[128px] lg:pt-52">
         <div className="flex max-w-[1120px] flex-col gap-10 sm:gap-12">
           <div className="flex flex-col gap-10 sm:gap-9">
-            <div className="flex flex-col gap-8 sm:gap-4">
+            <div className={`${headingSpacing.group} flex flex-col gap-8 sm:gap-4`}>
               <ScrollReveal>
                 <Typography
                   as="span"

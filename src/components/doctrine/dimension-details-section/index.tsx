@@ -2,6 +2,7 @@ import { Container } from "@/components/layout/container";
 import { DimensionIcon } from "@/components/doctrine/dimension-icon";
 import { Typography } from "@/components/ui/typography";
 import { ScrollReveal } from "@/components/ui/scroll-reveal";
+import headingSpacing from "@/components/doctrine/heading-spacing.module.css";
 import { DOCTRINE_DIMENSION_DETAILS } from "@/constants/doctrine";
 
 export function DoctrineDimensionDetailsSection() {
@@ -12,7 +13,7 @@ export function DoctrineDimensionDetailsSection() {
       className="bg-background-yellow py-16 text-full-black lg:pb-[100px] lg:pt-20"
     >
       <Container className="flex flex-col items-center gap-12 sm:gap-14 lg:gap-16">
-        <ScrollReveal className="flex flex-col items-center gap-8 text-center sm:gap-5">
+        <ScrollReveal className={`${headingSpacing.group} flex flex-col items-center gap-8 text-center sm:gap-5`}>
           <Typography
             as="span"
             variant="xs"

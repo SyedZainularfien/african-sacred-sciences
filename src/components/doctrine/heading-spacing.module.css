@@ -1,0 +1,16 @@
+@media (max-width: 639px) {
+  /* Match Home's visible mobile label-to-title gaps. */
+  .group h2,
+  .group h2 > span,
+  .group > span,
+  .group > div > span {
+    text-box-trim: trim-both;
+    text-box-edge: cap alphabetic;
+  }
+
+  /* Keep italic descenders inside gradient text's painting area. */
+  .group h2:has(:global(.bg-clip-text)),
+  .group h2 :global(.bg-clip-text) {
+    text-box-edge: cap text;
+  }
+}

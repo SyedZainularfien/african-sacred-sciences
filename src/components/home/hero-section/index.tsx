@@ -161,9 +161,10 @@ export function HeroSection() {
                   rel="noopener noreferrer"
                   variant="outline"
                   width="full"
+                  showArrow
                   className="bg-black! sm:w-fit min-[90rem]:h-[60px] min-[90rem]:w-[230px] min-[90rem]:shrink-0 [&>span]:whitespace-nowrap"
                 >
-                  Experience ORIINU →
+                  Experience ORIINU
                 </ButtonLink>
               </motion.div>
             </div>

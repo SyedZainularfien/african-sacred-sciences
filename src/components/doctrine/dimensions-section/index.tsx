@@ -2,11 +2,13 @@ import { Container } from "@/components/layout/container";
 import { DimensionIcon } from "@/components/doctrine/dimension-icon";
 import { Typography } from "@/components/ui/typography";
 import { ScrollReveal } from "@/components/ui/scroll-reveal";
+import headingSpacing from "@/components/doctrine/heading-spacing.module.css";
 import { DOCTRINE_DIAGRAM_DIMENSIONS } from "@/constants/doctrine";
 
 function DimensionsDiagram() {
   return (
-    <div aria-hidden="true" className="relative aspect-[620/600] w-full max-w-[620px] shrink-0 self-center">
+    /* The artwork is centered at x=330 in a 620px viewBox, 20px right of its box center. */
+    <div aria-hidden="true" className="relative aspect-[620/600] w-full max-w-[620px] -translate-x-[3.23%] shrink-0 self-center">
       <svg className="absolute inset-0 h-full w-full" viewBox="0 0 620 600" fill="none">
         <g stroke="#c69b34" strokeOpacity="0.12" strokeWidth="0.8">
           <circle cx="330" cy="290" r="120" />
@@ -44,7 +46,7 @@ export function DoctrineDimensionsSection() {
         </ScrollReveal>
         <div className="flex min-w-0 flex-1 flex-col gap-10 sm:gap-12">
           <ScrollReveal className="flex flex-col gap-8 sm:gap-9">
-            <div className="flex flex-col gap-8 sm:gap-5">
+            <div className={`${headingSpacing.group} flex flex-col gap-8 sm:gap-5`}>
               <Typography as="span" variant="xs" className="font-semibold uppercase tracking-[0.25em] text-gold">The Five Dimensions</Typography>
               <Typography as="h2" id="dimensions-title" variant="mdMedium" className="text-[clamp(2.5rem,3vw,2.75rem)]! leading-[1.2]">
                 Five Dimensions of <span className="bg-plum-gradient bg-clip-text font-serif text-[1.12em]! italic text-transparent">Alignment</span>

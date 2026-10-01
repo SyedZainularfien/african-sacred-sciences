@@ -55,10 +55,20 @@ function NavigationArrow({ active = false }: { active?: boolean }) {
 
 export function Header({ homePage = false, activeItem = homePage ? "Home" : "The Doctrine" }: { homePage?: boolean; activeItem?: string | null }) {
   const dialogRef = useRef<HTMLDialogElement>(null);
+  const anchorNavigationRef = useRef(false);
+  const anchorNavigationTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const [menuOpen, setMenuOpen] = useState(false);
   const [headerHidden, setHeaderHidden] = useState(false);
   const reduceMotion = useReducedMotion();
   const animate = useAnimationReady() && !reduceMotion;
+
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (homePage && hash && navigationItems.some(({ href }) => href.endsWith(hash))) {
+      const frame = window.requestAnimationFrame(() => setHeaderHidden(true));
+      return () => window.cancelAnimationFrame(frame);
+    }
+  }, [homePage]);
 
   useEffect(() => {
     if (menuOpen) return;
@@ -70,6 +80,11 @@ export function Header({ homePage = false, activeItem = homePage ? "Home" : "The
       const maxScrollY = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
       // Ignore mobile rubber-band movement outside the document.
       if (currentScrollY < 0 || currentScrollY > maxScrollY) return;
+
+      if (anchorNavigationRef.current) {
+        previousScrollY = currentScrollY;
+        return;
+      }
 
       if (currentScrollY <= HEADER_TOP_ZONE) {
         setHeaderHidden(false);
@@ -89,9 +104,27 @@ export function Header({ homePage = false, activeItem = homePage ? "Home" : "The
       previousScrollY = currentScrollY;
     };
 
+    const finishAnchorNavigation = () => {
+      anchorNavigationRef.current = false;
+      previousScrollY = Math.max(0, window.scrollY);
+      if (previousScrollY <= HEADER_TOP_ZONE) setHeaderHidden(false);
+      if (anchorNavigationTimerRef.current) {
+        window.clearTimeout(anchorNavigationTimerRef.current);
+        anchorNavigationTimerRef.current = null;
+      }
+    };
+
     window.addEventListener("scroll", updateVisibility, { passive: true });
-    return () => window.removeEventListener("scroll", updateVisibility);
+    window.addEventListener("scrollend", finishAnchorNavigation);
+    return () => {
+      window.removeEventListener("scroll", updateVisibility);
+      window.removeEventListener("scrollend", finishAnchorNavigation);
+    };
   }, [menuOpen]);
+
+  useEffect(() => () => {
+    if (anchorNavigationTimerRef.current) window.clearTimeout(anchorNavigationTimerRef.current);
+  }, []);
 
   useEffect(() => {
     if (!menuOpen) return;
@@ -116,6 +149,21 @@ export function Header({ homePage = false, activeItem = homePage ? "Home" : "The
     }
   }
 
+  function beginAnchorNavigation(destination?: string) {
+    if (destination === "#home" && window.scrollY <= HEADER_TOP_ZONE) {
+      setHeaderHidden(false);
+      return;
+    }
+    anchorNavigationRef.current = true;
+    setHeaderHidden(true);
+    if (anchorNavigationTimerRef.current) window.clearTimeout(anchorNavigationTimerRef.current);
+    anchorNavigationTimerRef.current = window.setTimeout(() => {
+      anchorNavigationRef.current = false;
+      anchorNavigationTimerRef.current = null;
+      if (window.scrollY <= HEADER_TOP_ZONE) setHeaderHidden(false);
+    }, 3000);
+  }
+
   return (
     <header
       inert={headerHidden && !menuOpen}
@@ -136,9 +184,10 @@ export function Header({ homePage = false, activeItem = homePage ? "Home" : "The
             <ul className="flex items-center justify-start gap-[25px] whitespace-nowrap text-sm leading-6">
               {navigationItems.map(({ label, href }) => (
                 <li key={label}>
-                  {href.includes("#") ? (
+                  {href.includes("#") || (homePage && href === "/") ? (
                     <a
-                      href={homePage ? href.replace(/^\/#/, "#") : href}
+                      href={href === "/" ? "#home" : homePage ? href.replace(/^\/#/, "#") : href}
+                      onClick={() => beginAnchorNavigation(href === "/" ? "#home" : href)}
                       className="hover:text-gold focus-visible:outline-2 focus-visible:outline-gold"
                     >
                       <Typography as="span" variant="sm">{label}</Typography>
@@ -276,10 +325,13 @@ export function Header({ homePage = false, activeItem = homePage ? "Home" : "The
                       className="border-b border-gold/15 first:border-t"
                     >
                       {href ? (
-                        href.includes("#") ? (
+                        href.includes("#") || (homePage && href === "/") ? (
                           <a
-                            href={homePage ? href.replace(/^\/#/, "#") : href}
-                            onClick={closeMenu}
+                            href={href === "/" ? "#home" : homePage ? href.replace(/^\/#/, "#") : href}
+                            onClick={() => {
+                              beginAnchorNavigation(href === "/" ? "#home" : href);
+                              closeMenu();
+                            }}
                             aria-current={active ? "page" : undefined}
                             className={rowClassName}
                           >
