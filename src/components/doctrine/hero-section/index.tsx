@@ -29,7 +29,7 @@ function AlignmentRings() {
 
 export function DoctrineHeroSection() {
   return (
-    <section className="relative isolate flex min-h-screen overflow-hidden bg-[#050308] bg-[radial-gradient(ellipse_55%_65%_at_50%_65%,rgba(91,18,74,0.6)_0%,rgba(47,9,58,0.5)_43%,transparent_90%),radial-gradient(ellipse_45%_60%_at_18%_50%,rgba(58,13,44,0.45),transparent_85%)] text-white">
+    <section className="relative isolate flex min-h-[min(100vh,900px)] overflow-hidden bg-[#050308] bg-[radial-gradient(ellipse_55%_65%_at_50%_65%,rgba(91,18,74,0.6)_0%,rgba(47,9,58,0.5)_43%,transparent_90%),radial-gradient(ellipse_45%_60%_at_18%_50%,rgba(58,13,44,0.45),transparent_85%)] text-white">
       <AlignmentRings />
       <Container className="relative z-10 flex flex-col pb-12 pt-36 sm:pb-20 sm:pt-44 lg:pb-[128px] lg:pt-52">
         <div className="flex max-w-[1120px] flex-col gap-10 sm:gap-12">

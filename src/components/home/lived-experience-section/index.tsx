@@ -113,7 +113,7 @@ export function LivedExperienceSection() {
 
   return (
     <section ref={sectionRef} aria-labelledby="lived-experience-title" className="bg-background-yellow py-16 text-full-black sm:py-20 xl:pb-[84px] xl:pt-[111px]">
-      <Container className="flex flex-col items-center gap-10 sm:gap-12 xl:flex-row xl:items-start xl:gap-[90px]">
+      <Container className="flex flex-col items-center gap-10 sm:gap-12 xl:flex-row xl:items-start xl:justify-between xl:gap-[90px]">
         <div className="flex w-full min-w-0 flex-col gap-8 xl:w-[570px] xl:shrink-0">
           <div className="flex flex-col gap-12 sm:gap-14 lg:gap-16">
             <motion.div key={animate ? "animated" : "static"} initial={animate ? "hidden" : false} whileInView="visible" viewport={{ once: true, amount: 0.4 }} className="flex flex-col gap-10 sm:gap-12">
