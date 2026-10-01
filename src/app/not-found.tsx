@@ -44,7 +44,7 @@ export default function NotFound() {
               <span className="absolute bottom-[3%] left-1/2 size-1.5 -translate-x-1/2 rounded-full bg-gold/70" />
               <span className="absolute left-[3%] top-1/2 size-1.5 -translate-y-1/2 rounded-full bg-gold/70" />
               <span className="absolute right-[3%] top-1/2 size-1.5 -translate-y-1/2 rounded-full bg-gold/70" />
-              <Typography as="span" variant="h1" className="relative bg-gold-gradient bg-clip-text font-serif text-[clamp(6rem,15vw,12rem)]! font-normal! leading-none text-transparent">404</Typography>
+              <Typography as="span" variant="h1" className="relative -translate-y-[0.2em] bg-gold-gradient bg-clip-text font-serif text-[clamp(6rem,15vw,12rem)]! font-normal! leading-none text-transparent">404</Typography>
               <Typography as="span" variant="xs" className="absolute bottom-[14%] font-semibold uppercase tracking-[0.32em] text-gold/80">Lost in the cosmos</Typography>
             </div>
           </Container>

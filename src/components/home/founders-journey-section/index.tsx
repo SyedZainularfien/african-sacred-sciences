@@ -6,7 +6,7 @@ import { milestones } from "@/constants/home";
 
 export function FoundersJourneySection() {
   return (
-    <section aria-labelledby="founders-journey-title" className="bg-black pb-[60px] pt-10 text-white">
+    <section aria-labelledby="founders-journey-title" className="bg-black pb-[60px] pt-4 text-white sm:pt-10">
       <Container className="flex flex-col items-start gap-8 xl:flex-row xl:gap-12">
         <div className="flex w-full min-w-0 flex-col gap-8 sm:gap-5 xl:max-w-[803px] xl:flex-1">
           <div className="flex flex-col gap-11 sm:gap-14">
@@ -42,7 +42,7 @@ export function FoundersJourneySection() {
           </div>
 
           <div className="flex flex-col gap-12">
-            <ScrollReveal className="flex flex-col gap-6 rounded-[20px] border border-plum bg-[linear-gradient(135deg,#17031d,#3c1037)] px-[30px] py-[34px] sm:gap-4">
+            <ScrollReveal className="flex flex-col gap-6 rounded-[20px] border border-plum bg-[linear-gradient(135deg,#17031d,#3c1037)] px-[30px] py-10 sm:gap-4">
               <Typography as="h3" variant="sm" className="font-semibold! uppercase leading-5 tracking-[1.2px] text-gold">
                 Core Principles
               </Typography>
@@ -56,11 +56,11 @@ export function FoundersJourneySection() {
             </ScrollReveal>
 
             <ScrollReveal className="flex flex-col gap-[30px]">
-              <div className="flex flex-col gap-4">
+              <div className="flex flex-col gap-8">
                 <Typography variant="xl" className="leading-[36px] text-[#bdbdbd]">
                   Their leadership is grounded in one shared conviction:
                 </Typography>
-                <div className="flex flex-col gap-8 sm:gap-4 rounded-[20px] border border-plum bg-black px-[38px] pb-8 pt-6 sm:pb-4">
+                <div className="flex flex-col gap-8 rounded-[20px] border border-plum bg-black px-[38px] py-10 sm:gap-4">
                   <Typography as="h3" variant="mdMedium" className="[font-size:26px]! font-semibold! leading-[42px] text-white">
                     Africa&apos;s wisdom is not merely an inheritance to be admired.
                   </Typography>
@@ -80,7 +80,7 @@ export function FoundersJourneySection() {
         </div>
 
         <div className="flex w-full min-w-0 flex-col gap-6 xl:w-[433px] xl:shrink-0">
-          <ScrollReveal delay={0.1} className="flex flex-col gap-8 sm:gap-4 rounded-[23px] border border-gold px-[25px] py-[23px]">
+          <ScrollReveal delay={0.1} className="flex flex-col gap-8 rounded-[23px] border border-gold px-[25px] py-10 sm:gap-4">
             <Typography as="h3" variant="sm" className="font-semibold! uppercase leading-5 tracking-[1.2px] text-gold">
               Three Decades of Shared Service
             </Typography>
@@ -104,7 +104,7 @@ export function FoundersJourneySection() {
             </ol>
           </ScrollReveal>
 
-          <ScrollReveal delay={0.18} className="flex flex-col gap-6 rounded-[23px] border border-gold bg-[#0b0b0b] px-[25px] pb-[14px] pt-6 sm:gap-4">
+          <ScrollReveal delay={0.18} className="flex flex-col gap-6 rounded-[23px] border border-gold bg-[#0b0b0b] px-[25px] py-10 sm:gap-4">
             <Typography as="h3" variant="sm" className="font-semibold! uppercase leading-5 tracking-[1.2px] text-gold">
               The Doctrine of Divine Alignment™
             </Typography>

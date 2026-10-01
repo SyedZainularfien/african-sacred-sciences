@@ -155,7 +155,7 @@ export function Header({ homePage = false, activeItem = homePage ? "Home" : "The
       return;
     }
     anchorNavigationRef.current = true;
-    setHeaderHidden(true);
+    setHeaderHidden(destination !== "#home");
     if (anchorNavigationTimerRef.current) window.clearTimeout(anchorNavigationTimerRef.current);
     anchorNavigationTimerRef.current = window.setTimeout(() => {
       anchorNavigationRef.current = false;
